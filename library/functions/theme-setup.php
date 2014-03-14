@@ -53,7 +53,7 @@ if( !function_exists('sp_frontend_scripts_styles') )
 	function sp_frontend_scripts_styles() {
 		
 		//Register CSS style
-		wp_enqueue_style('gfont-opensans', SP_BASE_URL . 'http://fonts.googleapis.com/css?family=Open+Sans:400,400italic', false, '1');
+		//wp_enqueue_style('gfont-opensans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,400italic', false, '1');
 		wp_enqueue_style('theme-info', SP_BASE_URL . 'style.css', false, '1');
 		wp_enqueue_style('normalize', SP_ASSETS_THEME . 'css/normalize.css', false, '1');
 		wp_enqueue_style('base', SP_ASSETS_THEME . 'css/base.css', false, '1');

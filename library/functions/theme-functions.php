@@ -66,3 +66,49 @@ if ( !function_exists('sp_browser_body_class') ) {
 	}
 	add_filter('body_class','sp_browser_body_class');
 }
+
+/* ---------------------------------------------------------------------- */
+/*	Tour meta
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_tour_meta') ) {
+	function sp_tour_meta(){
+		global $post;
+
+		$out = ''; $dests = ''; $types = '';
+		$tours_day = get_post_meta( $post->ID, 'sp_day', true ); 
+		$duration = get_post_meta( $post->ID, 'sp_duration', true ); 
+		$departure = get_post_meta( $post->ID, 'sp_departure', true ); 
+		$overview = get_post_meta( $post->ID, 'sp_overview', true ); 
+		$tour_type = wp_get_post_terms( $post->ID, 'tour-type' );
+		$destinations = wp_get_post_terms( $post->ID, 'destination' );
+
+		$out .= '<ul class="tour-meta">';
+		$out .= '<li><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s night', SP_TEXT_DOMAIN ),
+			 $tours_day,
+			 $tours_day - 1 ) . '</span></li>';
+		
+		$out .= '<li><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .=	'<span class="meta-value">'; 
+		foreach ($destinations as $destination) {
+			$dests .= $destination->name . ', ';
+		}
+		$out .= rtrim($dests, ', ') . '</span></li>';
+		
+		$out .= '<li><span class="meta-label">' . esc_attr__( 'Departure: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .= '<span class="meta-value">' . esc_attr__( $departure ) . '</span></li>';
+
+		$out .= '<li><span class="meta-label">' . esc_attr__( 'Type: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .=	'<span class="meta-value">'; 
+		foreach ($tour_type as $type) {
+			$types .= $type->name . ', ';
+		}
+		$out .= rtrim($types, ', ') . '</span></li>';
+
+		$out .= '<li class="overview">' . $overview . '</li>';
+
+		$out .= '</ul>';
+
+		echo $out;
+	}
+}
