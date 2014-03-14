@@ -24,6 +24,17 @@ function sp_register_meta_boxes( $meta_boxes )
 	global $days_of_tour;
 	$prefix = 'sp_';
 
+	$price_included = '<ul>
+					<li>Local English speaking guide as per program</li>
+					</ul>';
+	$price_excluded = '<ul>
+					<li>Visa fee to Cambodia</li>
+					<li>International air ticket in-out Cambodia</li>
+					<li>Other meals, drink, personal expenses, tip</li>
+					<li>Other not mentioned in "INCLUDES"</li>
+					</ul>';
+ 				 				
+
 	/* ---------------------------------------------------------------------- */
 	/*	PAGE
 	/* ---------------------------------------------------------------------- */
@@ -57,12 +68,9 @@ function sp_register_meta_boxes( $meta_boxes )
 				'id'   		=> $prefix . 'overview',
 				'std'  		=> '',
 				'desc'		=> 'Only write short description maximum length of 255 characters',
-				'type' 		=> 'wysiwyg',
-				'options' 	=> array(
-					'textarea_rows' => 4,
-					'teeny'         => true,
-					'media_buttons' => false,
-				),
+				'type' 		=> 'textarea',
+				'cols' 		=> 20,
+				'rows' 		=> 3,
 			),
 			array(
 				'name' 		=> __('Tour photos', 'sptheme_admin'),
@@ -71,6 +79,32 @@ function sp_register_meta_boxes( $meta_boxes )
 				'max_file_uploads' => sizeof($days_of_tour),
 				'std'  => '',
 				'desc' => 'Max size 650px width and auto proportion of height. And allow only ' . sizeof($days_of_tour) . ' photos'
+				
+			),
+			array(
+				'name' 		=> __('Price included', 'sptheme_admin'),
+				'id'   		=> $prefix . 'included',
+				'std'  		=> $price_included,
+				'desc' 		=> '',
+				'type' 		=> 'wysiwyg',
+				'options' 	=> array(
+					'textarea_rows' => 5,
+					'teeny'         => true,
+					'media_buttons' => false,
+				),
+				
+			),
+			array(
+				'name' 		=> __('Price excluded', 'sptheme_admin'),
+				'id'   		=> $prefix . 'excluded',
+				'std'  		=> $price_excluded,
+				'desc' 		=> '',
+				'type' 		=> 'wysiwyg',
+				'options' 	=> array(
+					'textarea_rows' => 5,
+					'teeny'         => true,
+					'media_buttons' => false,
+				),
 				
 			)
 		)

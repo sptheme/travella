@@ -2,10 +2,12 @@
 
 //All custom posts
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-tour.php' );
+require_once( SP_BASE_DIR . 'library/custom-posts/cp-faq.php' );
 
 //Taxonomies
 require_once( SP_BASE_DIR . 'library/custom-posts/taxonomy-tour.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/taxonomy-destination.php' );
+require_once( SP_BASE_DIR . 'library/custom-posts/taxonomy-faq.php' );
 	
 /*==========================================================================*/
 
@@ -22,6 +24,9 @@ if ( ! function_exists( 'sp_change_new_post_title' ) ) {
 
 		if ( 'tour' == $screen->post_type )
 			$title = __( "Tour title", 'sptheme_admin' );
+
+		if ( 'faq' == $screen->post_type )
+			$title = __( "Question title", 'sptheme_admin' );
 
 		return $title;
 	}

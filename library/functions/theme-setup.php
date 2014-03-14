@@ -33,9 +33,9 @@ if( !function_exists('sp_theme_setup') )
 		// Add suport for post thumbnails and set default sizes
 		add_theme_support( 'post-thumbnails' );
 		
-		add_image_size('work-mini', 88, 60, true);
-		add_image_size('work-thumb', 232, 157, true); 
-		add_image_size('work-large', 650, 433, true ); 
+		add_image_size('tour-mini', 88, 60, true);
+		add_image_size('tour-thumb', 232, 157, true); 
+		add_image_size('tour-large', 650, 433, true ); 
 		
 	}
 

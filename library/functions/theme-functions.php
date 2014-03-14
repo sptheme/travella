@@ -68,21 +68,20 @@ if ( !function_exists('sp_browser_body_class') ) {
 }
 
 /* ---------------------------------------------------------------------- */
-/*	Tour meta
+/*	Print tour meta data
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_tour_meta') ) {
 	function sp_tour_meta(){
-		global $post;
 
-		$out = ''; $dests = ''; $types = '';
-		$tours_day = get_post_meta( $post->ID, 'sp_day', true ); 
-		$duration = get_post_meta( $post->ID, 'sp_duration', true ); 
-		$departure = get_post_meta( $post->ID, 'sp_departure', true ); 
-		$overview = get_post_meta( $post->ID, 'sp_overview', true ); 
-		$tour_type = wp_get_post_terms( $post->ID, 'tour-type' );
-		$destinations = wp_get_post_terms( $post->ID, 'destination' );
+		$out = ''; $dests = array(); $types = array();
+		$tours_day = get_post_meta( get_the_ID(), 'sp_day', true ); 
+		$duration = get_post_meta( get_the_ID(), 'sp_duration', true ); 
+		$departure = get_post_meta( get_the_ID(), 'sp_departure', true ); 
+		$overview = get_post_meta( get_the_ID(), 'sp_overview', true ); 
+		$tour_type = wp_get_post_terms( get_the_ID(), 'tour-type' );
+		$destinations = wp_get_post_terms( get_the_ID(), 'destination' );
 
-		$out .= '<ul class="tour-meta">';
+		$out .= '<ul>';
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s night', SP_TEXT_DOMAIN ),
 			 $tours_day,
@@ -91,9 +90,9 @@ if ( !function_exists('sp_tour_meta') ) {
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .=	'<span class="meta-value">'; 
 		foreach ($destinations as $destination) {
-			$dests .= $destination->name . ', ';
+			$dests[] = $destination->name;
 		}
-		$out .= rtrim($dests, ', ') . '</span></li>';
+		$out .= join(', ', $dests) . '</span></li>';
 		
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Departure: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .= '<span class="meta-value">' . esc_attr__( $departure ) . '</span></li>';
@@ -101,14 +100,92 @@ if ( !function_exists('sp_tour_meta') ) {
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Type: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .=	'<span class="meta-value">'; 
 		foreach ($tour_type as $type) {
-			$types .= $type->name . ', ';
+			$types[] = $type->name;
 		}
-		$out .= rtrim($types, ', ') . '</span></li>';
+		$out .= join(', ', $types) . '</span></li>';
 
 		$out .= '<li class="overview">' . $overview . '</li>';
 
 		$out .= '</ul>';
 
-		echo $out;
+		return $out;
 	}
 }
+
+/* ---------------------------------------------------------------------- */
+/*	Print tour photos
+/* ---------------------------------------------------------------------- */
+if ( !function_exists( 'sp_tour_photos' )){
+	function sp_tour_photos(){
+		
+		$out = '';
+		$tour_photos = rwmb_meta( 'sp_tour_potos', $args = array('type' => 'plupload_image', 'size' => 'tour-mini') ); 
+
+		if ( $tour_photos ){
+			$out .= '<ul class="tour-photos">';
+			foreach ( $tour_photos as $photo ){
+				$out .= '<li><a href="' . $photo['full_url'] . '">';
+				$out .= '<img src="' . $photo['url'] . '" />';
+				$out .= '</a></li>';
+			}
+			$out .= '</ul>';
+		}
+
+		return $out;
+		
+	}
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Price included and excluded
+/* ---------------------------------------------------------------------- */
+if ( !function_exists( 'sp_price_included_exlcuded' ) ){
+	function sp_price_included_exlcuded(){
+		
+		$included = get_post_meta( get_the_ID(), 'sp_included', true );
+		$excluded = get_post_meta( get_the_ID(), 'sp_excluded', true );
+
+		$out = '<div class="price-included">';
+		$out .= '<strong>' . __( 'Price included', SP_TEXT_DOMAIN ) . '</strong>';
+		$out .= $included;
+		$out .= '</div>';
+		$out .= '<div class="price-excluded">';
+		$out .= '<strong>' . __( 'Price excluded', SP_TEXT_DOMAIN ) . '</strong>';
+		$out .= $excluded;
+		$out .= '</div>';
+
+		return $out;
+	}
+}
+
+
+/* ---------------------------------------------------------------------- */               							
+/*  Get related post by Taxonomy
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_posts_related_by_taxonomy') ) {
+
+	function sp_get_posts_related_by_taxonomy($post_id, $taxonomy, $args=array()) {
+	
+		$query = new WP_Query();
+		$terms = wp_get_object_terms($post_id, $taxonomy);
+		if (count($terms)) {
+
+		// Assumes only one term for per post in this taxonomy
+		$post_ids = get_objects_in_term($terms[0]->term_id,$taxonomy);
+		$post = get_post($post_id);
+		$args = wp_parse_args($args,array(
+		  'post_type' => $post->post_type, // The assumes the post types match
+		  'post__not_in' => array($post_id),
+		  'taxonomy' => $taxonomy,
+		  'term' => $terms[0]->slug,
+		  'orderby' => 'rand',
+		  'posts_per_page' => -1
+		));
+		$query = new WP_Query($args);
+		}
+		return $query;
+	}
+
+}
+
+
