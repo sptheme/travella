@@ -166,10 +166,12 @@ if ( !function_exists('sp_get_posts_related_by_taxonomy') ) {
 
 	function sp_get_posts_related_by_taxonomy($post_id, $taxonomy, $args=array()) {
 	
-		$query = new WP_Query();
+		$taxs = array();
 		$terms = wp_get_object_terms($post_id, $taxonomy);
 		if (count($terms)) {
-
+			/*foreach ($terms as $term) {
+				$taxs[] = $term->term_id;
+			}*/
 		// Assumes only one term for per post in this taxonomy
 		$post_ids = get_objects_in_term($terms[0]->term_id,$taxonomy);
 		$post = get_post($post_id);
@@ -177,12 +179,12 @@ if ( !function_exists('sp_get_posts_related_by_taxonomy') ) {
 		  'post_type' => $post->post_type, // The assumes the post types match
 		  'post__not_in' => array($post_id),
 		  'taxonomy' => $taxonomy,
-		  'term' => $terms[0]->slug,
+		  'terms' => $terms[0]->term_id,
 		  'orderby' => 'rand',
 		  'posts_per_page' => -1
 		));
-		$query = new WP_Query($args);
 		}
+		$query = new WP_Query($args);
 		return $query;
 	}
 
