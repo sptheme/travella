@@ -1,0 +1,1 @@
+<p><strong><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', SP_TEXT_DOMAIN ); ?></strong></p>	
