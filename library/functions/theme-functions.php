@@ -192,6 +192,27 @@ if ( ! function_exists( 'sp_slideshow' ) ) {
 	}
 }
 
+/* ---------------------------------------------------------------------- */               							
+/*  Retrieve the terms in a taxonomy
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_terms') ) {
+
+	function sp_get_terms($taxonomy){
+		$args = array(
+				'hide_empty'	=> 0
+			);
+		$taxonomies = get_terms($taxonomy, $args);
+		if ( count($taxonomies) ) {
+			$out = '<ul>';
+			foreach ( $taxonomies as $term ) {
+				$out .= '<li><a href="' . get_term_link( $term ) . '" title="' . sprintf(__('View all post filed under %s', 'sptheme_widget'), $term->name) . '">' . $term->name . '</a><span class="post-count>">(' . $term->count . ')</span></li>';
+			}
+			$out .= '</ul>';
+		}
+		return $out;
+	}
+
+}
 
 /* ---------------------------------------------------------------------- */               							
 /*  Get related post by Taxonomy

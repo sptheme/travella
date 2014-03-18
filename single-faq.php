@@ -9,5 +9,5 @@ get_header(); ?>
 	<?php get_template_part( 'library/content/loop', 'faq' ); ?>
 	</div>
 	<!-- #main -->	
-	
+	<?php get_sidebar(); ?>
 <?php get_footer(); ?>
