@@ -193,6 +193,59 @@ if ( ! function_exists( 'sp_slideshow' ) ) {
 }
 
 /* ---------------------------------------------------------------------- */               							
+/*  Related tours
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_related_tours') ) {
+	function sp_get_related_tours($post_num, $post_id){
+		$tour_type = wp_get_post_terms($post_id, 'tour-type');
+		$destinations = wp_get_post_terms($post_id, 'destination');
+		$des_array = array();
+		$type_array = array();
+		$des_names = array();
+		foreach ($destinations as $value) {
+			$des_array[] = $value->term_id;
+		}
+		foreach ($tour_type as $value) {
+			$type_array[] = $value->term_id;
+		}
+		foreach ($destinations as $value) {
+			$des_names[] = $value->name;
+		}
+		
+		$args = array(
+			'post_type'	=> 'tour',
+			'post__not_in' => array($post_id),
+			'tax_query' => array(
+					'relation' => 'OR',
+		  			array(
+						'taxonomy' => 'destination',
+						'field' => 'id',
+		  				'terms' => array(join(', ', $des_array))
+					),
+					array(
+						'taxonomy' => 'tour-type',
+						'field' => 'id',
+		  				'terms' => array(join(', ', $type_array))
+					)),
+			'orderby' => 'rand',
+			'posts_per_page' => $post_num
+			);
+		$custom_query = new WP_Query($args);
+		$out = '<div id="related-tours">';
+		$out .= '<ul>';
+		while ( $custom_query->have_posts() ): $custom_query->the_post();
+			$out .= '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>' . join(', ', $des_names) . '</li>';
+		endwhile;
+		wp_reset_postdata(); // Restore global post data
+		$out .= '</ul>';
+		$out .= '</div>';
+
+		return $out;
+	}
+}
+
+
+/* ---------------------------------------------------------------------- */               							
 /*  Retrieve the terms in a taxonomy
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_terms') ) {

@@ -8,7 +8,7 @@ global $post;
 
 	<aside id="sidebar" class="widget-area" role="complementary">
 
-	<?php if ( is_single() || is_page() ) {	
+	<?php if ( is_single() || is_page() || is_archive() ) {	
 		if ( is_active_sidebar('default-sidebar') ) :	
 			dynamic_sidebar('default-sidebar');
 		else:?>	
