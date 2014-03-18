@@ -34,6 +34,7 @@ class sp_widget_faqs extends WP_Widget {
 		
 		/* Our variables from the widget settings. */
 		$title = apply_filters('widget_title', $instance['title']);
+		$sub_nav = $instance['sub_nav'];
 		
 		/* Before widget (defined by themes). */
 		$out = $before_widget;
@@ -42,7 +43,11 @@ class sp_widget_faqs extends WP_Widget {
 		if ( $title )
 			$out .= $before_title . $title . $after_title;
 
-		$out .= sp_get_terms('faq-category') ;
+		if ($sub_nav):
+			$out .= sp_get_terms('faq-category');
+		else: 
+			$out .= sp_get_faqs_list('faq');
+		endif;
 	
 		/* After widget (defined by themes). */		
 		$out .= $after_widget;
@@ -58,6 +63,7 @@ class sp_widget_faqs extends WP_Widget {
 		
 		/* Strip tags for title and name to remove HTML (important for text inputs). */
 		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['sub_nav'] = strip_tags( $new_instance['sub_nav'] );
 		
 		return $instance;
 	}
@@ -69,12 +75,17 @@ class sp_widget_faqs extends WP_Widget {
 	 */	
 	function form( $instance ) {
 		/* Set up some default widget settings. */
-		$defaults = array( 'title' => 'FAQs Categories');
+		$defaults = array( 'title' => 'FAQs Categories', 'sub_nav' => true);
 		$instance = wp_parse_args( (array) $instance, $defaults); ?>
 		
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'sptheme_widget') ?></label>
 		<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>"  class="widefat">
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'sub_nav' ); ?>">Sub navigation : </label>
+			<input id="<?php echo $this->get_field_id( 'sub_nav' ); ?>" name="<?php echo $this->get_field_name( 'sub_nav' ); ?>" value="<?php echo $instance['sub_nav']; ?>" <?php if( $instance['sub_nav'] ) echo 'checked="checked"'; ?> type="checkbox" />
 		</p>
         
 	   <?php 

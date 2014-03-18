@@ -201,15 +201,11 @@ if ( !function_exists('sp_get_related_tours') ) {
 		$destinations = wp_get_post_terms($post_id, 'destination');
 		$des_array = array();
 		$type_array = array();
-		$des_names = array();
 		foreach ($destinations as $value) {
 			$des_array[] = $value->term_id;
 		}
 		foreach ($tour_type as $value) {
 			$type_array[] = $value->term_id;
-		}
-		foreach ($destinations as $value) {
-			$des_names[] = $value->name;
 		}
 		
 		$args = array(
@@ -234,7 +230,7 @@ if ( !function_exists('sp_get_related_tours') ) {
 		$out = '<div id="related-tours">';
 		$out .= '<ul>';
 		while ( $custom_query->have_posts() ): $custom_query->the_post();
-			$out .= '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>' . join(', ', $des_names) . '</li>';
+			$out .= '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></li>';
 		endwhile;
 		wp_reset_postdata(); // Restore global post data
 		$out .= '</ul>';
@@ -246,7 +242,7 @@ if ( !function_exists('sp_get_related_tours') ) {
 
 
 /* ---------------------------------------------------------------------- */               							
-/*  Retrieve the terms in a taxonomy
+/*  Retrieve the terms in a taxonomy as sub navigation
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_terms') ) {
 
@@ -266,6 +262,30 @@ if ( !function_exists('sp_get_terms') ) {
 	}
 
 }
+
+/* ---------------------------------------------------------------------- */               							
+/*  Display random FAQs post
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_faqs_list') ) {
+	function sp_get_faqs_list($post_type) {
+		$args = array(
+				'post_type' => $post_type,
+				'posts_per_page' => 10,
+			);
+		$custom_query = new WP_Query($args);
+		$out = '<div id="faq-list">';
+		$out .= '<ul>';
+		while ( $custom_query->have_posts() ): $custom_query->the_post();
+			$out .= '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></li>';
+		endwhile;
+		wp_reset_postdata(); // Restore global post data
+		$out .= '</ul>';
+		$out .= '</div>';
+
+		return $out;
+	}
+}
+
 
 /* ---------------------------------------------------------------------- */               							
 /*  Get related post by Taxonomy
