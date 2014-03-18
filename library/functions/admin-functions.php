@@ -13,6 +13,9 @@ require_once( SP_BASE_DIR . 'library/shortcodes/visual-shortcodes.php');
 //Custom post type and taxonomies
 require_once( SP_BASE_DIR . 'library/custom-posts/custom-posts.php');
 
+//Custom post type and taxonomies
+require_once( SP_BASE_DIR . 'library/widgets/widgets.php');
+
 /* ---------------------------------------------------------------------- */
 /*	Add SMOF Framework links to WordPress admin bar
 /* ---------------------------------------------------------------------- */

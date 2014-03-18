@@ -9,5 +9,6 @@ get_header(); ?>
 	<?php get_template_part( 'library/content/loop', 'tour' ); ?>
 	</div>
 	<!-- #main -->	
+	<?php get_sidebar(); ?>
 	
 <?php get_footer(); ?>

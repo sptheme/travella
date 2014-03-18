@@ -22,4 +22,10 @@
 	
 </head>
 <body <?php body_class(); ?>>
+<nav id="primary-nav" class="primary-nav" role="navigation">
+    <div class="container clearfix">
+    	<?php echo sp_main_navigation(); ?>
+    </div><!-- .primary-nav .wrap -->
+</nav><!-- #main-nav -->
+
 <div id="content" class="container">	

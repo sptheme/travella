@@ -124,6 +124,36 @@ if (!function_exists('sp_main_nav_fallback')) {
 	
 }
 
+if( !function_exists('sp_footer_navigation')) {
+
+	function sp_footer_navigation() {
+		
+		// set default footer menu if wp_nav_menu not active
+		if ( function_exists ( 'wp_nav_menu' ) )
+			wp_nav_menu( array(
+				'container'      => false,
+				'menu_class'	 => 'nav-footer-menu',
+				'theme_location' => 'footer',
+				'fallback_cb' => 'sp_footer_nav_fallback'
+				) );
+		else
+			sp_footer_nav_fallback();	
+	}
+}
+
+if (!function_exists('sp_footer_nav_fallback')) {
+	
+	function sp_footer_nav_fallback() {
+    	
+		$menu_html = '<ul class="nav-footer-menu clear">';
+		$menu_html .= '<li><a href="'.admin_url('nav-menus.php').'">'.esc_html__('Add footer menu', SP_TEXT_DOMAIN).'</a></li>';
+		$menu_html .= '</ul>';
+		echo $menu_html;
+		
+	}
+	
+}
+
 /* ---------------------------------------------------------------------- */
 /*	Makes some changes to the <title> tag, by filtering the output of wp_title()
 /* ---------------------------------------------------------------------- */
@@ -279,12 +309,6 @@ remove_action( 'wp_head', 'start_post_rel_link' );
 remove_action( 'wp_head', 'index_rel_link' );
 remove_action( 'wp_head', 'adjacent_posts_rel_link' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-
-// Customising footer text
-add_filter('admin_footer_text', 'sp_modify_footer_admin');
-function sp_modify_footer_admin () {  
-  echo 'Created by <a href="http://www.novacambodia.com" target="_blank">novadesign</a>. Powered by <a href="http://www.wordpress.org" target="_blank">WordPress</a>';  
-} 
 
 //  Set favicons for backend code
 add_action( 'admin_head', 'sp_adminfavicon' );
