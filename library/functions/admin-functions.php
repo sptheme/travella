@@ -7,8 +7,8 @@ require_once( SP_BASE_DIR . 'library/metaboxes/meta-box.php');
 require_once( SP_BASE_DIR . 'library/metaboxes/meta-options.php'); 
 
 // shortcodes
-/*require_once( SP_BASE_DIR . 'library/shortcodes/shortcodes.php');
-require_once( SP_BASE_DIR . 'library/shortcodes/visual-shortcodes.php');*/
+require_once( SP_BASE_DIR . 'library/shortcodes/shortcodes.php');
+require_once( SP_BASE_DIR . 'library/shortcodes/visual-shortcodes.php');
 
 //Custom post type and taxonomies
 require_once( SP_BASE_DIR . 'library/custom-posts/custom-posts.php');

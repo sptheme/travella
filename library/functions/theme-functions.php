@@ -158,6 +158,40 @@ if ( !function_exists( 'sp_price_included_exlcuded' ) ){
 	}
 }
 
+/* ---------------------------------------------------------------------- */
+/*	Display slideshow
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_slideshow' ) ) {
+	function sp_slideshow(){
+		$sliders = rwmb_meta( 'sp_sliders', $args = array('type' => 'plupload_image', 'size' => 'work-large') ); 
+		$out = '';
+		$out .='<script type="text/javascript">
+				jQuery(document).ready(function($){
+					$("#slideshow").flexslider({
+						animation: "slide",
+						pauseOnHover: true,
+						controlNav: false
+					});
+				});		
+				</script>';
+		$out .= '<div id="slideshow" class="flexslider">';
+		$out .= '<ul class="slides">';
+
+		foreach ( $sliders as $slide ){
+
+			$out .= '<li>';
+			$out .= '<img src="' . $slide["full_url"] . '" />';
+			$out .= '</li>';
+		
+		}
+
+		$out .= '</ul>';
+		$out .= '</div>';	
+
+		return $out;	
+	}
+}
+
 
 /* ---------------------------------------------------------------------- */               							
 /*  Get related post by Taxonomy
@@ -190,4 +224,69 @@ if ( !function_exists('sp_get_posts_related_by_taxonomy') ) {
 
 }
 
+/* ---------------------------------------------------------------------- */               							
+/*  Taxonomy has children and has parent
+/* ---------------------------------------------------------------------- */
+function has_children($cat_id, $taxonomy) {
+    $children = get_terms(
+        $taxonomy,
+        array( 'parent' => $cat_id, 'hide_empty' => false )
+    );
+    if ($children){
+        return true;
+    }
+    return false;
+}
+
+function category_has_parent($catid){
+    $category = get_category($catid);
+    if ($category->category_parent > 0){
+        return true;
+    }
+    return false;
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Get related pages
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_related_pages') ) {
+
+	function sp_get_related_pages() {
+
+		$orig_post = $post;
+		global $post;
+		$tags = wp_get_post_tags($post->ID);
+		if ($tags) {
+			$tag_ids = array();
+			foreach($tags as $individual_tag)
+			$tag_ids[] = $individual_tag->term_id;
+			$args=array(
+			'post_type' => 'page',
+			'tag__in' => $tag_ids,
+			'post__not_in' => array($post->ID),
+			'posts_per_page'=>5
+			);
+			$pages_query = new WP_Query( $args );
+			if( $pages_query->have_posts() ) {
+				echo '<div id="relatedpages"><h3>Related Pages</h3><ul>';
+				while( $pages_query->have_posts() ) {
+				$pages_query->the_post(); ?>
+				<li><div class="relatedthumb"><a href="<? the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumb'); ?></a></div>
+				<div class="relatedcontent">
+				<h3><a href="<? the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+				<?php the_time('M j, Y') ?>
+				</div>
+				</li>
+			<? }
+				echo '</ul></div>';
+			} else { 
+				echo "No Related Pages Found:";
+			}
+		}
+		$post = $orig_post;
+		wp_reset_postdata(); 
+
+	}
+	
+}		
 

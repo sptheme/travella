@@ -27,7 +27,7 @@ if( !function_exists('sp_theme_setup') )
 		// Add navigation menus
 		register_nav_menus( array(
 			'primary'	=> __( 'Main Navigation', SP_TEXT_DOMAIN ),
-			'footer'  => __( 'Footer Navigation', SP_TEXT_DOMAIN )
+			'footer'  	=> __( 'Footer Navigation', SP_TEXT_DOMAIN )
 		) );
 	
 		// Add suport for post thumbnails and set default sizes

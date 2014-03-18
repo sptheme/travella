@@ -1,6 +1,7 @@
 <?php
 
 //All custom posts
+require_once( SP_BASE_DIR . 'library/custom-posts/cp-slider.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-tour.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-faq.php' );
 

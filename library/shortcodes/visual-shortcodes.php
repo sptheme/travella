@@ -23,8 +23,6 @@ function add_plugins($plugin_array) {
 	$plugin_array['horz_rule']		= $js_path . 'sc-hr.js';
 	$plugin_array['email_encoder']	= $js_path . 'sc-email-encoder.js';
 	$plugin_array['slider']			= $js_path . 'sc-slider.js';
-	$plugin_array['portfolio']		= $js_path . 'sc-portfolio.js';
-	$plugin_array['biography']		= $js_path . 'sc-biography.js';
 	
     return $plugin_array;
  }
@@ -40,6 +38,6 @@ function add_buttons() {
 add_action( 'init', 'add_buttons' );  
 
 require_once( SP_BASE_DIR . 'library/shortcodes/popup/ajax-slider-shortcode.php');
-require_once( SP_BASE_DIR . 'library/shortcodes/popup/ajax-portfolio-shortcode.php');
+//require_once( SP_BASE_DIR . 'library/shortcodes/popup/ajax-portfolio-shortcode.php');
 
 ?>

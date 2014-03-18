@@ -26,8 +26,9 @@ define( 'SP_ASSETS_ADMIN', get_template_directory_uri() . '/library/assets/' );
 /* Custom post WordPress admin menu position - 30, 33, 39, 42, 45, 48 */
 if ( ! isset( $cp_menu_position ) )
 	$cp_menu_position = array(
-			'sp_tour'		=> 30,
-			'sp_faq'		=> 33
+			'sp_slider'		=> 30,
+			'sp_tour'		=> 33,
+			'sp_faq'		=> 39
 		);
 
 $days_of_tour = array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12', '13' => '13', '14' => '14', '15' => '15');

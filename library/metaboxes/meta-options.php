@@ -110,5 +110,26 @@ function sp_register_meta_boxes( $meta_boxes )
 		)
 	);
 
+	/* ---------------------------------------------------------------------- */
+	/*	SLIDER POST TYPE
+	/* ---------------------------------------------------------------------- */
+	$meta_boxes[] = array(
+		'id'       => 'slider-settings',
+		'title'    => __('Photo slideshow', 'sptheme_admin'),
+		'pages'    => array('slider'),
+		'context'  => 'normal',
+		'priority' => 'high',
+		'fields'   => array(
+			array(
+				'name' => __('Upload photos', 'sptheme_admin'),
+				'id'   => $prefix . 'sliders',
+				'type' => 'image_advanced',
+				'max_file_uploads' => 5,
+				'std'  => '',
+				'desc' => 'Max size 650px wide and auto proportion of height'
+			)
+		)
+	);
+
 	return $meta_boxes;
 }
