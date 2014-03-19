@@ -1,7 +1,5 @@
 <?php
 
-//Admin options
-require_once( SP_BASE_DIR . 'library/admin/index.php' );
 //meta boxes
 require_once( SP_BASE_DIR . 'library/metaboxes/meta-box.php'); 
 require_once( SP_BASE_DIR . 'library/metaboxes/meta-options.php'); 
@@ -19,6 +17,7 @@ require_once( SP_BASE_DIR . 'library/widgets/widgets.php');
 /* ---------------------------------------------------------------------- */
 /*	Add SMOF Framework links to WordPress admin bar
 /* ---------------------------------------------------------------------- */
+require_once( SP_BASE_DIR . 'library/admin/index.php' );
 
 if ( ! function_exists( 'smof_admin_bar_render' ) ) {
 

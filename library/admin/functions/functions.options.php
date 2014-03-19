@@ -17,7 +17,7 @@ if (!function_exists('of_options'))
 		$of_pages 			= array();
 		$of_pages_obj 		= get_pages('sort_column=post_parent,menu_order');    
 		foreach ($of_pages_obj as $of_page) {
-		    $of_pages[$of_page->ID] = $of_page->post_name; }
+		    $of_pages[$of_page->ID] = $of_page->post_title; }
 		$of_pages_tmp 		= array_unshift($of_pages, "Select a page:");       
 	
 		//Testing 
@@ -103,443 +103,148 @@ if (!function_exists('of_options'))
 global $of_options;
 $of_options = array();
 
-$of_options[] = array( 	"name" 		=> "Home Settings",
-						"type" 		=> "heading"
-				);
-					
-$of_options[] = array( 	"name" 		=> "Hello there!",
-						"desc" 		=> "",
-						"id" 		=> "introduction",
-						"std" 		=> "<h3 style=\"margin: 0 0 10px;\">Welcome to the Options Framework demo.</h3>
-						This is a slightly modified version of the original options framework by Devin Price with a couple of aesthetical improvements on the interface and some cool additional features. If you want to learn how to setup these options or just need general help on using it feel free to visit my blog at <a href=\"http://aquagraphite.com/2011/09/29/slightly-modded-options-framework/\">AquaGraphite.com</a>",
-						"icon" 		=> true,
-						"type" 		=> "info"
-				);
-
-$of_options[] = array( 	"name" 		=> "Media Uploader 3.5",
-						"desc" 		=> "Upload images using native media uploader from Wordpress 3.5+.",
-						"id" 		=> "media_upload_35",
-						// Use the shortcodes [site_url] or [site_url_secure] for setting default URLs
-						"std" 		=> "",
-						"type" 		=> "upload"
-				);
-
-$of_options[] = array( 	"name" 		=> "Media Uploader 3.5 min",
-						"desc" 		=> "Upload images using native media uploader from Wordpress 3.5+. Min mod",
-						"id" 		=> "media_upload_356",
-						// Use the shortcodes [site_url] or [site_url_secure] for setting default URLs
-						"std" 		=> "",
-						"mod"		=> "min",
-						"type" 		=> "media"
-				);
-
-$of_options[] = array( 	"name" 		=> "JQuery UI Slider example 1",
-						"desc" 		=> "JQuery UI slider description.<br /> Min: 1, max: 500, step: 3, default value: 45",
-						"id" 		=> "slider_example_1",
-						"std" 		=> "45",
-						"min" 		=> "1",
-						"step"		=> "3",
-						"max" 		=> "500",
-						"type" 		=> "sliderui" 
-				);
-				
-$of_options[] = array( 	"name" 		=> "JQuery UI Slider example 1 with steps(5)",
-						"desc" 		=> "JQuery UI slider description.<br /> Min: 0, max: 300, step: 5, default value: 75",
-						"id" 		=> "slider_example_2",
-						"std" 		=> "75",
-						"min" 		=> "0",
-						"step"		=> "5",
-						"max" 		=> "300",
-						"type" 		=> "sliderui" 
-				);
-
-$of_options[] = array( 	"name" 		=> "JQuery UI Spinner",
-						"desc" 		=> "JQuery UI spinner description.<br /> Min: 0, max: 300, step: 5, default value: 75",
-						"id" 		=> "spinner_example_2",
-						"std" 		=> "75",
-						"min" 		=> "0",
-						"step"		=> "5",
-						"max" 		=> "300",
-						"type" 		=> "spinner" 
-				);
-				
-$of_options[] = array( 	"name" 		=> "Switch 1",
-						"desc" 		=> "Switch OFF",
-						"id" 		=> "switch_ex1",
-						"std" 		=> 0,
-						"type" 		=> "switch"
-				);   
-				
-$of_options[] = array( 	"name" 		=> "Switch 2",
-						"desc" 		=> "Switch ON",
-						"id" 		=> "switch_ex2",
-						"std" 		=> 1,
-						"type" 		=> "switch"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Switch 3",
-						"desc" 		=> "Switch with custom labels",
-						"id" 		=> "switch_ex3",
-						"std" 		=> 0,
-						"on" 		=> "Enable",
-						"off" 		=> "Disable",
-						"type" 		=> "switch"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Switch 4",
-						"desc" 		=> "Switch OFF with hidden options. ;)",
-						"id" 		=> "switch_ex4",
-						"std" 		=> 0,
-						"folds"		=> 1,
-						"type" 		=> "switch"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Hidden option 1",
-						"desc" 		=> "This is a sample hidden option controlled by a <strong>switch</strong> button",
-						"id" 		=> "hidden_switch_ex1",
-						"std" 		=> "Hi, I\'m just a text input - nr 1",
-						"fold" 		=> "switch_ex4", /* the switch hook */
-						"type" 		=> "text"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Hidden option 2",
-						"desc" 		=> "This is a sample hidden option controlled by a <strong>switch</strong> button",
-						"id" 		=> "hidden_switch_ex2",
-						"std" 		=> "Hi, I\'m just a text input - nr 2",
-						"fold" 		=> "switch_ex4", /* the switch hook */
-						"type" 		=> "text"
-				);
-				
-				
-$of_options[] = array( 	"name" 		=> "Homepage Layout Manager",
-						"desc" 		=> "Organize how you want the layout to appear on the homepage",
-						"id" 		=> "homepage_blocks",
-						"std" 		=> $of_options_homepage_blocks,
-						"type" 		=> "sorter"
-				);
-					
-$of_options[] = array( 	"name" 		=> "Slider Options",
-						"desc" 		=> "Unlimited slider with drag and drop sortings.",
-						"id" 		=> "pingu_slider",
-						"std" 		=> "",
-						"type" 		=> "slider"
-				);
-					
-$of_options[] = array( 	"name" 		=> "Background Images",
-						"desc" 		=> "Select a background pattern.",
-						"id" 		=> "custom_bg",
-						"std" 		=> $bg_images_url."bg0.png",
-						"type" 		=> "tiles",
-						"options" 	=> $bg_images,
-				);
-					
-$of_options[] = array( 	"name" 		=> "Typography",
-						"desc" 		=> "Typography option with each property can be called individually.",
-						"id" 		=> "custom_type",
-						"std" 		=> array('size' => '12px','style' => 'bold italic'),
-						"type" 		=> "typography"
-				);
-
+//General Settings
 $of_options[] = array( 	"name" 		=> "General Settings",
 						"type" 		=> "heading"
 				);
-					
-$url =  ADMIN_DIR . 'assets/images/';
-$of_options[] = array( 	"name" 		=> "Main Layout",
-						"desc" 		=> "Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.",
-						"id" 		=> "layout",
-						"std" 		=> "2c-l-fixed.css",
-						"type" 		=> "images",
-						"options" 	=> array(
-							'1col-fixed.css' 	=> $url . '1col.png',
-							'2c-r-fixed.css' 	=> $url . '2cr.png',
-							'2c-l-fixed.css' 	=> $url . '2cl.png',
-							'3c-fixed.css' 		=> $url . '3cm.png',
-							'3c-r-fixed.css' 	=> $url . '3cr.png'
-						)
+				
+$of_options[] = array( 	"name" 		=> "Main Custom Logo",
+						"desc" 		=> "Upload a Png/Gif image that will represent your website's logo.",
+						"id" 		=> "theme_logo",
+						"std" 		=> SP_ASSETS_THEME . "images/logo.png",
+						"type" 		=> "upload"
 				);
 				
-$of_options[] = array( 	"name" 		=> "Tracking Code",
-						"desc" 		=> "Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme.",
-						"id" 		=> "google_analytics",
-						"std" 		=> "",
-						"type" 		=> "textarea"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Footer Text",
-						"desc" 		=> "You can use the following shortcodes in your footer text: [wp-link] [theme-link] [loginout-link] [blog-title] [blog-link] [the-year]",
-						"id" 		=> "footer_text",
-						"std" 		=> "Powered by [wp-link]. Built on the [theme-link].",
-						"type" 		=> "textarea"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Styling Options",
-						"type" 		=> "heading"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Theme Stylesheet",
-						"desc" 		=> "Select your themes alternative color scheme.",
-						"id" 		=> "alt_stylesheet",
-						"std" 		=> "default.css",
-						"type" 		=> "select",
-						"options" 	=> $alt_stylesheets
-				);
-				
-$of_options[] = array( 	"name" 		=> "Body Background Color",
-						"desc" 		=> "Pick a background color for the theme (default: #fff).",
-						"id" 		=> "body_background",
-						"std" 		=> "",
-						"type" 		=> "color"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Header Background Color",
-						"desc" 		=> "Pick a background color for the header (default: #fff).",
-						"id" 		=> "header_background",
-						"std" 		=> "",
-						"type" 		=> "color"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Footer Background Color",
-						"desc" 		=> "Pick a background color for the footer (default: #fff).",
-						"id" 		=> "footer_background",
-						"std" 		=> "",
-						"type" 		=> "color"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Body Font",
-						"desc" 		=> "Specify the body font properties",
-						"id" 		=> "body_font",
-						"std" 		=> array('size' => '12px','face' => 'arial','style' => 'normal','color' => '#000000'),
-						"type" 		=> "typography"
-				);  
-				
-$of_options[] = array( 	"name" 		=> "Custom CSS",
-						"desc" 		=> "Quickly add some CSS to your theme by adding it to this block.",
-						"id" 		=> "custom_css",
-						"std" 		=> "",
-						"type" 		=> "textarea"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Example Options",
-						"type" 		=> "heading"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Typography",
-						"desc" 		=> "This is a typographic specific option.",
-						"id" 		=> "typography",
-						"std" 		=> array(
-											'size'  => '12px',
-											'face'  => 'verdana',
-											'style' => 'bold italic',
-											'color' => '#123456'
-										),
-						"type" 		=> "typography"
-				);  
-				
-$of_options[] = array( 	"name" 		=> "Border",
-						"desc" 		=> "This is a border specific option.",
-						"id" 		=> "border",
-						"std" 		=> array(
-											'width' => '2',
-											'style' => 'dotted',
-											'color' => '#444444'
-										),
-						"type" 		=> "border"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Colorpicker",
-						"desc" 		=> "No color selected.",
-						"id" 		=> "example_colorpicker",
-						"std" 		=> "",
-						"type" 		=> "color"
-					); 
-					
-$of_options[] = array( 	"name" 		=> "Colorpicker (default #2098a8)",
-						"desc" 		=> "Color selected.",
-						"id" 		=> "example_colorpicker_2",
-						"std" 		=> "#2098a8",
-						"type" 		=> "color"
-				);
+$of_options[] = array( 	"name" 		=> "Custom Favicon",
+						"desc" 		=> "Upload a 16px x 16px Png/Gif image that will represent your website's favicon.",
+						"id" 		=> "theme_favicon",
+						"std" 		=> SP_BASE_URL . "favicon.ico",
+						"type" 		=> "upload"
+				);				
 
-$of_options[] = array( 	"name" 		=> "Input Text",
-						"desc" 		=> "A text input field.",
-						"id" 		=> "test_text",
-						"std" 		=> "Default Value",
-						"type" 		=> "text"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Input Checkbox (false)",
-						"desc" 		=> "Example checkbox with false selected.",
-						"id" 		=> "example_checkbox_false",
-						"std" 		=> 0,
-						"type" 		=> "checkbox"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Input Checkbox (true)",
-						"desc" 		=> "Example checkbox with true selected.",
-						"id" 		=> "example_checkbox_true",
-						"std" 		=> 1,
-						"type" 		=> "checkbox"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Normal Select",
-						"desc" 		=> "Normal Select Box.",
-						"id" 		=> "example_select",
-						"std" 		=> "three",
-						"type" 		=> "select",
-						"options" 	=> $of_options_select
-				);
-				
-$of_options[] = array( 	"name" 		=> "Mini Select",
-						"desc" 		=> "A mini select box.",
-						"id" 		=> "example_select_2",
-						"std" 		=> "two",
-						"type" 		=> "select",
-						"mod" 		=> "mini",
-						"options" 	=> $of_options_radio
-				); 
-				
-$of_options[] = array( 	"name" 		=> "Google Font Select",
-						"desc" 		=> "Some description. Note that this is a custom text added added from options file.",
-						"id" 		=> "g_select",
-						"std" 		=> "Select a font",
-						"type" 		=> "select_google_font",
-						"preview" 	=> array(
-										"text" => "This is my preview text!", //this is the text from preview box
-										"size" => "30px" //this is the text size from preview box
-						),
-						"options" 	=> array(
-										"none" => "Select a font",//please, always use this key: "none"
-										"Lato" => "Lato",
-										"Loved by the King" => "Loved By the King",
-										"Tangerine" => "Tangerine",
-										"Terminal Dosis" => "Terminal Dosis"
-						)
-				);
-				
-$of_options[] = array( 	"name" 		=> "Google Font Select2",
-						"desc" 		=> "Some description.",
-						"id" 		=> "g_select2",
-						"std" 		=> "Select a font",
-						"type" 		=> "select_google_font",
-						"options" 	=> array(
-										"none" => "Select a font",//please, always use this key: "none"
-										"Lato" => "Lato",
-										"Loved by the King" => "Loved By the King",
-										"Tangerine" => "Tangerine",
-										"Terminal Dosis" => "Terminal Dosis"
-									)
-				);
-				
-$of_options[] = array( 	"name" 		=> "Input Radio (one)",
-						"desc" 		=> "Radio select with default of 'one'.",
-						"id" 		=> "example_radio",
-						"std" 		=> "one",
-						"type" 		=> "radio",
-						"options" 	=> $of_options_radio
-				);
-				
-$url =  ADMIN_DIR . 'assets/images/';
-$of_options[] = array( 	"name" 		=> "Image Select",
-						"desc" 		=> "Use radio buttons as images.",
-						"id" 		=> "images",
-						"std" 		=> "warning.css",
-						"type" 		=> "images",
-						"options" 	=> array(
-											'warning.css' 	=> $url . 'warning.png',
-											'accept.css' 	=> $url . 'accept.png',
-											'wrench.css' 	=> $url . 'wrench.png'
-										)
-				);
-				
-$of_options[] = array( 	"name" 		=> "Textarea",
-						"desc" 		=> "Textarea description.",
-						"id" 		=> "example_textarea",
-						"std" 		=> "Default Text",
+$of_options[] = array( 	"name" 		=> "Footer Text",
+						"desc" 		=> "Copyright text",
+						"id" 		=> "footer_text",
+						"std" 		=> "Travella., © 2013 All Right Reserved.",
 						"type" 		=> "textarea"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Multicheck",
-						"desc" 		=> "Multicheck description.",
-						"id" 		=> "example_multicheck",
-						"std" 		=> array("three","two"),
-						"type" 		=> "multicheck",
-						"options" 	=> $of_options_radio
-				);
-				
-$of_options[] = array( 	"name" 		=> "Select a Category",
-						"desc" 		=> "A list of all the categories being used on the site.",
-						"id" 		=> "example_category",
-						"std" 		=> "Select a category:",
+				);	
+
+//Search
+$of_options[] = array(         "name"	=> "Search settings",
+                               "type"	=> "heading",
+                               "icon" => SP_ASSETS_ADMIN . "images/icon-search.png"
+                      );								
+
+$of_options[] = array( 	"name" 		=> "Search tour page",
+						"desc" 		=> "Select search tour page",
+						"id" 		=> "search_tour_page",
+						"std" 		=> "",
 						"type" 		=> "select",
-						"options" 	=> $of_categories
+						"options"	=> $of_pages
 				);
 				
-//Advanced Settings
-$of_options[] = array( 	"name" 		=> "Advanced Settings",
-						"type" 		=> "heading"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Folding Checkbox",
-						"desc" 		=> "This checkbox will hide/show a couple of options group. Try it out!",
-						"id" 		=> "offline",
-						"std" 		=> 0,
-						"folds" 	=> 1,
-						"type" 		=> "checkbox"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Hidden option 1",
-						"desc" 		=> "This is a sample hidden option 1",
-						"id" 		=> "hidden_option_1",
-						"std" 		=> "Hi, I\'m just a text input",
-						"fold" 		=> "offline", /* the checkbox hook */
-						"type" 		=> "text"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Hidden option 2",
-						"desc" 		=> "This is a sample hidden option 2",
-						"id" 		=> "hidden_option_2",
-						"std" 		=> "Hi, I\'m just a text input",
-						"fold" 		=> "offline", /* the checkbox hook */
-						"type" 		=> "text"
-				);
-				
-$of_options[] = array( 	"name" 		=> "Hello there!",
-						"desc" 		=> "",
-						"id" 		=> "introduction_2",
-						"std" 		=> "<h3 style=\"margin: 0 0 10px;\">Grouped Options.</h3>
-						You can group a bunch of options under a single heading by removing the 'name' value from the options array except for the first option in the group.",
-						"icon" 		=> true,
-						"type" 		=> "info"
-				);
-				
-				$of_options[] = array( 	"name" 		=> "Some pretty colors for you",
-										"desc" 		=> "Color 1.",
-										"id" 		=> "example_colorpicker_3",
-										"std" 		=> "#2098a8",
-										"type" 		=> "color"
-								);
-								
-				$of_options[] = array( 	"name" 		=> "",
-										"desc" 		=> "Color 2.",
-										"id" 		=> "example_colorpicker_4",
-										"std" 		=> "#2098a8",
-										"type" 		=> "color"
-								);
-								
-				$of_options[] = array( 	"name" 		=> "",
-										"desc" 		=> "Color 3.",
-										"id" 		=> "example_colorpicker_5",
-										"std" 		=> "#2098a8",
-										"type" 		=> "color"
-								);
-								
-				$of_options[] = array( 	"name" 		=> "",
-										"desc" 		=> "Color 4.",
-										"id" 		=> "example_colorpicker_6",
-										"std" 		=> "#2098a8",
-										"type" 		=> "color"
-								);
+//Social Networking
+$of_options[] = array(         "name"	=> "Social Networking",
+                               "type"	=> "heading",
+                               "icon" => SP_ASSETS_ADMIN . "images/icon-media.png"
+                      );
+
+$of_options[] = array(         "name"	=> "Mini social networking on footer",
+                               "desc"	=> "Show/Hide mini social networking on top bar",
+                               "id"		=> "is_social",
+                               "std"	=> 1,
+                               "type"	=> "switch"
+                                );                                
+
+$of_options[] = array( "name" => 'Custom Feed URL',
+                                        "desc" => "",
+                                        "id" => "introduction",
+                                        "std" => "<h3>Custom Feed URL</h3>",
+                                        "icon" => true,
+                                        "type" => "info",
+                                        );
+                                                                        
+        $of_options[] = array( "name" => "Hide Rss Icon",
+                                                "desc" => "Hide rss icon in social widget",
+                                                "id" => "rss_icon",
+                                                "std" => 1,
+                                                "type" => "switch"
+                                                );
+                                                
+        $of_options[] = array( "name" => "Custom Feed URL",
+                                                "desc" => "e.g: http://www.feedburner.com/userid",
+                                                "id" => "rss_url",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );        
+                                                
+$of_options[] = array( "name" => 'Social Networking',
+                                        "desc" => "",
+                                        "id" => "introduction",
+                                        "std" => "<h3>Social Networking</h3>",
+                                        "icon" => true,
+                                        "type" => "info",
+                                        );
+
+        $of_options[] = array( "name" => "Facebook URL",
+                                                "id" => "social_facebook",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );        
+        
+        $of_options[] = array( "name" => "Twitter URL",
+                                                "id" => "social_twitter",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
+                                                
+        $of_options[] = array( "name" => "Google+ URL",
+                                                "id" => "social_google_plus",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
+                                                                                        
+        $of_options[] = array( "name" => "LinkedIn URL",
+                                                "id" => "social_linkedin",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
+                                                                                        
+        $of_options[] = array( "name" => "YouTube URL",
+                                                "id" => "social_youtube",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
+                                                                                        
+        $of_options[] = array( "name" => "Vimeo URL",
+                                                "id" => "social_vimeo",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
+                                                                                        
+        $of_options[] = array( "name" => "Skype URL",
+                                                "id" => "social_skype",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
+                                                                                        
+        $of_options[] = array( "name" => "Delicious URL",
+                                                "id" => "social_delicious",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
+                                                                                        
+        $of_options[] = array( "name" => "Instagram URL",
+                                                "id" => "social_instagram",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );        
+                                                
+        $of_options[] = array( "name" => "Pinterest URL",
+                                                "id" => "social_pinterest",
+                                                "std" => "",
+                                                "type" => "text"
+                                                );
 				
 // Backup Options
 $of_options[] = array( 	"name" 		=> "Backup Options",

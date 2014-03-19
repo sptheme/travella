@@ -24,19 +24,25 @@
 				</h1>
 			</header><!-- .page-header -->
 
-			<?php
-					// Start the Loop.
-					while ( have_posts() ) : the_post();
-						get_template_part('library/content/loop', 'archive');
-					endwhile;
-					
+			<!-- Begin Results -->
+        	<div class="results-list clearfix">
+            <ol>
+                <?php while (have_posts()) : the_post(); ?>
+                    <li id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>> <?php the_title(); ?></li>
+                <?php endwhile; 
+                    // Pagination
+                    if(function_exists('wp_pagenavi'))
+                        wp_pagenavi();
+                    else 
+                        echo sp_pagination();
+                ?>
+            </ol>
+	        </div>
+	        <!-- End Results -->
 
-				else :
-					// If no content, include the "No posts found" template.
-					get_template_part('library/content/error404');
-
-				endif;
-			?>
+	        <?php else : // If the search did not match any entries
+	        	get_template_part('library/content/error404');
+	        endif; ?>
 		</div><!-- #content -->
 
 <?php get_sidebar();
