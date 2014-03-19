@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>	
 		<div id="content" class="site-content" role="main">
 
 			<?php if ( have_posts() ) : ?>
@@ -8,9 +7,7 @@
 			<header class="page-header">
 				<h1 class="page-title">
 					<?php
-						if ( is_tax() ) :
-							echo $term->name;
-						elseif ( is_day() ) :
+						if ( is_day() ) :
 							printf( __( 'Daily Archives: %s', SP_TEXT_DOMAIN ), get_the_date() );
 
 						elseif ( is_month() ) :
@@ -29,7 +26,10 @@
 
 			<?php
 					// Start the Loop.
-					get_template_part('library/content/loop', 'archive');
+					while ( have_posts() ) : the_post();
+						get_template_part('library/content/loop', 'archive');
+					endwhile;
+					
 
 				else :
 					// If no content, include the "No posts found" template.
