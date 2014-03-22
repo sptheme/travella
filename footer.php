@@ -1,8 +1,14 @@
-</div> <!-- #content .container -->
+	</div> <!-- #content .container -->
 
-<footer>
-	<?php echo sp_footer_navigation(); ?>
-</footer>
+	<footer id="footer">
+	<nav id="footer-nav">
+		<div class="container">
+		<?php echo sp_footer_navigation(); ?>
+		</div> <!-- .container -->
+	</nav> <!-- #footer-nav -->	
+	</footer><!-- #footer -->
+
+</div> <!-- #wrapper -->
 
 <?php wp_footer(); ?>
 	

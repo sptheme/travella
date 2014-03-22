@@ -1,66 +1,125 @@
 (function($)
 {
-    var nav_open = false
-        , inner = $('#inner-wrap')
-        , winHeight = $(window).height();
-
-    $('#nav-open-btn').on('click', function()
-    {
-        if (!nav_open) {
-            inner.animate({ left: '50%' }, 800, 'easeOutQuart');
-            inner.css({'height': winHeight})
-            nav_open = true;
-            return false;
+    var opened = false;
+    /*--------------------------------------------------------------------------------------*/
+    /*  Smooth dropdown Nav
+    /*--------------------------------------------------------------------------------------*/
+    function dropdownNav() {
+        var wrapper = $('#wrapper').width();
+        if ( wrapper > 767 ) {
+            $('.nav-child-container').hide();
+            $("ul.primary-nav li").each(function(){   
+                var $submeun = $(this).find('ul:first');
+                $(this).hover(function(){   
+                    $submeun.stop().css({overflow:"hidden", height:"auto", display:"none", paddingTop:0}).slideDown(250, function(){
+                                                                                    $(this).css({overflow:"visible", height:"auto"});
+                                                                                }); 
+                    },
+                function(){   
+                    $submeun.stop().slideUp(250, function(){   
+                        $(this).css({overflow:"hidden", display:"none"});
+                        });
+                });
+            });
+        } else{
+            $("ul.primary-nav li").off( "mouseenter mouseleave" );
+            $('.nav-child-container').show();
         }
-    });
-
-    $('#nav-close-btn, #main, #header').on('click', function()
-    {
-        if (nav_open) {
-            inner.animate({ left: '0' }, 700, 'easeInQuart');
-            nav_open = false;
-            return false;
-        }
-    });
-
-    window.onresize = function(){
-        toggleNav();
     }
-    function toggleNav(){
-        var contentWidth = inner.width();
-        if (contentWidth > 715) {
-            if (nav_open){
-               inner.animate({ left: '0' }, 700, 'easeInQuart');
-               nav_open = false;
-               return false; 
+    
+    /*--------------------------------------------------------------------------------------*/
+    /*  Set auto height of page container - trick to hide responsive nav
+    /*--------------------------------------------------------------------------------------*/
+    function autoPageContainerHeight() {
+        var wrapper_height = $(window).height(),
+        iScrollHeight = $('#content').prop('scrollHeight'),
+        iHeader = $('#header').height(),
+        iFooter = $('#footer').height();
+        if(!window.location.hash) {
+            if( iScrollHeight < wrapper_height ){
+                $('#wrapper, #content').css({"min-height" : wrapper_height - iHeader - iFooter});
             }
         }
-    };
 
-    toggleNav();
+    }
 
-    $(document.documentElement).addClass('js-ready');
+    /*--------------------------------------------------------------------------------------*/
+    /*  Init
+    /*--------------------------------------------------------------------------------------*/
+    
+    window.onresize = function() { 
+       dropdownNav();
+       autoPageContainerHeight();
+    }
 
-    /*-----------------------------------------------------------------------------------*/
-    /*  Thumbnail grid Hover Effect
-    /*-----------------------------------------------------------------------------------*/
-    $(".project-grid figure").hover(
-        function () {
-            var container_width= $(this).width(),
-                container_height= $(this).height();
-            $(this).find('.media-container').stop().animate({ 
-                opacity:0.5 
-            }, 500, 'easeOutCubic');
+    autoPageContainerHeight();
+    dropdownNav();
 
-            $(this).find('a').stop(true, true).animate({
-                opacity: 1,
-                top: "50%"
-            }, 500, 'easeOutCubic');
-        },
-        function () {
-            $(this).find('.media-container').animate({ opacity:0 }, 500, 'easeOutCubic');
-            $(this).find('a').animate({ opacity:0, top:"45%" }, 500, 'easeOutCubic');
+    /* Hover Effects */
+    $('.nav-child-container').bind('mouseover', function(event) {
+        $(this).toggleClass('hover');
+    });
+
+    /* Sidebar multi-level menu */
+    
+    $('.nav-child-container').bind('click', function(event) {
+        event.preventDefault();
+        var $this = $(this);
+        var ul = $this.next('ul');
+        var ulChildrenHeight = ul.children().length * 42;
+
+        if(!$this.hasClass('active')){
+            $this.toggleClass('active');
+            ul.toggleClass('active');
+            ul.height(ulChildrenHeight + 'px');
+        }else{
+            $this.toggleClass('active');
+            ul.toggleClass('active');
+            ul.height(0);
         }
-    );
+    });
 
- }(jQuery));
+    /* Sidebar Functionality */
+    $('#menu-trigger').bind('click', function(event) {
+        $('#content, #header').toggleClass('active');
+        $('#sidemenu').toggleClass('active');
+        if(opened){
+            opened = false;
+            setTimeout(function() {
+                $('#sidemenu-container').removeClass('active');
+            }, 450);
+        } else {
+            $('#sidemenu-container').addClass('active');
+            opened = true;
+        }
+    });
+
+    $('ul.primary-nav a').bind('click', function(event) {
+        event.preventDefault();
+        
+        var path = $(this).attr('href');
+        $('#content, #header').toggleClass('active');
+        $('#sidemenu').toggleClass('active');
+        setTimeout(function() {
+            window.location = path;
+        }, 500);
+    });
+
+    /* Check if the child menu has an active item.
+    If yes, then it will expand the menu by default. */
+    
+    var $navItems = $('ul.primary-nav ul li');
+
+    $navItems.each(function(index){
+        if ($(this).hasClass('current-menu-item')) {
+            $parentUl = $(this).parent();
+            $parentUl.height($parentUl.children('li').length * 42 + "px");
+            $parentUl.prev().addClass('active');
+            $parentUl.addClass('active');
+            $anchor = $parentUl.prev();
+            $anchor.children('.nav-child-container').addClass('active');
+        }
+    });
+    
+
+}(jQuery));

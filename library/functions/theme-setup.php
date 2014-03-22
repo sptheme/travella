@@ -55,12 +55,14 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		//Register CSS style
 		//wp_enqueue_style('gfont-opensans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,400italic', false, '1');
 		wp_enqueue_style('theme-info', SP_BASE_URL . 'style.css', false, '1');
+		wp_enqueue_style('genericons', SP_ASSETS_THEME . 'css/genericons.css', false, '1');
 		wp_enqueue_style('normalize', SP_ASSETS_THEME . 'css/normalize.css', false, '1');
 		wp_enqueue_style('base', SP_ASSETS_THEME . 'css/base.css', false, '1');
 		wp_enqueue_style('flexslider', SP_ASSETS_THEME . 'css/flexslider.css', false, '1');
 		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, '1');
 
 		//Register scripts
+		wp_enqueue_script('modernizr', SP_ASSETS_THEME . 'js/modernizr.js', array(), SP_SCRIPTS_VERSION, false);
 		wp_enqueue_script('jquery-easing', SP_ASSETS_THEME . 'js/jquery.easing.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('flexslider', SP_ASSETS_THEME . 'js/jquery.flexslider.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery'), SP_SCRIPTS_VERSION, true);
@@ -99,15 +101,26 @@ if( !function_exists('sp_main_navigation')) {
 	function sp_main_navigation() {
 		
 		// set default main menu if wp_nav_menu not active
-		if ( function_exists ( 'wp_nav_menu' ) )
-			wp_nav_menu( array(
-				'container'      => false,
-				'menu_class'	 => 'nav-menu',
-				'theme_location' => 'primary',
-				'fallback_cb' => 'sp_main_nav_fallback'
-				) );
-		else
+		if ( function_exists ( 'wp_nav_menu' ) ):
+			$menu = wp_nav_menu( array(
+					'container'      => false,
+					'menu_class'	 => 'primary-nav',
+					'theme_location' => 'primary',
+					'fallback_cb' 	 => 'sp_main_nav_fallback',
+					'echo'           => false,
+					) );
+			/* Adding "+" buttons for dropdown menus */
+			$search = '<ul class="sub-menu">';
+			$replace = '<span class="nav-child-container"><span class="nav-child-trigger">+</span></span>
+						<ul class="sub-menu" style="height: 0;">';
+			/*if ( wp_is_mobile() )						
+				return str_replace($search, $replace, $menu);
+			else
+				return $menu;*/
+			return str_replace($search, $replace, $menu);		
+		else:
 			sp_main_nav_fallback();	
+		endif;
 	}
 }
 

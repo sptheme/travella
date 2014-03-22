@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8) ]><!-->
-<html <?php language_attributes(); ?>>
+<!--[if IE 8 ]>    <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js lt-ie9> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html <?php language_attributes(); ?> class="no-js">
 <!--<![endif]-->
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+
 	<title><?php wp_title('|', true, 'right'); ?></title>
 
 	<!-- add feeds, pingback and stuff-->
@@ -22,10 +20,31 @@
 	
 </head>
 <body <?php body_class(); ?>>
-<nav id="primary-nav" class="primary-nav" role="navigation">
-    <div class="container clearfix">
-    	<?php echo sp_main_navigation(); ?>
-    </div><!-- .primary-nav .wrap -->
-</nav><!-- #main-nav -->
 
-<div id="content" class="container">	
+<div id="wrapper">
+	<aside id="sidemenu-container" role="navigation">
+	    <nav id="sidemenu">
+	    	<?php echo sp_main_navigation(); ?>
+	    </nav><!-- .primary-nav .wrap -->
+	</aside><!-- #main-nav -->
+
+	<header id="header" class="header">
+		<div class="container clearfix">
+			<div class="genericon genericon-menu" id="menu-trigger"></div>
+	        <div class="brand" role="banner">
+	            <?php if( !is_singular() ) echo '<h1>'; else echo '<h2>'; ?>
+	            
+	            <a  href="<?php echo home_url() ?>/"  title="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>">
+	                <?php if( isset($smof_data['theme_logo']) && $smof_data['theme_logo'] ) : ?>
+	                <img src="<?php echo $smof_data['theme_logo']; ?>" alt="<?php echo esc_attr( get_bloginfo('name', 'display') ); ?>" />
+	                <?php else: ?>
+	                <span><?php bloginfo( 'name' ); ?></span>
+	                <?php endif; ?>
+	            </a>
+	            
+	            <?php if( !is_singular() ) echo '</h1>'; else echo '</h2>'; ?>
+	        </div><!-- end .brand -->
+		</div><!-- end .container .clearfix -->
+	</header> <!-- #header -->
+
+	<div id="content">	
