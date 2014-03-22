@@ -21,7 +21,7 @@ add_filter( 'rwmb_meta_boxes', 'sp_register_meta_boxes' );
  */
 function sp_register_meta_boxes( $meta_boxes )
 {
-	global $days_of_tour;
+	global $days_of_tour, $hotel_levels;
 	$prefix = 'sp_';
 
 	$price_included = '<ul>
@@ -128,6 +128,40 @@ function sp_register_meta_boxes( $meta_boxes )
 				'std'  => '',
 				'desc' => 'Max size 650px wide and auto proportion of height'
 			)
+		)
+	);
+
+	/* ---------------------------------------------------------------------- */
+	/*	HOTEL POST TYPE
+	/* ---------------------------------------------------------------------- */
+	$meta_boxes[] = array(
+		'id'       => 'hotel-settings',
+		'title'    => __('Hotel infomation', 'sptheme_admin'),
+		'pages'    => array('hotel'),
+		'context'  => 'normal',
+		'priority' => 'high',
+		'fields'   => array(
+			array(
+				'name' => __('Website', 'sptheme_admin'),
+				'id'   => $prefix . 'hotel_website',
+				'type' => 'url',
+				'std'  => 'http://google.com'
+			),
+			array(
+				'name' => __('Hotel level', 'sptheme_admin'),
+				'id'   => $prefix . 'hotel_level',
+				'type' => 'select',
+				'std'  => '',
+				'options' => $hotel_levels
+			),
+			/*array(
+				'name' => __('Room type', 'sptheme_admin'),
+				'id'   => $prefix . 'hotel_roomtype',
+				'type' => 'text',
+				'std'  => 'Standard',
+				'desc' => 'Type only name of room. e.g: Standard, Deluxe ...',
+				'clone' => true,
+			),*/
 		)
 	);
 
