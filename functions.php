@@ -44,12 +44,24 @@ if ( ! isset( $hotel_levels ) )
 			'5'	=> 'Level 5'
 	);
 
+//Social network link
+if ( ! isset( $commLine ) )
+	$commLine = array(
+		'tel'		=> 'Telephone',
+		'mobile'	=> 'Mobile',
+		'e-mail'	=> 'E-mail',
+		'fax'		=> 'Fax',
+		'website'	=> 'Website',
+		'swift'		=> 'Swift',
+		'pobox'		=> 'P.O. Box',
+	);	
+
 /* ---------------------------------------------------------------------- */
 /*	Load some backend functions
 /* ---------------------------------------------------------------------- */
 /* theme setup */
 require_once( SP_BASE_DIR . 'library/functions/theme-setup.php');
-//require_once( SP_BASE_DIR . 'library/functions/theme-functions.php');
+require_once( SP_BASE_DIR . 'library/functions/theme-functions.php');
 
 //Theme Admin
-//require_once( SP_BASE_DIR . 'library/functions/admin-functions.php' );
+require_once( SP_BASE_DIR . 'library/functions/admin-functions.php' );

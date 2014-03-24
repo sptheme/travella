@@ -381,13 +381,13 @@ if ( !function_exists('sp_get_related_pages') ) {
 				echo '<div id="relatedpages"><h3>Related Pages</h3><ul>';
 				while( $pages_query->have_posts() ) {
 				$pages_query->the_post(); ?>
-				<li><div class="relatedthumb"><a href="<? the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumb'); ?></a></div>
+				<li><div class="relatedthumb"><a href="<?php the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('thumb'); ?></a></div>
 				<div class="relatedcontent">
-				<h3><a href="<? the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
+				<h3><a href="<?php the_permalink()?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
 				<?php the_time('M j, Y') ?>
 				</div>
 				</li>
-			<? }
+			<?php }
 				echo '</ul></div>';
 			} else { 
 				echo "No Related Pages Found:";

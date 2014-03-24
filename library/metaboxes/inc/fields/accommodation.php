@@ -126,7 +126,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 
 				$html .= '<ul id="accom-infos">';
 				$html .= '<li class="accom-opt-line postbox">';
-				$html .= '<h4>Option Title container</h4>';
+				$html .= '<h4>Accommodation Option</h4>';
 				$html .= '<div class="inside">';
 				$html .= '<div class="hotel-info-container">';
 				$html .= '<div class="rwmb-field">';
