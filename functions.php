@@ -49,7 +49,7 @@ if ( ! isset( $hotel_levels ) )
 /* ---------------------------------------------------------------------- */
 /* theme setup */
 require_once( SP_BASE_DIR . 'library/functions/theme-setup.php');
-require_once( SP_BASE_DIR . 'library/functions/theme-functions.php');
+//require_once( SP_BASE_DIR . 'library/functions/theme-functions.php');
 
 //Theme Admin
-require_once( SP_BASE_DIR . 'library/functions/admin-functions.php' );
+//require_once( SP_BASE_DIR . 'library/functions/admin-functions.php' );

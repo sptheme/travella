@@ -88,7 +88,7 @@ if ( !function_exists('sp_print_custom_css') ){
 		
 		}
 	</style>
-<?		
+<?php		
 	}
 }
 
@@ -326,5 +326,5 @@ remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 //  Set favicons for backend code
 add_action( 'admin_head', 'sp_adminfavicon' );
 function sp_adminfavicon() {
-echo '<link rel="icon" type="image/x-icon" href="'.SP_BASE_URL.'favicon.ico" />';
+	echo '<link rel="icon" type="image/x-icon" href="'.SP_BASE_URL.'favicon.ico" />';
 }
