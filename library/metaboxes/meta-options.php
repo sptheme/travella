@@ -132,6 +132,25 @@ function sp_register_meta_boxes( $meta_boxes )
 	);
 
 	/* ---------------------------------------------------------------------- */
+	/*	ACCOMMODATION POST TYPE
+	/* ---------------------------------------------------------------------- */
+	$meta_boxes[] = array(
+		'id'       => 'accom-settings',
+		'title'    => __('Accommodation Package', 'sptheme_admin'),
+		'pages'    => array('hotel'),
+		'context'  => 'normal',
+		'priority' => 'high',
+		'fields'   => array(
+			array(
+				//'name' => __('Contact person', 'sptheme_admin'),
+				'id'   => $prefix . 'accommodation',
+				'type' => 'accommodation',
+				'std'  => ''
+			),
+		)
+	);		
+
+	/* ---------------------------------------------------------------------- */
 	/*	HOTEL POST TYPE
 	/* ---------------------------------------------------------------------- */
 	$meta_boxes[] = array(

@@ -1,16 +1,16 @@
 /* ---------------------------------------------------------------------- */
 /*	Styles for Open Hour
 /* ---------------------------------------------------------------------- */
-#accommodations button.remove-hotel-location{
+#accom-infos h4{
+	border-bottom: 1px solid #E5E5E5;
+	padding: 10px;
+}
+#contact-infos button.remove-comm-line,
+#accom-infos button.remove-hotel-line{
 	background: url(../img/icon-remove.png) no-repeat 0 5px;
 	width: 16px;
 	height: 27px;
 	line-height: 27px;
 	text-indent: -9999px;
 	border:none;
-}
-
-#accommodations .rwmb-select{
-	min-width: 0;
-	width: 50px!important;
 }
