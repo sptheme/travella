@@ -106,9 +106,7 @@ jQuery( document ).ready( function($)  {
 		e.preventDefault();
 		var $cloneElem = $('.accom-opt-line').last().clone();
 		$cloneElem.find('select').val('').end()
-				  .insertAfter( $('.accom-opt-line').last() );
-
-		$opt_index++;		  
+				  .insertAfter( $('.accom-opt-line').last() );		  
 	});
 
 	// Add hotels
@@ -119,7 +117,7 @@ jQuery( document ).ready( function($)  {
 		e.preventDefault();
 	});
 
-	// Add hotels
+	// Remove hotels
 	$accom_infos.delegate('.remove-hotel-line', 'click', function( e ) {
 		
 		if( $(this).parent().parent().children('.hotel-line').length == 1 ) {
