@@ -104,9 +104,10 @@ jQuery( document ).ready( function($)  {
 	// Add options
 	$('#add-accomm-line').click(function( e ) {
 		e.preventDefault();
+
 		var $cloneElem = $('.accom-opt-line').last().clone();
 		$cloneElem.find('select').val('').end()
-				  .insertAfter( $('.accom-opt-line').last() );		  
+				  .insertAfter( $('.accom-opt-line').last() );
 	});
 
 	// Add hotels
