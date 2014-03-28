@@ -103,11 +103,20 @@ jQuery( document ).ready( function($)  {
 
 	// Add options
 	$('#add-accomm-line').click(function( e ) {
-		e.preventDefault();
-
+		var current_hotel_count = $('.accom-opt-line').length - 1;
+		var new_hotel_count = current_hotel_count+1;
 		var $cloneElem = $('.accom-opt-line').last().clone();
 		$cloneElem.find('select').val('').end()
 				  .insertAfter( $('.accom-opt-line').last() );
+
+		$cloneElem.find('.hotel-name').each(function(){
+			$(this).attr({
+				'name': 'hotel_name_'+new_hotel_count+'[]',
+				'id': 'hotel_name_'+new_hotel_count
+			});
+		});
+
+		e.preventDefault();
 	});
 
 	// Add hotels
