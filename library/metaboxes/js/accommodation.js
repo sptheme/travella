@@ -119,6 +119,17 @@ jQuery( document ).ready( function($)  {
 		e.preventDefault();
 	});
 
+	// Remove options
+	$('#remove-accomm-line').click(function( e ) {
+		if( $accom_infos.children('.accom-opt-line').length == 1 ) {
+			alert('You need to have at least 1 option');
+		} else {
+			$('.accom-opt-line').last().remove();
+		}
+
+		e.preventDefault();
+	});
+
 	// Add hotels
 	$accom_infos.delegate('.add-hotel-line', 'click', function( e ) {
 		var $cloneElem = $(this).prev().last().clone();

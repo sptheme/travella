@@ -33,14 +33,18 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 			$id = $field['id'];
 
 			$accom_infos = get_post_meta( $post->ID, $id, true ) ? maybe_unserialize(get_post_meta( $post->ID, $id, true )) : false;
+			echo '<pre>';
+			print_r($accom_infos);
+			echo '</pre>';
 
 			$html = '<ul id="accom-infos">';
 
-			if ($accom_infos){
+			/*if ($accom_infos){
 				foreach ( $accom_infos as $options => $option ) {
 
 					$html .= '<li class="accom-opt-line postbox">';
 					$html .= '<h4>Package Option</h4>';
+					//$html .= '<button class="remove-opt">' . __('-', 'sptheme_admin') . '</button>';
 					$html .= '<div class="inside">';
 					$html .= '<div class="rwmb-field">';
 					
@@ -70,7 +74,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 					
 				}	
 
-			} else {
+			} else {*/
 
 				$html .= '<li class="accom-opt-line postbox">';
 				$html .= '<h4>Package Option</h4>';
@@ -94,11 +98,11 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 				$html .= '<input type="hidden" name="' . $id . '[]" class="rwmb-text" size="30" value="">';
 				$html .= '</div><!-- .inside -->';			
 				$html .= '</li>';
-			}			  
+			//}			  
 			$html .= '</ul>';			 
-			$html .= '<p> <button id="add-accomm-line" class="button-primary">' . __('+ Add Options', 'sptheme_admin') . '</button> </p>
-
-					  <input type="hidden" name="accom-info-meta-info" value="' . $post->ID . '|' . $id . '">'; 
+			$html .= '<p> <button id="add-accomm-line" class="button-primary">' . __('+ Add Options', 'sptheme_admin') . '</button>';
+			$html .= '<button id="remove-accomm-line" class="button-primary">' . __('- Remove Options', 'sptheme_admin') . '</button> </p>';
+			$html .= '<input type="hidden" name="accom-info-meta-info" value="' . $post->ID . '|' . $id . '">'; 
 
 			return $html;
 		}
@@ -122,10 +126,11 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 			$hotels = array();
 			
 			foreach ( $_POST[$name] as $k => $v ) {
+				unset($hotels);
 				foreach( $_POST['hotel_name_'.$k] as $key => $value){
 					$hotels[$key] = $_POST['hotel_name_'.$k][$key];
 				}
-				$accom_infos[$k] = $hotels;
+				$accom_infos[] = $hotels;
 			}
 			$new = maybe_serialize( $accom_infos );
 
