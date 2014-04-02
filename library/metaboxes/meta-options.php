@@ -164,7 +164,8 @@ function sp_register_meta_boxes( $meta_boxes )
 				'name' => __('Website', 'sptheme_admin'),
 				'id'   => $prefix . 'hotel_website',
 				'type' => 'url',
-				'std'  => 'http://google.com'
+				'std'  => '',
+				'desc' => 'Must be has <strong>http://</strong> e.g: http://www.sokhahotels.com'
 			),
 			array(
 				'name' => __('Hotel level', 'sptheme_admin'),
@@ -173,14 +174,19 @@ function sp_register_meta_boxes( $meta_boxes )
 				'std'  => '',
 				'options' => $hotel_levels
 			),
-			/*array(
-				'name' => __('Room type', 'sptheme_admin'),
+			array(
+				'type' => 'heading',
+				'name' => __( 'Room Type', 'sptheme_admin' ),
+				'id'   => 'room_type_heading', // Not used but needed for plugin
+			),
+			array(
+				'name' => __('Type', 'sptheme_admin'),
 				'id'   => $prefix . 'hotel_roomtype',
 				'type' => 'text',
 				'std'  => 'Standard',
 				'desc' => 'Type only name of room. e.g: Standard, Deluxe ...',
 				'clone' => true,
-			),*/
+			),
 		)
 	);
 
