@@ -137,7 +137,7 @@ function sp_register_meta_boxes( $meta_boxes )
 	$meta_boxes[] = array(
 		'id'       => 'accom-settings',
 		'title'    => __('Accommodation Package', 'sptheme_admin'),
-		'pages'    => array('hotel'),
+		'pages'    => array('accommodation'),
 		'context'  => 'normal',
 		'priority' => 'high',
 		'fields'   => array(
