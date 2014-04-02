@@ -175,18 +175,27 @@ function sp_register_meta_boxes( $meta_boxes )
 		'priority' => 'high',
 		'fields'   => array(
 			array(
+				'name' => __('Location', 'sptheme_admin'),
+				'id'   => $prefix . 'hotel_location',
+				'type' => 'select_advanced',
+				'std'  => '',
+				'options' => $destination_arr,
+				'multiple'    => false,
+				'placeholder' => __( 'Select location', 'sptheme_admin' ),
+			),
+			array(
+				'name' => __('Level', 'sptheme_admin'),
+				'id'   => $prefix . 'hotel_level',
+				'type' => 'select',
+				'std'  => '',
+				'options' => $hotel_levels
+			),
+			array(
 				'name' => __('Website', 'sptheme_admin'),
 				'id'   => $prefix . 'hotel_website',
 				'type' => 'url',
 				'std'  => '',
 				'desc' => 'Must be has <strong>http://</strong> e.g: http://www.sokhahotels.com'
-			),
-			array(
-				'name' => __('Hotel level', 'sptheme_admin'),
-				'id'   => $prefix . 'hotel_level',
-				'type' => 'select',
-				'std'  => '',
-				'options' => $hotel_levels
 			),
 			array(
 				'type' => 'heading',

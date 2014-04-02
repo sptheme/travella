@@ -5,7 +5,7 @@ function sp_tax_destination_init() {
 	
 	register_taxonomy(
 		'destination',
-		array( 'tour', 'hotel' ),
+		array( 'tour' ),
 		array(
 			'hierarchical' => true,
 			'labels' => array(
