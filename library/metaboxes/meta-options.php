@@ -23,6 +23,12 @@ function sp_register_meta_boxes( $meta_boxes )
 {
 	global $days_of_tour, $hotel_levels;
 	$prefix = 'sp_';
+	
+	$destination_arr = array();
+	$destinations = get_terms('destination', array('hide_empty' => 0));
+	foreach ($destinations as $term) {
+	    $destination_arr[$term->term_id] = $term->name;
+	}
 
 	$price_included = '<ul>
 					<li>Local English speaking guide as per program</li>
@@ -36,7 +42,7 @@ function sp_register_meta_boxes( $meta_boxes )
  				 				
 
 	/* ---------------------------------------------------------------------- */
-	/*	PAGE
+	/*	TOUR POST TYPE
 	/* ---------------------------------------------------------------------- */
 	$meta_boxes[] = array(
 		'id'       => 'tour-attribute',
@@ -45,6 +51,15 @@ function sp_register_meta_boxes( $meta_boxes )
 		'context'  => 'normal',
 		'priority' => 'high',
 		'fields'   => array(
+			array(
+				'name' 		=> __('Oveview', 'sptheme_admin'),
+				'id'   		=> $prefix . 'overview',
+				'std'  		=> '',
+				'desc'		=> 'Only write short description maximum length of 255 characters',
+				'type' 		=> 'textarea',
+				'cols' 		=> 20,
+				'rows' 		=> 3,
+			),
 			array(
 				'name' 		=> __('Number of day', 'sptheme_admin'),
 				'id'   		=> $prefix . 'day',
@@ -55,6 +70,14 @@ function sp_register_meta_boxes( $meta_boxes )
 				
 			),
 			array(
+				'name' => __('Destination', 'sptheme_admin'),
+				'id'   => $prefix . 'destination',
+				'type' => 'select_advanced',
+				'options' => $destination_arr,
+				'multiple'    => true,
+				'placeholder' => __( 'Select an Item', 'sptheme_admin' ),
+			),
+			array(
 				'name' 		=> __('Departure', 'sptheme_admin'),
 				'id'   		=> $prefix . 'departure',
 				'std'  		=> '',
@@ -62,15 +85,6 @@ function sp_register_meta_boxes( $meta_boxes )
 				'type' 		=> 'text',
 				'size' 		=> 60
 				
-			),
-			array(
-				'name' 		=> __('Oveview', 'sptheme_admin'),
-				'id'   		=> $prefix . 'overview',
-				'std'  		=> '',
-				'desc'		=> 'Only write short description maximum length of 255 characters',
-				'type' 		=> 'textarea',
-				'cols' 		=> 20,
-				'rows' 		=> 3,
 			),
 			array(
 				'name' 		=> __('Tour photos', 'sptheme_admin'),
