@@ -150,16 +150,51 @@ function sp_register_meta_boxes( $meta_boxes )
 	/* ---------------------------------------------------------------------- */
 	$meta_boxes[] = array(
 		'id'       => 'accom-settings',
-		'title'    => __('Accommodation Package', 'sptheme_admin'),
+		'title'    => __('Package infomation', 'sptheme_admin'),
 		'pages'    => array('accommodation'),
 		'context'  => 'normal',
 		'priority' => 'high',
 		'fields'   => array(
 			array(
-				//'name' => __('Contact person', 'sptheme_admin'),
+				'type' => 'heading',
+				'name' => __( 'Validity', 'sptheme_admin' ),
+				'id'   => 'validity_fake_id', // Not used but needed for plugin
+			),
+			array(
+				'name' => __( 'From', 'sptheme_admin' ),
+				'id'   => $prefix . 'price_valid_from',
+				'type' => 'date',
+
+				// jQuery date picker options. See here http://api.jqueryui.com/datepicker
+				'js_options' => array(
+					//'appendText'      => __( '(yyyy-mm-dd)', 'sptheme_admin' ),
+					'autoSize'        => true,
+					'buttonText'      => __( 'Select Date', 'sptheme_admin' ),
+					'dateFormat'      => __( 'yy-mm-dd', 'sptheme_admin' ),
+				),
+			),
+			array(
+				'name' => __( 'To', 'sptheme_admin' ),
+				'id'   => $prefix . 'price_valid_to',
+				'type' => 'date',
+
+				// jQuery date picker options. See here http://api.jqueryui.com/datepicker
+				'js_options' => array(
+					//'appendText'      => __( '(yyyy-mm-dd)', 'sptheme_admin' ),
+					'autoSize'        => true,
+					'buttonText'      => __( 'Select Date', 'sptheme_admin' ),
+					'dateFormat'      => __( 'yy-mm-dd', 'sptheme_admin' ),
+				),
+			),
+			array(
+				//'name' => __('Accommodation', 'sptheme_admin'),
 				'id'   => $prefix . 'accommodation',
 				'type' => 'accommodation',
 				'std'  => ''
+			),
+			array(
+				'type' => 'divider',
+				'id'   => 'fake_divider_id', // Not used, but needed
 			),
 		)
 	);		
@@ -202,14 +237,14 @@ function sp_register_meta_boxes( $meta_boxes )
 				'name' => __( 'Room Type', 'sptheme_admin' ),
 				'id'   => 'room_type_heading', // Not used but needed for plugin
 			),
-			array(
+			/*array(
 				'name' => __('Type', 'sptheme_admin'),
 				'id'   => $prefix . 'hotel_roomtype',
 				'type' => 'text',
 				'std'  => 'Standard',
 				'desc' => 'Type only name of room. e.g: Standard, Deluxe ...',
 				'clone' => true,
-			),
+			),*/
 		)
 	);
 

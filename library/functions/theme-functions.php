@@ -403,6 +403,29 @@ if ( !function_exists('sp_get_related_pages') ) {
 	
 }
 
+/* ---------------------------------------------------------------------- */               							
+/*  Get hotel post
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_hotel_posts') ) {
+
+	function sp_get_hotel_posts() {
+		$args = array(
+				'post_type' => 'hotel',
+				'posts_per_page' => -1,
+			);
+		$custom_query = new WP_Query($args);
+		if ( $custom_query->have_posts() ) {
+			while( $custom_query->have_posts() )
+			{
+				$post = $custom_query->next_post();
+				$options[$post->post_title] = $post->post_title;
+			}
+		}
+		return $options;
+	}
+
+}	
+
 /* ---------------------------------------------------------------------- */
 /*	Displays a page pagination
 /* ---------------------------------------------------------------------- */

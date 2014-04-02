@@ -26,10 +26,10 @@ define( 'SP_ASSETS_ADMIN', get_template_directory_uri() . '/library/admin/assets
 /* Custom post WordPress admin menu position - 30, 33, 39, 42, 45, 48 */
 if ( ! isset( $cp_menu_position ) )
 	$cp_menu_position = array(
-			'sp_slider'		=> 30,
-			'sp_tour'		=> 33,
-			'sp_hotel'		=> 39,
-			'sp_faq'		=> 42
+			'sp_slider'			=> 30,
+			'sp_tour'			=> 33,
+			'sp_accommodation'	=> 39,
+			'sp_faq'			=> 42
 		);
 
 if ( ! isset( $days_of_tour ) )
@@ -43,18 +43,6 @@ if ( ! isset( $hotel_levels ) )
 			'4'	=> 'Level 4',
 			'5'	=> 'Level 5'
 	);
-
-//Social network link
-if ( ! isset( $commLine ) )
-	$commLine = array(
-		'tel'		=> 'Telephone',
-		'mobile'	=> 'Mobile',
-		'e-mail'	=> 'E-mail',
-		'fax'		=> 'Fax',
-		'website'	=> 'Website',
-		'swift'		=> 'Swift',
-		'pobox'		=> 'P.O. Box',
-	);	
 
 /* ---------------------------------------------------------------------- */
 /*	Load some backend functions

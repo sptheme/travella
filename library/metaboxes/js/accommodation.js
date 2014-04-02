@@ -109,10 +109,18 @@ jQuery( document ).ready( function($)  {
 		$cloneElem.find('select').val('').end()
 				  .insertAfter( $('.accom-opt-line').last() );
 
+		$cloneElem.children('h4').text('Option '+(new_hotel_count+1));		  
+
 		$cloneElem.find('.hotel-name').each(function(){
 			$(this).attr({
 				'name': 'hotel_name_'+new_hotel_count+'[]',
 				'id': 'hotel_name_'+new_hotel_count
+			});
+		});
+		$cloneElem.find('.hotel-type').each(function(){
+			$(this).attr({
+				'name': 'hotel_type_'+new_hotel_count+'[]',
+				'id': 'hotel_type_'+new_hotel_count
 			});
 		});
 
@@ -141,10 +149,10 @@ jQuery( document ).ready( function($)  {
 	// Remove hotels
 	$accom_infos.delegate('.remove-hotel-line', 'click', function( e ) {
 		
-		if( $(this).parent().parent().children('.hotel-line').length == 1 ) {
+		if( $(this).parent().parent().parent().children('.rwmb-input').length == 1 ) {
 			alert('You need to have at least 1 hotel!');
 		} else {
-			$(this).parent().remove();
+			$(this).parent().parent().remove();
 		}
 		e.preventDefault();
 	});

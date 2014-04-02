@@ -50,7 +50,7 @@
 				'name'               => __( 'Hotels', 'sptheme_admin' ),
 				'singular_name'      => __( 'Hotel', 'sptheme_admin' ),
 				'add_new'            => __( 'Add New', 'sptheme_admin' ),
-				'all_items'          => __( 'All Hotels', 'sptheme_admin' ),
+				'all_items'          => __( 'Manage Hotels', 'sptheme_admin' ),
 				'add_new_item'       => __( 'Add New Hotel', 'sptheme_admin' ),
 				'new_item'           => __( 'Add New Hotel', 'sptheme_admin' ),
 				'edit_item'          => __( 'Edit Hotel', 'sptheme_admin' ),
@@ -68,14 +68,13 @@
 			$args = array(
 				'labels' 				=> $labels,
 				'rewrite'               => array( 'slug' => $slug ),
-				'menu_position'         => $cp_menu_position['sp_hotel'],
-				'menu_icon'           	=> 'dashicons-star-filled',
 				'supports'              => $supports,
 				'capability_type'     	=> $role,
 				'query_var'           	=> true,
 				'hierarchical'          => false,
 				'public'                => true,
 				'show_ui'               => true,
+				'show_in_menu'        => 'edit.php?post_type=accommodation',
 				'show_in_nav_menus'	    => false,
 				'publicly_queryable'	=> true,
 				'exclude_from_search'   => false,
@@ -105,6 +104,7 @@
 				'title'                	=> __( 'Hotel Name', 'sptheme_admin' ),
 				'hotel_level'		 	=> __( 'Hotel level', 'sptheme_admin' ),
 				'hotel_location'		=> __( 'Location', 'sptheme_admin' ),
+				//'room_type'				=> __( 'Room type', 'sptheme_admin' ),
 				'date'		 			=> __( 'Date', 'sptheme_admin' )
 			);
 
@@ -132,24 +132,17 @@
 				break;
 
 				case "hotel_location":
-					$terms = get_the_terms( $post->ID, 'destination' );
+					$location_id = get_post_meta( $post->ID, 'sp_hotel_location', true );
+					$trem_name = get_term( $location_id, 'destination' );
+					echo $trem_name->name;
+				break;
 
-					if ( empty( $terms ) )
-					break;
-	
-					$output = array();
-	
-					foreach ( $terms as $term ) {
-						
-						$output[] = sprintf( '<a href="%s">%s</a>',
-							esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'destination' => $term->slug ), 'edit.php' ) ),
-							esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'destination', 'display' ) )
-						);
-	
+				case "room_type":
+					$rooms = get_post_meta( $post->ID, 'sp_hotel_roomtype', true );
+					foreach ($rooms as $type) {
+						$types[] = $type;
 					}
-	
-					echo join( ', ', $output );
-
+					echo implode(', ', $types);
 				break;
 				
 				default:
