@@ -41,7 +41,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 				foreach ( $accom_infos as $options => $option ) {
 
 					$html .= '<li class="accom-opt-line postbox">';
-					$html .= '<h4>Option 1</h4>';
+					$html .= '<h4>Option '.($options+1).'</h4>';
 					//$html .= '<button class="remove-opt">' . __('-', 'sptheme_admin') . '</button>';
 					$html .= '<div class="inside">';
 					$html .= '<div class="rwmb-field">';
