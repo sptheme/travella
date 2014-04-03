@@ -119,8 +119,18 @@ jQuery( document ).ready( function($)  {
 		});
 		$cloneElem.find('.hotel-type').each(function(){
 			$(this).attr({
+				'value': '',
 				'name': 'hotel_type_'+new_hotel_count+'[]',
-				'id': 'hotel_type_'+new_hotel_count
+				'id': 'hotel_type_'+new_hotel_count,
+				'placeholder': 'Room type'
+			});
+		});
+		$cloneElem.find('.num-night').each(function(){
+			$(this).attr({
+				'value': '',
+				'name': 'num_night_'+new_hotel_count+'[]',
+				'id': 'num_night_'+new_hotel_count,
+				'placeholder': 'Number of night'
 			});
 		});
 

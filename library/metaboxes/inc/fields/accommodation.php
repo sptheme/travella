@@ -58,6 +58,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 										endforeach;	
 							$html .= '</select>';
 							$html .= '<input type="text" name="hotel_type_'.$options.'[]" id="hotel_type_'.$options.'" value="'.$v[1].'" class="hotel-type">';
+							$html .= '<input type="text" name="num_night_'.$options.'[]" id="num_night_'.$options.'" value="'.$v[2].'" class="num-night">';
 							$html .= '<button class="remove-hotel-line button-secondary">' . __('Remove hotel', 'sptheme_admin') . '</button>	
 									</span>';
 							$html .= '</div><!-- .rwmb-input -->';		
@@ -88,6 +89,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 							endforeach;	
 				$html .= '</select>';
 				$html .= '<input type="text" name="hotel_type_0[]" id="hotel_type_0" class="hotel-type" placeholder="Room type">';
+				$html .= '<input type="text" name="num_night_0[]" id="num_night_0" class="num-night" placeholder="Number of night">';
 				$html .= '<button class="remove-hotel-line button-secondary">' . __('Remove hotel', 'sptheme_admin') . '</button>	
 						</span>';
 				$html .= '</div><!-- .rwmb-input -->';
@@ -130,6 +132,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 					$hotels[$key] = array(
 						$_POST['hotel_name_'.$k][$key],
 						$_POST['hotel_type_'.$k][$key],
+						$_POST['num_night_'.$k][$key],
 					);
 					//$hotels[$key] = $_POST['hotel_name_'.$k][$key];
 				}

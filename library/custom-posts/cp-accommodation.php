@@ -133,7 +133,10 @@
 				break;
 
 				case "valid_date":
-					echo 'show valid date of prices';
+					$valid_from = get_post_meta( $post->ID, 'sp_price_valid_from', true );
+					$valid_to = get_post_meta( $post->ID, 'sp_price_valid_to', true );
+					echo date("jS F, Y", strtotime($valid_from)) . ' to ' . date("jS F, Y", strtotime($valid_to)); 
+					
 				break;				
 				
 				default:

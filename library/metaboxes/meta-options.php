@@ -167,7 +167,7 @@ function sp_register_meta_boxes( $meta_boxes )
 
 				// jQuery date picker options. See here http://api.jqueryui.com/datepicker
 				'js_options' => array(
-					//'appendText'      => __( '(yyyy-mm-dd)', 'sptheme_admin' ),
+					'appendText'      => __( '(yyyy-mm-dd)', 'sptheme_admin' ),
 					'autoSize'        => true,
 					'buttonText'      => __( 'Select Date', 'sptheme_admin' ),
 					'dateFormat'      => __( 'yy-mm-dd', 'sptheme_admin' ),
@@ -180,11 +180,16 @@ function sp_register_meta_boxes( $meta_boxes )
 
 				// jQuery date picker options. See here http://api.jqueryui.com/datepicker
 				'js_options' => array(
-					//'appendText'      => __( '(yyyy-mm-dd)', 'sptheme_admin' ),
+					'appendText'      => __( '(yyyy-mm-dd)', 'sptheme_admin' ),
 					'autoSize'        => true,
 					'buttonText'      => __( 'Select Date', 'sptheme_admin' ),
 					'dateFormat'      => __( 'yy-mm-dd', 'sptheme_admin' ),
 				),
+			),
+			array(
+				'type' => 'heading',
+				'name' => __( 'Accommodation', 'sptheme_admin' ),
+				'id'   => 'accommodation_fake_id', // Not used but needed for plugin
 			),
 			array(
 				//'name' => __('Accommodation', 'sptheme_admin'),
@@ -193,8 +198,9 @@ function sp_register_meta_boxes( $meta_boxes )
 				'std'  => ''
 			),
 			array(
-				'type' => 'divider',
-				'id'   => 'fake_divider_id', // Not used, but needed
+				'type' => 'heading',
+				'name' => __( 'Price options', 'sptheme_admin' ),
+				'id'   => 'tour_price_fake_id', // Not used but needed for plugin
 			),
 		)
 	);		

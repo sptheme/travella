@@ -5,6 +5,9 @@
 	border-bottom: 1px solid #E5E5E5;
 	padding: 10px;
 }
+#accom-infos h4:hover{
+	cursor: move;
+}
 #accom-infos button.remove-hotel-line,
 .accom-opt-line .remove-opt{
 	background: url(../img/icon-remove.png) no-repeat 0 5px;
@@ -16,14 +19,14 @@
 	box-shadow: none;
 }
 #accom-infos button.add-hotel-line{
-	background: url(../img/icon-add.png) no-repeat 0 8px;
+	/*background: url(../img/icon-add.png) no-repeat 0 8px;
 	width: 16px;
 	height: 27px;
 	line-height: 27px;
 	text-indent: -9999px;
 	border:none;
-	box-shadow: none;
-	margin-left: 5px;
+	box-shadow: none;*/
+	margin-left: 2px;
 }
 #accom-infos .hotel-line{
 	display: inline-block;
@@ -42,4 +45,7 @@
 }
 #add-accomm-line{
 	margin-right: 5px;
+}
+.hotel-type, .num-night{
+	width: 120px;
 }
