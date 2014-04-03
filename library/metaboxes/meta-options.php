@@ -188,7 +188,7 @@ function sp_register_meta_boxes( $meta_boxes )
 			),
 			array(
 				'type' => 'heading',
-				'name' => __( 'Accommodation', 'sptheme_admin' ),
+				'name' => __( 'Accommodation options', 'sptheme_admin' ),
 				'id'   => 'accommodation_fake_id', // Not used but needed for plugin
 			),
 			array(
@@ -199,8 +199,14 @@ function sp_register_meta_boxes( $meta_boxes )
 			),
 			array(
 				'type' => 'heading',
-				'name' => __( 'Price options', 'sptheme_admin' ),
+				'name' => __( 'Price/Rate options', 'sptheme_admin' ),
 				'id'   => 'tour_price_fake_id', // Not used but needed for plugin
+			),
+			array(
+				//'name' => __('Accommodation', 'sptheme_admin'),
+				'id'   => $prefix . 'tour_rate',
+				'type' => 'tour_rate',
+				'std'  => ''
 			),
 		)
 	);		

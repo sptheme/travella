@@ -5,9 +5,6 @@
 	border-bottom: 1px solid #E5E5E5;
 	padding: 10px;
 }
-#accom-infos h4:hover{
-	cursor: move;
-}
 #accom-infos button.remove-hotel-line,
 .accom-opt-line .remove-opt{
 	background: url(../img/icon-remove.png) no-repeat 0 5px;
@@ -46,6 +43,6 @@
 #add-accomm-line{
 	margin-right: 5px;
 }
-.hotel-type, .num-night{
+.hotel-type{
 	width: 120px;
 }

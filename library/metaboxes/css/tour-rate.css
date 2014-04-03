@@ -1,0 +1,31 @@
+/* ---------------------------------------------------------------------- */
+/*	Styles for Open Hour
+/* ---------------------------------------------------------------------- */
+#tour-rates-info h4{
+	border-bottom: 1px solid #E5E5E5;
+	padding: 10px;
+}
+#tour-rates-info table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#tour-rates-info table th,
+#tour-rates-info table td{
+	text-align: left;
+	padding: 5px;
+	border: 1px solid #e5e5e5;
+}
+
+#tour-rates-info button.remove-rate-line{
+	background: url(../img/icon-remove.png) no-repeat 0 5px;
+	width: 16px;
+	height: 27px;
+	line-height: 27px;
+	text-indent: -9999px;
+	border:none;
+	box-shadow: none;
+}
+
+#add-rate-line{
+	margin-right: 5px;
+}

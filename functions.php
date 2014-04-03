@@ -24,7 +24,7 @@ define( 'SP_ASSETS_THEME', get_template_directory_uri() . '/assets/' );
 define( 'SP_ASSETS_ADMIN', get_template_directory_uri() . '/library/admin/assets/' );
 
 /* Custom post WordPress admin menu position - 30, 33, 39, 42, 45, 48 */
-if ( ! isset( $cp_menu_position ) )
+if ( !isset( $cp_menu_position ) )
 	$cp_menu_position = array(
 			'sp_slider'			=> 30,
 			'sp_tour'			=> 33,
@@ -32,19 +32,30 @@ if ( ! isset( $cp_menu_position ) )
 			'sp_faq'			=> 42
 		);
 
-if ( ! isset( $days_of_tour ) )
+if ( !isset( $days_of_tour ) )
 	$days_of_tour = array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12', '13' => '13', '14' => '14', '15' => '15');
 
-if ( ! isset( $hotel_levels ) )
+if ( !isset( $hotel_levels ) )
 	$hotel_levels = array(
 			'1'	=> 'Level 1',
 			'2'	=> 'Level 2',
 			'3'	=> 'Level 3',
 			'4'	=> 'Level 4',
 			'5'	=> 'Level 5'
-	);
+		);
 
-
+if ( !isset( $type_tour_rate )){
+	$type_tour_rate = array(
+			'1' => '1 pax',
+			'2' => '2 pax',
+			'3' => '3-4 pax',
+			'4' => '5-6 pax',
+			'5' => '7-10 pax',
+			'6' => '11-15 pax',
+			'7' => '16-20 pax',
+			'8' => 'Sup. Single'
+		);
+}
 
 /* ---------------------------------------------------------------------- */
 /*	Load some backend functions

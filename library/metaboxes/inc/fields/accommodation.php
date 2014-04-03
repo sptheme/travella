@@ -28,7 +28,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 		static function html( $meta, $field ) 
 		{
 
-			global $post;
+			global $post, $days_of_tour;
 
 			$id = $field['id'];
 
@@ -52,13 +52,19 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 						foreach( $option as $k => $v ){
 							$html .= '<div class="rwmb-input">';
 							$html .= '<span class="hotel-line">
-									<select name="hotel_name_'.$options.'[]" id="hotelname_'.$options.'" class="hotel-name rwmb-select">';
+									<select name="hotel_name_'.$options.'[]" id="hotelname_'.$options.'" class="hotel-name rwmb-select">
+										<option value="null">Select hotel name</option>';
 										foreach ($hotels as $key => $value) :
 											$html .= '<option value="' . $key . '" ' . selected( $v[0], $key, false ) . '>' . $value . '</option>';
 										endforeach;	
 							$html .= '</select>';
 							$html .= '<input type="text" name="hotel_type_'.$options.'[]" id="hotel_type_'.$options.'" value="'.$v[1].'" class="hotel-type">';
-							$html .= '<input type="text" name="num_night_'.$options.'[]" id="num_night_'.$options.'" value="'.$v[2].'" class="num-night">';
+							$html .= '<select name="num_night_'.$options.'[]" id="num_night_'.$options.'" class="num-night rwmb-select">';
+							$html .= '<option value="null">Number of night</option>';
+										foreach ($days_of_tour as $key => $value) :
+											$html .= '<option value="' . $key . '"' . selected( $v[2], $key, false ). '>' . $value . '</option>';
+										endforeach;
+							$html .= '</select>';
 							$html .= '<button class="remove-hotel-line button-secondary">' . __('Remove hotel', 'sptheme_admin') . '</button>	
 									</span>';
 							$html .= '</div><!-- .rwmb-input -->';		
@@ -83,13 +89,19 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 				//$html .= '<div class="rwmb-label"><label>' . __('Hotel info', 'sptheme_admin') . '</label></div>';
 				$html .= '<div class="rwmb-input">';
 				$html .= '<span class="hotel-line">
-						<select name="hotel_name_0[]" id="hotelname_0" class="hotel-name rwmb-select">';
+						<select name="hotel_name_0[]" id="hotelname_0" class="hotel-name rwmb-select">
+							<option value="null">Select hotel name</option>';
 							foreach ($hotels as $key => $value) :
 								$html .= '<option value="' . $key . '">' . $value . '</option>';
 							endforeach;	
 				$html .= '</select>';
 				$html .= '<input type="text" name="hotel_type_0[]" id="hotel_type_0" class="hotel-type" placeholder="Room type">';
-				$html .= '<input type="text" name="num_night_0[]" id="num_night_0" class="num-night" placeholder="Number of night">';
+				$html .= '<select name="num_night_0[]" id="num_night_0" class="num-night rwmb-select">';
+				$html .= '<option value="null">Number of night</option>';
+							foreach ($days_of_tour as $key => $value) :
+								$html .= '<option value="' . $key . '">' . $value . '</option>';
+							endforeach;
+				$html .= '</select>';
 				$html .= '<button class="remove-hotel-line button-secondary">' . __('Remove hotel', 'sptheme_admin') . '</button>	
 						</span>';
 				$html .= '</div><!-- .rwmb-input -->';
@@ -101,7 +113,7 @@ if ( ! class_exists( 'RWMB_Accommodation_Field' ) )
 				$html .= '</li>';
 			}			  
 			$html .= '</ul>';			 
-			$html .= '<p> <button id="add-accomm-line" class="button-primary">' . __('+ Add Options', 'sptheme_admin') . '</button>';
+			$html .= '<p> <button id="add-accomm-line" class="button-primary">' . __('+ Add New Options', 'sptheme_admin') . '</button>';
 			$html .= '<button id="remove-accomm-line" class="button-primary">' . __('- Remove Options', 'sptheme_admin') . '</button> </p>';
 			$html .= '<input type="hidden" name="accom-info-meta-info" value="' . $post->ID . '|' . $id . '">'; 
 
