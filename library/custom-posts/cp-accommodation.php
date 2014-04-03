@@ -125,11 +125,11 @@
 			switch ( $column ) {
 				
 				case "min_price":
-					echo 'show value of min price';
+					echo sp_get_tour_rate($post->ID, 'min');
 				break;
 
 				case "max_price":
-					echo 'show value of max price';
+					echo sp_get_tour_rate($post->ID, 'max');
 				break;
 
 				case "valid_date":

@@ -96,6 +96,22 @@ function sp_register_meta_boxes( $meta_boxes )
 				
 			),
 			array(
+				'name'    => __( 'Price', 'sptheme_admin' ),
+				'id'      => $prefix . 'tour_price',
+				'type'    => 'post',
+				'desc'	  => 'Select price pacakge for this tour. <a href="edit.php?post_type=accommodation">Manage Price</a>',
+
+				// Post type
+				'post_type' => 'accommodation',
+				// Field type, either 'select' or 'select_advanced' (default)
+				'field_type' => 'select_advanced',
+				// Query arguments (optional). No settings means get all published posts
+				'query_args' => array(
+					'post_status' => 'publish',
+					'posts_per_page' => '-1',
+				)
+			),
+			array(
 				'name' 		=> __('Price included', 'sptheme_admin'),
 				'id'   		=> $prefix . 'included',
 				'std'  		=> $price_included,

@@ -359,7 +359,34 @@ function category_has_parent($catid){
     return false;
 }
 
-/* ---------------------------------------------------------------------- */               							
+/* ---------------------------------------------------------------------- */
+/*  Get tour rate
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_tour_rate') ) {
+
+	function sp_get_tour_rate($post_id, $rate_level){
+		global $type_tour_rate, $currency;
+
+		$tour_rates = maybe_unserialize(get_post_meta( $post_id, 'sp_tour_rate', true ));
+		$opt_rates = array();
+			foreach ( $tour_rates as $options => $option ) {
+				foreach( $option as $k => $v ){
+					if ( ($rate_level == 'min') && ($k == (count($type_tour_rate) - 2)) ){
+						$opt_rates[] = $v;	
+					} elseif ( ($rate_level == 'max') && ($k == (count($type_tour_rate) - 8)) ){
+						$opt_rates[] = $v;	
+					}
+				}
+			}
+		if ( $rate_level == 'min' ){
+			return $currency[0] . ' ' . min($opt_rates);
+		} elseif ( $rate_level == 'max' ){
+			return $currency[0] . ' ' . max($opt_rates);
+		}
+	}
+}
+
+/* ---------------------------------------------------------------------- */
 /*  Get related pages
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_related_pages') ) {

@@ -32,8 +32,11 @@ if ( !isset( $cp_menu_position ) )
 			'sp_faq'			=> 42
 		);
 
+if ( !isset( $currency ) )
+	$currency = array('USD', 'EUR');
+
 if ( !isset( $days_of_tour ) )
-	$days_of_tour = array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12', '13' => '13', '14' => '14', '15' => '15');
+	$days_of_tour = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15');
 
 if ( !isset( $hotel_levels ) )
 	$hotel_levels = array(
