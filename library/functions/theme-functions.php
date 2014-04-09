@@ -1,6 +1,19 @@
 <?php
 
 /* ---------------------------------------------------------------------- */
+/*	Custom Excerpt Length
+/* ---------------------------------------------------------------------- */
+if (!function_exists('sp_excerpt_length')) {
+
+	function sp_excerpt_length($length) {
+		return 30;
+	}
+	
+	add_filter('excerpt_length', 'sp_excerpt_length');
+
+}
+
+/* ---------------------------------------------------------------------- */
 /*	Get Post Thumbnail
 /* ---------------------------------------------------------------------- */
 if( !function_exists('sp_post_thumbnail') ) {
@@ -14,8 +27,7 @@ if( !function_exists('sp_post_thumbnail') ) {
 		$thumb_url = wp_get_attachment_image_src($thumb_id, $size);
 		$thumb = $thumb_url[0];
 		if ($thumb) return $thumb;
-	}
-		
+	}		
 
 }
 
@@ -244,6 +256,80 @@ if ( !function_exists('sp_get_related_tours') ) {
 }
 
 
+/* ---------------------------------------------------------------------- */
+/*  Get tour rate
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_tour_rate') ) {
+
+	function sp_get_tour_rate($post_id, $rate_level){
+		global $type_tour_rate, $currency;
+
+		$tour_rates = maybe_unserialize(get_post_meta( $post_id, 'sp_tour_rate', true ));
+		$opt_rates = array();
+			foreach ( $tour_rates as $options => $option ) {
+				foreach( $option as $k => $v ){
+					if ( ($rate_level == 'min') && ($k == (count($type_tour_rate) - 2)) ){
+						$opt_rates[] = $v;	
+					} elseif ( ($rate_level == 'max') && ($k == (count($type_tour_rate) - 8)) ){
+						$opt_rates[] = $v;	
+					}
+				}
+			}
+		if ( $rate_level == 'min' ){
+			return $currency[0] . ' ' . min($opt_rates);
+		} elseif ( $rate_level == 'max' ){
+			return $currency[0] . ' ' . max($opt_rates);
+		}
+	}
+}
+
+
+/* ---------------------------------------------------------------------- */               							
+/*  Get hotel post
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_hotel_posts') ) {
+
+	function sp_get_hotel_posts() {
+		$args = array(
+				'post_type' => 'hotel',
+				'posts_per_page' => -1,
+			);
+		$custom_query = new WP_Query($args);
+		if ( $custom_query->have_posts() ) {
+			while( $custom_query->have_posts() )
+			{
+				$post = $custom_query->next_post();
+				$options[$post->post_title] = $post->post_title;
+			}
+		}
+		return $options;
+	}
+
+}	
+
+/* ---------------------------------------------------------------------- */               							
+/*  Display random FAQs post
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_faqs_list') ) {
+	function sp_get_faqs_list($post_type) {
+		$args = array(
+				'post_type' => $post_type,
+				'posts_per_page' => 10,
+			);
+		$custom_query = new WP_Query($args);
+		$out = '<div id="faq-list">';
+		$out .= '<ul>';
+		while ( $custom_query->have_posts() ): $custom_query->the_post();
+			$out .= '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></li>';
+		endwhile;
+		wp_reset_postdata(); // Restore global post data
+		$out .= '</ul>';
+		$out .= '</div>';
+
+		return $out;
+	}
+}
+
 /* ---------------------------------------------------------------------- */               							
 /*  Retrieve the terms in a taxonomy as sub navigation
 /* ---------------------------------------------------------------------- */
@@ -276,29 +362,6 @@ if ( !function_exists('sp_get_terms_list') ) {
 		return $taxonomy;
 	}
 
-}
-
-/* ---------------------------------------------------------------------- */               							
-/*  Display random FAQs post
-/* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_faqs_list') ) {
-	function sp_get_faqs_list($post_type) {
-		$args = array(
-				'post_type' => $post_type,
-				'posts_per_page' => 10,
-			);
-		$custom_query = new WP_Query($args);
-		$out = '<div id="faq-list">';
-		$out .= '<ul>';
-		while ( $custom_query->have_posts() ): $custom_query->the_post();
-			$out .= '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></li>';
-		endwhile;
-		wp_reset_postdata(); // Restore global post data
-		$out .= '</ul>';
-		$out .= '</div>';
-
-		return $out;
-	}
 }
 
 
@@ -360,33 +423,6 @@ function category_has_parent($catid){
 }
 
 /* ---------------------------------------------------------------------- */
-/*  Get tour rate
-/* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_tour_rate') ) {
-
-	function sp_get_tour_rate($post_id, $rate_level){
-		global $type_tour_rate, $currency;
-
-		$tour_rates = maybe_unserialize(get_post_meta( $post_id, 'sp_tour_rate', true ));
-		$opt_rates = array();
-			foreach ( $tour_rates as $options => $option ) {
-				foreach( $option as $k => $v ){
-					if ( ($rate_level == 'min') && ($k == (count($type_tour_rate) - 2)) ){
-						$opt_rates[] = $v;	
-					} elseif ( ($rate_level == 'max') && ($k == (count($type_tour_rate) - 8)) ){
-						$opt_rates[] = $v;	
-					}
-				}
-			}
-		if ( $rate_level == 'min' ){
-			return $currency[0] . ' ' . min($opt_rates);
-		} elseif ( $rate_level == 'max' ){
-			return $currency[0] . ' ' . max($opt_rates);
-		}
-	}
-}
-
-/* ---------------------------------------------------------------------- */
 /*  Get related pages
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_related_pages') ) {
@@ -429,29 +465,6 @@ if ( !function_exists('sp_get_related_pages') ) {
 	}
 	
 }
-
-/* ---------------------------------------------------------------------- */               							
-/*  Get hotel post
-/* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_hotel_posts') ) {
-
-	function sp_get_hotel_posts() {
-		$args = array(
-				'post_type' => 'hotel',
-				'posts_per_page' => -1,
-			);
-		$custom_query = new WP_Query($args);
-		if ( $custom_query->have_posts() ) {
-			while( $custom_query->have_posts() )
-			{
-				$post = $custom_query->next_post();
-				$options[$post->post_title] = $post->post_title;
-			}
-		}
-		return $options;
-	}
-
-}	
 
 /* ---------------------------------------------------------------------- */
 /*	Displays a page pagination
