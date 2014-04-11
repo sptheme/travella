@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-	<div id="content" class="site-content" role="main">
+	<div id="main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -15,7 +15,7 @@
 				// Start the Loop.
 				echo '<ul>';
 				while ( have_posts() ) : the_post();
-				echo '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></li>';				
+				echo '<li>' . sp_render_thumbnail_tour() .'</li>';				
 				endwhile;
 				echo '</ul>';
 

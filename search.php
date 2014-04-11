@@ -5,9 +5,7 @@
 get_header(); ?>
 	<div id="main" role="main">
     	
-    	<?php if(!empty($_GET['s']) && ($_GET['post_type'] == 'tour')) { 
-            get_template_part('library/content/search-tours');
-        } else { ?>
+    	
         <header class="page-header">
             <h1 class="page-title">
                 <?php echo __('Search results for: ',SP_TEXT_DOMAIN)." ".esc_attr( get_search_query() ); ?>
@@ -40,7 +38,6 @@ get_header(); ?>
             <?php get_search_form(); ?>
 
         <?php endif; ?>
-        <?php } // end query string ?>
     	
     </div><!-- #main -->
 <?php get_sidebar(); ?>

@@ -92,6 +92,7 @@ if ( !function_exists('sp_tour_meta') ) {
 		$overview = get_post_meta( get_the_ID(), 'sp_overview', true ); 
 		$tour_type = wp_get_post_terms( get_the_ID(), 'tour-type' );
 		$destinations = rwmb_meta( 'sp_destination', 'type=checkbox_list' );
+		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
 
 		$out .= '<ul>';
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
@@ -120,6 +121,7 @@ if ( !function_exists('sp_tour_meta') ) {
 		$out .= '</span></li>';
 
 		$out .= '<li class="overview">' . $overview . '</li>';
+		$out .= '<li>prices: ' . sp_get_tour_rate($price_id, 'min') . '</li>';
 
 		$out .= '</ul>';
 
@@ -207,6 +209,22 @@ if ( ! function_exists( 'sp_slideshow' ) ) {
 	}
 }
 
+/* ---------------------------------------------------------------------- */
+/*  Render thumbnail tour - using in Loop
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_render_thumbnail_tour') ) {
+
+	function sp_render_thumbnail_tour(){
+		$thumb = sp_post_thumbnail('tour-thumb');
+		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
+		$out = '<img src="' . $thumb . '">';
+		$out .= '<a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>';
+		$out .= sp_get_tour_rate($price_id, 'min');
+		return $out;
+	}
+
+}
+
 /* ---------------------------------------------------------------------- */               							
 /*  Related tours
 /* ---------------------------------------------------------------------- */
@@ -269,7 +287,8 @@ if ( !function_exists('sp_get_tour_rate') ) {
 		global $type_tour_rate, $currency;
 
 		$tour_rates = maybe_unserialize(get_post_meta( $post_id, 'sp_tour_rate', true ));
-		$opt_rates = array();
+		if ($tour_rates){
+			$opt_rates = array();
 			foreach ( $tour_rates as $options => $option ) {
 				foreach( $option as $k => $v ){
 					if ( ($rate_level == 'min') && ($k == (count($type_tour_rate) - 2)) ){
@@ -279,11 +298,15 @@ if ( !function_exists('sp_get_tour_rate') ) {
 					}
 				}
 			}
-		if ( $rate_level == 'min' ){
-			return $currency[0] . ' ' . min($opt_rates);
-		} elseif ( $rate_level == 'max' ){
-			return $currency[0] . ' ' . max($opt_rates);
+			if ( $rate_level == 'min' ){
+				return $currency[0] . ' ' . min($opt_rates);
+			} elseif ( $rate_level == 'max' ){
+				return $currency[0] . ' ' . max($opt_rates);
+			}
+		} else {
+			return null;
 		}
+		
 	}
 }
 
