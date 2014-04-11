@@ -245,7 +245,11 @@ if ( !function_exists('sp_get_related_tours') ) {
 		$out = '<div id="related-tours">';
 		$out .= '<ul>';
 		while ( $custom_query->have_posts() ): $custom_query->the_post();
-			$out .= '<li><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></li>';
+			$thumb = sp_post_thumbnail('tour-mini');
+			$out .= '<li>';
+			$out .= '<img src="' . $thumb . '">';
+			$out .= '<a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>';
+			$out .= '</li>';
 		endwhile;
 		wp_reset_postdata(); // Restore global post data
 		$out .= '</ul>';
