@@ -44,7 +44,7 @@ class sp_widget_faqs extends WP_Widget {
 			$out .= $before_title . $title . $after_title;
 
 		if ($view_type == 'category'):
-			$out .= sp_get_terms('faq-category');
+			$out .= sp_get_faqs_terms('faq-category');
 		else: 
 			$out .= sp_get_popular_faqs_posts();
 		endif;

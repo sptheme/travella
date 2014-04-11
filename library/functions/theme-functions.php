@@ -358,13 +358,10 @@ if ( !function_exists('sp_get_popular_faqs_posts') ) {
 /* ---------------------------------------------------------------------- */               							
 /*  Retrieve the terms in a taxonomy as sub navigation
 /* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_terms') ) {
+if ( !function_exists('sp_get_faqs_terms') ) {
 
-	function sp_get_terms($taxonomy){
-		$args = array(
-				'hide_empty'	=> 0
-			);
-		$taxonomies = get_terms($taxonomy, $args);
+	function sp_get_faqs_terms($taxonomy){
+		$taxonomies = sp_get_terms_list($taxonomy);
 		if ( count($taxonomies) ) {
 			$out = '<ul>';
 			foreach ( $taxonomies as $term ) {
@@ -377,6 +374,42 @@ if ( !function_exists('sp_get_terms') ) {
 
 }
 
+/* ---------------------------------------------------------------------- */               							
+/*  Retrieve term destination
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_all_terms_destination') ) {
+
+	function sp_get_all_terms_destination(){
+		$args = array(
+				'parent'	=> 0,
+				'hide_empty' => 0
+			);
+		$destinations = get_terms('destination', $args);
+		if ( count($destinations) ) {
+			$out = '<dl>';
+			foreach ( $destinations as $term ) {
+				$child_args = array(
+						'child_of' => $term->term_id,
+						'hide_empty' => 0
+					);
+				$des_child = get_terms('destination', $child_args);
+
+				$out .= '<dt><a href="' . get_term_link( $term ) . '" title="' . sprintf(__('View all post filed under %s', 'sptheme_widget'), $term->name) . '">' . $term->name . '</a></dt>';
+				foreach ($des_child as $term_child) {
+					$out .= '<dd><a href="' . get_term_link( $term_child ) . '" title="' . sprintf(__('View all post filed under %s', 'sptheme_widget'), $term_child->name) . '">' . $term_child->name . '</a><span class="post-count>">(' . $term_child->count . ')</span></dd>';	
+				}
+
+			}
+			$out .= '</dl>';
+		}
+		return $out;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Retrieve the terms list and return array
+/* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_terms_list') ) {
 
 	function sp_get_terms_list($taxonomy){
@@ -384,7 +417,7 @@ if ( !function_exists('sp_get_terms_list') ) {
 				'hide_empty'	=> 0
 			);
 		$taxonomies = get_terms($taxonomy, $args);
-		return $taxonomy;
+		return $taxonomies;
 	}
 
 }
