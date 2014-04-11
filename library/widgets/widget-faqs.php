@@ -34,7 +34,7 @@ class sp_widget_faqs extends WP_Widget {
 		
 		/* Our variables from the widget settings. */
 		$title = apply_filters('widget_title', $instance['title']);
-		$sub_nav = $instance['sub_nav'];
+		$view_type = $instance['view_type'];
 		
 		/* Before widget (defined by themes). */
 		$out = $before_widget;
@@ -43,10 +43,10 @@ class sp_widget_faqs extends WP_Widget {
 		if ( $title )
 			$out .= $before_title . $title . $after_title;
 
-		if ($sub_nav):
+		if ($view_type == 'category'):
 			$out .= sp_get_terms('faq-category');
 		else: 
-			$out .= sp_get_faqs_list('faq');
+			$out .= sp_get_popular_faqs_posts();
 		endif;
 	
 		/* After widget (defined by themes). */		
@@ -63,7 +63,7 @@ class sp_widget_faqs extends WP_Widget {
 		
 		/* Strip tags for title and name to remove HTML (important for text inputs). */
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['sub_nav'] = strip_tags( $new_instance['sub_nav'] );
+		$instance['view_type'] = strip_tags( $new_instance['view_type'] );
 		
 		return $instance;
 	}
@@ -75,7 +75,7 @@ class sp_widget_faqs extends WP_Widget {
 	 */	
 	function form( $instance ) {
 		/* Set up some default widget settings. */
-		$defaults = array( 'title' => 'FAQs Categories', 'sub_nav' => true);
+		$defaults = array( 'title' => 'FAQs Categories', 'view_type' => 'popular');
 		$instance = wp_parse_args( (array) $instance, $defaults); ?>
 		
 		<p>
@@ -84,11 +84,12 @@ class sp_widget_faqs extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'sub_nav' ); ?>">Sub navigation : </label>
-			<input id="<?php echo $this->get_field_id( 'sub_nav' ); ?>" name="<?php echo $this->get_field_name( 'sub_nav' ); ?>" value="<?php echo $instance['sub_nav']; ?>" <?php if( $instance['sub_nav'] ) echo 'checked="checked"'; ?> type="checkbox" />
+			<strong><?php _e('Display as:', 'sptheme_widget') ?></strong><br>
+			<input type="radio" name="<?php echo $this->get_field_name( 'view_type' ); ?>" value="popular" <?php if( $instance['view_type'] == 'popular' ) echo 'checked="checked"'; ?>><small>Popular FAQs</small><br>
+			<input type="radio" name="<?php echo $this->get_field_name( 'view_type' ); ?>" value="category" <?php if( $instance['view_type'] == 'category' ) echo 'checked="checked"'; ?>><small>FAQs Category</small>
 		</p>
-        
-	   <?php 
+
+	<?php 
     }
 } //end class
 ?>

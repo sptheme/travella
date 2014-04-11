@@ -312,12 +312,33 @@ if ( !function_exists('sp_get_hotel_posts') ) {
 }	
 
 /* ---------------------------------------------------------------------- */               							
-/*  Display random FAQs post
+/*  Set FAQs post view count
 /* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_faqs_list') ) {
-	function sp_get_faqs_list($post_type) {
+function sp_set_faq_post_views($postID) {
+    $count_key = 'sp_faq_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+//To keep the count accurate, lets get rid of prefetching
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+/* ---------------------------------------------------------------------- */               							
+/*  Display popular FAQs post
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_popular_faqs_posts') ) {
+	function sp_get_popular_faqs_posts() {
 		$args = array(
-				'post_type' => $post_type,
+				'post_type' => 'faq',
+				'meta_key' => 'sp_faq_post_views_count',
+				'orderby' => 'meta_value_num',
+				'order' => 'DESC',
 				'posts_per_page' => 10,
 			);
 		$custom_query = new WP_Query($args);
