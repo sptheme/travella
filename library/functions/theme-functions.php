@@ -97,8 +97,8 @@ if ( !function_exists('sp_tour_meta') ) {
 		$out .= '<ul>';
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s night', SP_TEXT_DOMAIN ),
-			 $tours_day,
-			 $tours_day - 1 ) . '</span></li>';
+			 $tours_day + 1,
+			 $tours_day) . '</span></li>';
 		
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .=	'<span class="meta-value">'; 
