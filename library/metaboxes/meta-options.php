@@ -260,12 +260,12 @@ function sp_register_meta_boxes( $meta_boxes )
 				'std'  => '',
 				'desc' => 'Must be has <strong>http://</strong> e.g: http://www.sokhahotels.com'
 			),
-			array(
+			/*array(
 				'type' => 'heading',
 				'name' => __( 'Room Type', 'sptheme_admin' ),
 				'id'   => 'room_type_heading', // Not used but needed for plugin
 			),
-			/*array(
+			array(
 				'name' => __('Type', 'sptheme_admin'),
 				'id'   => $prefix . 'hotel_roomtype',
 				'type' => 'text',
