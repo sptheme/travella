@@ -91,7 +91,7 @@ if ( !function_exists('sp_tour_meta') ) {
 		$departure = get_post_meta( get_the_ID(), 'sp_departure', true ); 
 		$overview = get_post_meta( get_the_ID(), 'sp_overview', true ); 
 		$tour_type = wp_get_post_terms( get_the_ID(), 'tour-type' );
-		$destinations = rwmb_meta( 'sp_destination', 'type=checkbox_list' );
+		$destinations = wp_get_post_terms( get_the_ID(), 'destination' );
 		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
 
 		$out .= '<ul>';
@@ -102,9 +102,8 @@ if ( !function_exists('sp_tour_meta') ) {
 		
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .=	'<span class="meta-value">'; 
-		foreach ($destinations as $term_id) {
-			$trem_name = get_term( $term_id, 'destination' );
-			$dests[] = $trem_name->name;
+		foreach ($destinations as $term) {
+			$dests[] = $term->name;
 		}
 		$out .= implode(', ', $dests);
 		$out .= '</span></li>';

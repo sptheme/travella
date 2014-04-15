@@ -69,14 +69,14 @@ function sp_register_meta_boxes( $meta_boxes )
 				'options'	=> $days_of_tour
 				
 			),
-			array(
+			/*array(
 				'name' => __('Destination', 'sptheme_admin'),
 				'id'   => $prefix . 'destination',
 				'type' => 'select_advanced',
 				'options' => $destination_arr,
 				'multiple'    => true,
 				'placeholder' => __( 'Select an Item', 'sptheme_admin' ),
-			),
+			),*/
 			array(
 				'name' 		=> __('Departure', 'sptheme_admin'),
 				'id'   		=> $prefix . 'departure',
