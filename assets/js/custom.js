@@ -81,7 +81,7 @@
 
     /* Sidebar Functionality */
     $('#menu-trigger').bind('click', function(event) {
-        $('#content, #header').toggleClass('active');
+        $('#content, #header, #home-slider').toggleClass('active');
         $('#sidemenu').toggleClass('active');
         if(opened){
             opened = false;
