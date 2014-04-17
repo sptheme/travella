@@ -79,6 +79,8 @@
 			<li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/slider_3.jpg"></li>
 		</ul>
 	</div> <!-- #home-slider -->
-	<?php end; ?>
+	<?php endif; ?>
+
+	<?php get_template_part('library/content/searchform-tour'); ?>	
 
 	<div id="content">	

@@ -59,13 +59,14 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_style('normalize', SP_ASSETS_THEME . 'css/normalize.css', false, '1');
 		wp_enqueue_style('base', SP_ASSETS_THEME . 'css/base.css', false, '1');
 		wp_enqueue_style('flexslider', SP_ASSETS_THEME . 'css/flexslider.css', false, '1');
+		wp_enqueue_style('jquery-ui-datepicker', SP_ASSETS_THEME . 'css/jquery-ui-1.10.4.datepicker.min.css', false, '1');
 		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, '1');
 
 		//Register scripts
 		wp_enqueue_script('modernizr', SP_ASSETS_THEME . 'js/modernizr.js', array(), SP_SCRIPTS_VERSION, false);
 		wp_enqueue_script('jquery-easing', SP_ASSETS_THEME . 'js/jquery.easing.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('flexslider', SP_ASSETS_THEME . 'js/jquery.flexslider.js', array('jquery'), SP_SCRIPTS_VERSION, true);
-		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery'), SP_SCRIPTS_VERSION, true);
+		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery', 'jquery-ui-datepicker'), SP_SCRIPTS_VERSION, true);
 
 		if ( is_singular() && comments_open() ) {
 			wp_enqueue_script( 'comment-reply' );

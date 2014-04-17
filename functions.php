@@ -38,6 +38,9 @@ if ( !isset( $currency ) )
 if ( !isset( $days_of_tour ) )
 	$days_of_tour = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15');
 
+if ( !isset( $guests ) )
+	$guests = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+
 if ( !isset( $hotel_levels ) )
 	$hotel_levels = array(
 			'1'	=> 'Level 1',

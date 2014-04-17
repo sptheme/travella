@@ -81,7 +81,7 @@
 
     /* Sidebar Functionality */
     $('#menu-trigger').bind('click', function(event) {
-        $('#content, #header, #home-slider').toggleClass('active');
+        $('#content, #header, #home-slider, #search-wrap').toggleClass('active');
         $('#sidemenu').toggleClass('active');
         if(opened){
             opened = false;
@@ -119,6 +119,11 @@
             $anchor = $parentUl.prev();
             $anchor.children('.nav-child-container').addClass('active');
         }
+    });
+
+    $( "#start_date" ).datepicker({
+        numberOfMonths: 2,
+        showButtonPanel: true
     });
     
 
