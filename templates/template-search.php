@@ -11,7 +11,7 @@ get_header(); ?>
 	</header><!-- .page-header -->
 	<?php 
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-	$args = array( 
+	/*$args = array( 
 	    'post_type' => 'tour', 
 	    's' => $_GET['term'], 
 	    'tax_query' => array(
@@ -28,6 +28,12 @@ get_header(); ?>
 	            )),
 	    'paged' => $paged, 
 	    'posts_per_page' => 2
+	    );*/
+	$args = array( 
+	    'post_type' => 'tour', 
+	    's' => $_GET['term'], 
+	    'paged' => $paged, 
+	    'posts_per_page' => 3
 	    );
 	$queryposts = new WP_Query($args); // Display all search results on one page
 
@@ -48,8 +54,7 @@ get_header(); ?>
 	            wp_pagenavi();
 	        else 
 	            echo sp_pagination($queryposts->max_num_pages); 
-
-	        wp_reset_query(); ?>
+	    ?>
 	</div>
 	<!-- End Results -->
 
@@ -57,9 +62,8 @@ get_header(); ?>
 
 	    <h3 class="entry-title"><?php _e( 'Sorry, we cannot find what you are searching for!', SP_TEXT_DOMAIN ); ?></h3>
 	    <p><?php _e( 'Please try new search again!', SP_TEXT_DOMAIN ); ?>
-	    <?php get_template_part('library/content/searchform-tour'); ?>
 
-	<?php endif; ?>
+	<?php endif; wp_reset_postdata(); ?>
 
     	
     </div><!-- #main -->
