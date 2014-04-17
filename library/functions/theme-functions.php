@@ -89,7 +89,7 @@ if ( !function_exists('sp_tour_meta') ) {
 		$tours_day = get_post_meta( get_the_ID(), 'sp_day', true ); 
 		$duration = get_post_meta( get_the_ID(), 'sp_duration', true ); 
 		$departure = get_post_meta( get_the_ID(), 'sp_departure', true ); 
-		$overview = get_post_meta( get_the_ID(), 'sp_overview', true ); 
+		//$overview = get_post_meta( get_the_ID(), 'sp_overview', true ); 
 		$tour_type = wp_get_post_terms( get_the_ID(), 'tour-type' );
 		$destinations = wp_get_post_terms( get_the_ID(), 'destination' );
 		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
@@ -119,7 +119,7 @@ if ( !function_exists('sp_tour_meta') ) {
 		$out .= implode(', ', $types); 
 		$out .= '</span></li>';
 
-		$out .= '<li class="overview">' . $overview . '</li>';
+		//$out .= '<li class="overview">' . $overview . '</li>';
 		$out .= '<li>prices: ' . sp_get_tour_rate($price_id, 'min') . '</li>';
 
 		$out .= '</ul>';
@@ -216,9 +216,21 @@ if ( !function_exists('sp_render_thumbnail_tour') ) {
 	function sp_render_thumbnail_tour(){
 		$thumb = sp_post_thumbnail('tour-thumb');
 		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
-		$out = '<img src="' . $thumb . '">';
-		$out .= '<a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>';
-		$out .= sp_get_tour_rate($price_id, 'min');
+		$tour_price = sp_get_tour_rate($price_id, 'min');
+		$out = '<div class="view view-style-1">';
+		$out .= '<img src="' . $thumb . '">';
+		$out .= '<div class="mask">';
+		$out .= '<a class="genericon genericon-search" href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '"></a>';
+		$out .= '</div>';
+		$out .= '</div>';
+		$out .= '<div class="tour-info">';
+		$out .= '<h4><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></h4>';
+		if ( $tour_price ){
+		$out .= '<small>' . __('Price per person from', SP_TEXT_DOMAIN) . '</small>';
+		$out .= '<span class="tour-price">' . $tour_price . '</span>';
+		$out .= '<a class="button light-gray" href="' . get_permalink() .'">' . __('Booking', SP_TEXT_DOMAIN) . '</a></h4>';
+		}
+		$out .= '</div>';
 		return $out;
 	}
 

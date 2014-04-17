@@ -83,4 +83,4 @@
 
 	<?php get_template_part('library/content/searchform-tour'); ?>	
 
-	<div id="content">	
+	<div id="content" class="container clearfix">	

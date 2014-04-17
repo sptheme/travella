@@ -42,13 +42,12 @@ get_header(); ?>
 	?>
 
 	<!-- Begin Results -->
-	<div class="results-list clearfix">
-	    <ol>
-
+	<div class="tour-results-list clearfix">
+	    <ul>
 	        <?php while ($queryposts->have_posts()) : $queryposts->the_post(); 
 	            echo '<li>' . sp_render_thumbnail_tour() .'</li>';  
 	        endwhile; ?>
-	    </ol>
+	    </ul>
 	    <?php // Pagination
 	        if(function_exists('wp_pagenavi'))
 	            wp_pagenavi();
