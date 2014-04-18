@@ -140,7 +140,7 @@ if ( !function_exists( 'sp_tour_photos' )){
 		if ( $tour_photos ){
 			$out .= '<ul class="tour-photos">';
 			foreach ( $tour_photos as $photo ){
-				$out .= '<li><a href="' . $photo['full_url'] . '">';
+				$out .= '<li><a class="magnific" href="' . $photo['full_url'] . '" title="' . $photo['title'] . '">';
 				$out .= '<img src="' . $photo['url'] . '" />';
 				$out .= '</a></li>';
 			}

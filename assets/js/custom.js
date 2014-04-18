@@ -121,10 +121,26 @@
         }
     });
 
+    /* Date picker search field */
     $( "#start_date" ).datepicker({
         numberOfMonths: 2,
         showButtonPanel: true
     });
     
+    /* Magnific popup */
+    $('.tour-photos').magnificPopup({
+        delegate: 'a', // child items selector, by clicking on it popup will open
+        type: 'image',
+        gallery:{
+            enabled:true
+        },
+        image:{
+            cursor: null,
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+            titleSrc: function(item) {
+              return item.el.attr('title') + '<small>by Eurasie Travel</small>';
+            }
+        }
+    });
 
 }(jQuery));
