@@ -66,6 +66,7 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		//Register scripts
 		wp_enqueue_script('modernizr', SP_ASSETS_THEME . 'js/modernizr.js', array(), SP_SCRIPTS_VERSION, false);
 		wp_enqueue_script('jquery-easing', SP_ASSETS_THEME . 'js/jquery.easing.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
+		wp_enqueue_script('jquery-validate', SP_ASSETS_THEME . 'js/jquery.validate.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('flexslider', SP_ASSETS_THEME . 'js/jquery.flexslider.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('magnific-popup', SP_ASSETS_THEME . 'js/jquery.magnific-popup.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery', 'jquery-ui-datepicker'), SP_SCRIPTS_VERSION, true);
@@ -73,6 +74,11 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		if ( is_singular() && comments_open() ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
+
+		$config_array = array(
+	        'ajaxURL' => admin_url( 'admin-ajax.php' )
+	    );
+		wp_localize_script( 'custom', 'custom_obj', $config_array );
 	}
 }
 

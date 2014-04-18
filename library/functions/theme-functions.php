@@ -121,6 +121,7 @@ if ( !function_exists('sp_tour_meta') ) {
 
 		//$out .= '<li class="overview">' . $overview . '</li>';
 		$out .= '<li>prices: ' . sp_get_tour_rate($price_id, 'min') . '</li>';
+		$out .= '<li><a class="open-booking-form" href="#booking-form">' . esc_attr__( 'Booking', SP_TEXT_DOMAIN ) . '</a></li>';
 
 		$out .= '</ul>';
 
@@ -319,6 +320,32 @@ if ( !function_exists('sp_get_tour_rate') ) {
 		}
 		
 	}
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Send tour booking information
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('send_booking_tour') ) {
+
+	function send_booking_tour(){
+		global $smof_data;
+		
+		parse_str ($_POST['tours'], $tours_arr);
+		print_r($tours_arr);
+
+		/*$emailTo = $smof_data['email_notify'];
+		$subject = 'Fast Quiz Winner name ' . $first_name . ' ' . $last_name;
+		$body = "Dear Chlatvey Admin \n\n Today Fast Quiz winner name: $last_name \n\nEmail: $email \n\nPhone: $phone";
+		$headers = 'From: '.$first_name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;*/
+		
+		mail($emailTo, $subject, $body, $headers);
+
+		die();
+	}
+
+	add_action('wp_ajax_nopriv_send_booking_tour', 'send_booking_tour'); //executes for users that are not logged in.
+	add_action('wp_ajax_send_booking_tour', 'send_booking_tour');
+
 }
 
 

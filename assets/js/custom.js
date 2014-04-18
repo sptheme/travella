@@ -122,7 +122,7 @@
     });
 
     /* Date picker search field */
-    $( "#start_date" ).datepicker({
+    $( "#start_date, #arrive_date" ).datepicker({
         numberOfMonths: 2,
         showButtonPanel: true
     });
@@ -142,5 +142,53 @@
             }
         }
     });
+
+    /* Booking form */
+    $('.open-booking-form').magnificPopup({
+        type:'inline',
+        midClick: true
+    });
+
+    $('.send-tour-booking').validate({
+        rules: {
+            full_name: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            confirm_email: {
+                required: true,
+                equalTo: "#email"
+            },
+            phone_number: "required",
+            address: "required",
+            town: "required",
+            country: "required",
+            arrive_date: "required"
+        },
+        submitHandler: function(e) { 
+            var data = {
+                action:"send_booking_tour",
+                tours : $(this).serialize()
+            };
+            $.post( custom_obj.ajaxURL, data, function(data) {
+                    alert(data);
+                });
+            e.preventDefault();
+        }
+    });
+    /*$('.send-tour-booking').submit(function(e){
+        var data = {
+                action:"send_booking_tour",
+                tours : $(this).serialize()
+            };
+        $.post( custom_obj.ajaxURL, data, function(data) {
+                alert(data);
+            });
+        e.preventDefault();
+    });*/
+
 
 }(jQuery));
