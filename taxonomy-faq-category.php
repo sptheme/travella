@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 	<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>	
-	<div id="content" class="site-content" role="main">
+	<div id="main">
 
 		<?php if ( have_posts() ) : ?>
 

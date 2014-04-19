@@ -20,4 +20,5 @@ get_header(); ?>
 			</center>
 			
     </div><!-- #main -->
-<?php get_footer(); ?>
+<?php get_sidebar(); 
+get_footer(); ?>

@@ -18,9 +18,9 @@ function sp_widgets_init() {
 	
 	// Page Sidebar
 	register_sidebar( array(
-		'name' 			=> __( 'Page Sidebar', 'sptheme_admin' ),
-		'id' 			=> 'pape-sidebar',
-		'description' 	=> __( 'Drag widgets to present on static pages', 'sptheme_admin' ),
+		'name' 			=> __( 'Tour Sidebar', 'sptheme_admin' ),
+		'id' 			=> 'tour-sidebar',
+		'description' 	=> __( 'Drag widgets to present in tour detail page', 'sptheme_admin' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' 	=> "</div>",
 		'before_title' 	=> '<div class="widget-title"><h3>',

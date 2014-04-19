@@ -14,6 +14,6 @@ get_header(); ?>
 	<?php  ?>
 	</div>
 	<!-- #main -->	
-	<?php get_sidebar(); ?>
+	<?php get_sidebar('tour'); ?>
 	
 <?php get_footer(); ?>
