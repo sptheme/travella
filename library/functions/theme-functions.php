@@ -85,13 +85,10 @@ if ( !function_exists('sp_browser_body_class') ) {
 if ( !function_exists('sp_tour_meta') ) {
 	function sp_tour_meta(){
 
-		$out = ''; $dests = array(); $types = array();
+		$out = '';
 		$tours_day = get_post_meta( get_the_ID(), 'sp_day', true ); 
 		$duration = get_post_meta( get_the_ID(), 'sp_duration', true ); 
-		$departure = get_post_meta( get_the_ID(), 'sp_departure', true ); 
-		//$overview = get_post_meta( get_the_ID(), 'sp_overview', true ); 
-		$tour_type = wp_get_post_terms( get_the_ID(), 'tour-type' );
-		$destinations = wp_get_post_terms( get_the_ID(), 'destination' );
+		$departure = get_post_meta( get_the_ID(), 'sp_departure', true );
 		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
 
 		$out .= '<ul>';
@@ -101,23 +98,15 @@ if ( !function_exists('sp_tour_meta') ) {
 			 $tours_day) . '</span></li>';
 		
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
-		$out .=	'<span class="meta-value">'; 
-		foreach ($destinations as $term) {
-			$dests[] = $term->name;
-		}
-		$out .= implode(', ', $dests);
-		$out .= '</span></li>';
+		$out .=	sp_get_tour_destination();
+		$out .= '</li>';
 		
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Departure: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .= '<span class="meta-value">' . esc_attr__( $departure ) . '</span></li>';
 
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Type: ', SP_TEXT_DOMAIN ) . '</span>';
-		$out .=	'<span class="meta-value">'; 
-		foreach ($tour_type as $type) {
-			$types[] = $type->name;
-		}
-		$out .= implode(', ', $types); 
-		$out .= '</span></li>';
+		$out .=	sp_get_tour_type();
+		$out .= '</li>';
 
 		//$out .= '<li class="overview">' . $overview . '</li>';
 		$out .= '<li>prices: ' . sp_get_tour_rate($price_id, 'min') . '</li>';
@@ -127,6 +116,38 @@ if ( !function_exists('sp_tour_meta') ) {
 
 		return $out;
 	}
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Get tour destination
+/* ---------------------------------------------------------------------- */
+if ( !function_exists( 'sp_get_tour_destination' ) ){
+
+	function sp_get_tour_destination(){
+		$destinations = wp_get_post_terms( get_the_ID(), 'destination' );
+		foreach ($destinations as $term) {
+			$dests[] = $term->name;
+		}
+		$out = '<span class="tour-dests">' . implode(', ', $dests) . '</span>';
+		return $out;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Get tour type
+/* ---------------------------------------------------------------------- */
+if ( !function_exists( 'sp_get_tour_type' ) ){
+
+	function sp_get_tour_type(){
+		$tour_type = wp_get_post_terms( get_the_ID(), 'tour-type' );
+		foreach ($tour_type as $type) {
+			$types[] = $type->name;
+		}
+		$out = '<span class="tour-type">' . implode(', ', $types) . '</span>';
+		return $out;
+	}
+
 }
 
 /* ---------------------------------------------------------------------- */
@@ -279,6 +300,7 @@ if ( !function_exists('sp_get_related_tours') ) {
 			$out .= '<li>';
 			$out .= '<img src="' . $thumb . '">';
 			$out .= '<a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>';
+			$out .= sp_get_tour_type();
 			$out .= '</li>';
 		endwhile;
 		wp_reset_postdata(); // Restore global post data
