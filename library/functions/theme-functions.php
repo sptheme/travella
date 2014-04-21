@@ -353,16 +353,19 @@ if ( !function_exists('sp_send_booking_tour') ) {
 		global $smof_data;
 		
 		parse_str ($_POST['tours'], $tour_info);
+		$agency_email = 'sopheak@supersoftgroup.com'; //'sales@eurasietravel.com.kh';
+		($tour_info['title'] == 1 ) ? $title = 'Mr.' : $title = 'Ms.';
+
+		$emailTo = $tour_info['email'];
+		$subject = 'Hello ' . $title . ' ' . $tour_info['full_name'];
+		$body = sp_email_template( $tour_info );
+		$headers = 'From: '.$tour_info['full_name'].' <'.$emailTo.'>' . "\r\n BCC:" . $agency_email . '\r\n Reply-To: ' . $tour_info['email'];
 		
-		/*$emailTo = $smof_data['email_notify'];
-		$subject = 'Fast Quiz Winner name ' . $first_name . ' ' . $last_name;
-		$body = "Dear Chlatvey Admin \n\n Today Fast Quiz winner name: $last_name \n\nEmail: $email \n\nPhone: $phone";
-		$headers = 'From: '.$first_name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;
-		
-		mail($emailTo, $subject, $body, $headers);*/
+		mail($emailTo, $subject, $body, $headers);
 
 		$out = '<h3>Thank you for booking with us!</h3>';
 		$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
+		$out .= '<p>If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.</p>';
 		$out .= '<p>If you have any questions, please kindly contact us at: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
 		echo $out;
 
@@ -378,7 +381,7 @@ if ( !function_exists('sp_email_template') ){
 
 	function sp_email_template( $tour_info ){
 	
-		($tour_info['title'] == 1 ) ? $title = 'Mr. ' : $title = 'Ms. ';
+		($tour_info['title'] == 1 ) ? $title = 'Mr.' : $title = 'Ms.';
 		$out = 'Dear ' . $title . ' ' . $tour_info['full_name'];
 		$out .= '<p>Your request has been submitted to ' . get_bloginfo('wpurl', 'display') . ' One of our travel consultants will respond to you within 1 working day.</p>';
 		$out .= '<p><strong>Please note:</strong> If you submit incorrect information, please contact our travel consultants to change your request at <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
