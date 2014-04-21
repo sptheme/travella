@@ -66,6 +66,8 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		//Register scripts
 		wp_enqueue_script('modernizr', SP_ASSETS_THEME . 'js/modernizr.js', array(), SP_SCRIPTS_VERSION, false);
 		wp_enqueue_script('jquery-easing', SP_ASSETS_THEME . 'js/jquery.easing.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
+		wp_enqueue_script('jquery-mockjax', SP_ASSETS_THEME . 'js/jquery.mockjax.js', array('jquery'), SP_SCRIPTS_VERSION, true);
+		wp_enqueue_script('jquery-form', SP_ASSETS_THEME . 'js/jquery.form.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('jquery-validate', SP_ASSETS_THEME . 'js/jquery.validate.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('flexslider', SP_ASSETS_THEME . 'js/jquery.flexslider.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('magnific-popup', SP_ASSETS_THEME . 'js/jquery.magnific-popup.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);

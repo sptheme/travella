@@ -168,24 +168,26 @@
             country: "required",
             arrive_date: "required"
         },
-        submitHandler: function(e) { 
+        submitHandler: function (form) {
             var data = {
-                action:"send_booking_tour",
+                action:"sp_send_booking_tour",
                 tours : $(this).serialize()
             };
             $.post( custom_obj.ajaxURL, data, function(data) {
-                    alert(data);
-                });
-            e.preventDefault();
+                $('.send-tour-booking').hide();
+                $('#result').html(data);
+            });
+            return false;
         }
     });
     /*$('.send-tour-booking').submit(function(e){
         var data = {
-                action:"send_booking_tour",
+                action:"sp_send_booking_tour",
                 tours : $(this).serialize()
             };
         $.post( custom_obj.ajaxURL, data, function(data) {
-                alert(data);
+                $('.send-tour-booking').hide();
+                $('#result').html(data);
             });
         e.preventDefault();
     });*/

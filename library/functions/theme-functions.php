@@ -128,7 +128,7 @@ if ( !function_exists( 'sp_get_tour_destination' ) ){
 		foreach ($destinations as $term) {
 			$dests[] = $term->name;
 		}
-		$out = '<span class="tour-dests">' . implode(', ', $dests) . '</span>';
+		$out = implode(', ', $dests);
 		return $out;
 	}
 
@@ -144,7 +144,7 @@ if ( !function_exists( 'sp_get_tour_type' ) ){
 		foreach ($tour_type as $type) {
 			$types[] = $type->name;
 		}
-		$out = '<span class="tour-type">' . implode(', ', $types) . '</span>';
+		$out = implode(', ', $types);
 		return $out;
 	}
 
@@ -347,26 +347,99 @@ if ( !function_exists('sp_get_tour_rate') ) {
 /* ---------------------------------------------------------------------- */               							
 /*  Send tour booking information
 /* ---------------------------------------------------------------------- */
-if ( !function_exists('send_booking_tour') ) {
+if ( !function_exists('sp_send_booking_tour') ) {
 
-	function send_booking_tour(){
+	function sp_send_booking_tour(){
 		global $smof_data;
 		
-		parse_str ($_POST['tours'], $tours_arr);
-		print_r($tours_arr);
-
+		parse_str ($_POST['tours'], $tour_info);
+		
 		/*$emailTo = $smof_data['email_notify'];
 		$subject = 'Fast Quiz Winner name ' . $first_name . ' ' . $last_name;
 		$body = "Dear Chlatvey Admin \n\n Today Fast Quiz winner name: $last_name \n\nEmail: $email \n\nPhone: $phone";
-		$headers = 'From: '.$first_name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;*/
+		$headers = 'From: '.$first_name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;
 		
-		mail($emailTo, $subject, $body, $headers);
+		mail($emailTo, $subject, $body, $headers);*/
+
+		$out = '<h3>Thank you for booking with us!</h3>';
+		$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
+		$out .= '<p>If you have any questions, please kindly contact us at: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
+		echo $out;
 
 		die();
 	}
 
-	add_action('wp_ajax_nopriv_send_booking_tour', 'send_booking_tour'); //executes for users that are not logged in.
-	add_action('wp_ajax_send_booking_tour', 'send_booking_tour');
+	add_action('wp_ajax_nopriv_sp_send_booking_tour', 'sp_send_booking_tour'); //executes for users that are not logged in.
+	add_action('wp_ajax_sp_send_booking_tour', 'sp_send_booking_tour');
+
+}
+
+if ( !function_exists('sp_email_template') ){
+
+	function sp_email_template( $tour_info ){
+	
+		($tour_info['title'] == 1 ) ? $title = 'Mr. ' : $title = 'Ms. ';
+		$out = 'Dear ' . $title . ' ' . $tour_info['full_name'];
+		$out .= '<p>Your request has been submitted to ' . get_bloginfo('wpurl', 'display') . ' One of our travel consultants will respond to you within 1 working day.</p>';
+		$out .= '<p><strong>Please note:</strong> If you submit incorrect information, please contact our travel consultants to change your request at <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
+		$out .= '<p style="font-weight:bold; font-size:14px;">Please review the details below of what you selected:</p>';
+		
+		$out .= '<table style="width:700px;border-spacing:3px;font-family:Arial;font-size:12px"><tbody>';
+		$out .= '<tr>';
+		$out .= '<td colspan="2"><div style="color:#3366cc; border-bottom:2px solid #3399cc;"><strong>Customer Information</strong></div></td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Full Name:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['full_name'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Email:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['email'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Phone number:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['phone_number'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Country:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['country'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Arrive date:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['arrive_date'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td colspan="2"><div style="color:#3366cc; border-bottom:2px solid #3399cc;"><strong>Booking Information</strong></div></td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Tour name:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['tour_name'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Destination:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['destination'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Adults:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['guests'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Children:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['children'] . '</td>';
+		$out .= '</tr>';
+		$out .= '</tbody></table>';
+		$out .= '<p><strong>Special requirements: </strong>' . $tour_info['requirements'] . '</p>';
+		$out .= '<p><strong>Reservation - Eurasie Travel</strong></p>';
+		$out .= '<p style="font-size:12px;"><strong>Eurasie Travel</strong>';
+		$out .= '<br>Head office: No. AC04, St. 55, Borey Sopheak Mongkul,';
+		$out .= '<br>Sangkat Chroy Changvar, Khan Russey Keo,';
+		$out .= '<br>Phnom Penh, Cambodia.';
+		$out .= '<br>Email: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a>';
+		$out .= '<br>Tel: +855 23 426-456, 012 608-108';
+		$out .= '<br>Fax: +855 23 432-242';
+		$out .= '<br>Website: ' . get_bloginfo('wpurl', 'display') . '</p>';
+		return $out;
+	}
 
 }
 
