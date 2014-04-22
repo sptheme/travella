@@ -3,8 +3,8 @@
  * The template for displaying Search Results pages.
  */
 get_header(); ?>
+<div id="content" class="container clearfix">
 	<div id="main" role="main">
-    	
     	
         <header class="page-header">
             <h1 class="page-title">
@@ -40,5 +40,6 @@ get_header(); ?>
         <?php endif; ?>
     	
     </div><!-- #main -->
-<?php get_sidebar(); ?>
+    <?php get_sidebar(); ?>
+</div><!-- #content -->
 <?php get_footer(); ?>

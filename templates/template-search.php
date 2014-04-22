@@ -3,6 +3,7 @@
 Template Name: Search page
 */
 get_header(); ?>
+<div id="content" class="container clearfix">
 	<div id="main" role="main">
     <header class="page-header">
 	    <h1 class="page-title">
@@ -60,11 +61,12 @@ get_header(); ?>
 	<?php else : // If the search did not match any entries ?>
 
 	    <h3 class="entry-title"><?php _e( 'Sorry, we cannot find what you are searching for!', SP_TEXT_DOMAIN ); ?></h3>
-	    <p><?php _e( 'Please try new search again!', SP_TEXT_DOMAIN ); ?>
+	    <p><?php _e( 'Please try new search again!', SP_TEXT_DOMAIN ); ?></p>
 
 	<?php endif; wp_reset_postdata(); ?>
 
     	
     </div><!-- #main -->
-<?php get_sidebar(); ?>
+	<?php get_sidebar(); ?>
+</div>	
 <?php get_footer(); ?>

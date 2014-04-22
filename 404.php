@@ -4,7 +4,7 @@
  */
 
 get_header(); ?>
-
+<div id="content" class="container clearfix">	
     <div id="main" role="main">
 			<center>
 			<article id="post-0" class="post no-results not-found">
@@ -20,5 +20,6 @@ get_header(); ?>
 			</center>
 			
     </div><!-- #main -->
-<?php get_sidebar(); 
-get_footer(); ?>
+<?php get_sidebar(); ?>
+</div><!-- #content -->
+<?php get_footer(); ?>

@@ -1,7 +1,4 @@
-<?php 
-	global $smof_data; 
-?>	
-	</div> <!-- #content .container -->
+<?php global $smof_data; ?>	
 
 	<footer id="footer">
 	<div class="footer-widgets">

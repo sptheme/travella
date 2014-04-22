@@ -72,15 +72,60 @@
 		});
 	});		
 	</script>
-	<div id="home-slider" class="flexslider">
+	<section id="home-slider" class="flexslider">
 		<ul class="slides">
 			<li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/slider_1.jpg"></li>
 			<li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/slider_2.jpg"></li>
 			<li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/slider_3.jpg"></li>
 		</ul>
-	</div> <!-- #home-slider -->
+	</section> <!-- #home-slider -->
 	<?php endif; ?>
 
-	<?php get_template_part('library/content/searchform-tour'); ?>	
-
-	<div id="content" class="container clearfix">	
+	<?php get_template_part('library/content/searchform-tour'); ?>
+	<section id="destinations">
+		<div class="container clearfix">
+		<header class="section-title">
+		<h2><?php _e('TOP Destination', SP_TEXT_DOMAIN); ?></h2>
+		<p><?php _e('Your can be there with Eurasie Travel to visit <br>Asia’s popular destinations cover...', SP_TEXT_DOMAIN); ?></p>
+		</header>
+		<div class="country clearfix">
+			<img src="<?php echo SP_ASSETS_THEME; ?>images/demo/landscape.jpg" width="300" height="172">
+			<ul class="country-info">
+				<li class="left">
+					<h3>Cambodia</h3>
+					<a href="#" class="learn-more">Learn more</a>
+				</li>
+				<li class="meta-highlight right">
+					<a href="#" class="tour-amount"><b>24</b> Tours</a>
+					<a href="#"><b>7</b> Destination</a>
+				</li>
+			</ul>
+		</div> <!-- .country -->
+		<div class="country clearfix">
+			<img src="<?php echo SP_ASSETS_THEME; ?>images/demo/landscape.jpg" width="300" height="172">
+			<ul class="country-info">
+				<li class="left">
+					<h3>Vietnam</h3>
+					<a href="#" class="learn-more">Learn more</a>
+				</li>
+				<li class="meta-highlight right">
+					<a href="#" class="tour-amount"><b>12</b> Tours</a>
+					<a href="#"><b>9</b> Destination</a>
+				</li>
+			</ul>
+		</div> <!-- .country -->
+		<div class="country clearfix">
+			<img src="<?php echo SP_ASSETS_THEME; ?>images/demo/landscape.jpg" width="300" height="172">
+			<ul class="country-info">
+				<li class="left">
+					<h3>Laos</h3>
+					<a href="#" class="learn-more">Learn more</a>
+				</li>
+				<li class="meta-highlight right">
+					<a href="#" class="tour-amount"><b>8</b> Tours</a>
+					<a href="#"><b>12</b> Destination</a>
+				</li>
+			</ul>
+		</div> <!-- .country -->
+		</div>
+	</section> <!-- .main-destination -->
