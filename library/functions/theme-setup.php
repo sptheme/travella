@@ -35,7 +35,7 @@ if( !function_exists('sp_theme_setup') )
 		
 		add_image_size('tour-mini', 88, 60, true);
 		add_image_size('tour-thumb', 190, 129, true); 
-		add_image_size('tour-large', 650, 433, true ); 
+		add_image_size('tour-large', 940, 416, true ); 
 		
 	}
 

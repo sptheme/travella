@@ -156,21 +156,32 @@ if ( !function_exists( 'sp_get_tour_type' ) ){
 if ( !function_exists( 'sp_tour_photos' )){
 	function sp_tour_photos(){
 		
-		$out = '';
-		$tour_photos = rwmb_meta( 'sp_tour_potos', $args = array('type' => 'plupload_image', 'size' => 'tour-mini') ); 
+		$tour_photos = rwmb_meta( 'sp_tour_potos', $args = array('type' => 'plupload_image', 'size' => 'tour-large') ); 
 
 		if ( $tour_photos ){
-			$out .= '<ul class="tour-photos">';
+			$out ='<script type="text/javascript">
+				jQuery(document).ready(function($){
+					$("#tour-photos").flexslider({
+						animation: "slide",
+						pauseOnHover: true,
+						controlNav: false
+					});
+				});		
+				</script>';
+			$out .= '<div id="tour-photos" class="flexslider container">';
+			$out .= '<ul class="slides">';
 			foreach ( $tour_photos as $photo ){
-				$out .= '<li><a class="magnific" href="' . $photo['full_url'] . '" title="' . $photo['title'] . '">';
-				$out .= '<img src="' . $photo['url'] . '" />';
-				$out .= '</a></li>';
+				$out .= '<li>';
+				$out .= '<img src="' . $photo['url'] . '" alt="' . $photo['title'] . '" />';
+				$out .= '</li>';
 			}
 			$out .= '</ul>';
-		}
+			$out .= '</div>';
 
-		return $out;
-		
+			return $out;
+		} else {
+			return __('Highlight photos of this tour will coming soon.', SP_TEXT_DOMAIN);
+		}
 	}
 }
 
@@ -184,11 +195,11 @@ if ( !function_exists( 'sp_price_included_exlcuded' ) ){
 		$excluded = get_post_meta( get_the_ID(), 'sp_excluded', true );
 
 		$out = '<div class="price-included">';
-		$out .= '<strong>' . __( 'Price included', SP_TEXT_DOMAIN ) . '</strong>';
+		$out .= '<h5>' . __( 'Price included', SP_TEXT_DOMAIN ) . '</h5>';
 		$out .= $included;
 		$out .= '</div>';
 		$out .= '<div class="price-excluded">';
-		$out .= '<strong>' . __( 'Price excluded', SP_TEXT_DOMAIN ) . '</strong>';
+		$out .= '<h5>' . __( 'Price excluded', SP_TEXT_DOMAIN ) . '</h5>';
 		$out .= $excluded;
 		$out .= '</div>';
 
