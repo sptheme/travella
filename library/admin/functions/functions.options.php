@@ -19,7 +19,7 @@ if (!function_exists('of_options'))
 		foreach ($of_pages_obj as $of_page) {
 		    $of_pages[$of_page->ID] = $of_page->post_title; }
 		$of_pages_tmp 		= array_unshift($of_pages, "Select a page:");       
-	
+
 		//Testing 
 		$of_options_select 	= array("one","two","three","four","five"); 
 		$of_options_radio 	= array("one" => "One","two" => "Two","three" => "Three","four" => "Four","five" => "Five");
@@ -141,6 +141,12 @@ $of_options[] = array( 	"name" 		=> "Search tour page",
 						"std" 		=> "",
 						"type" 		=> "select",
 						"options"	=> $of_pages
+				);
+$of_options[] = array( 	"name" 		=> "Exclude Tour Category",
+						"desc" 		=> "Enter id of tour category will exclude from search. Can use comma to separate term/category",
+						"id" 		=> "exclude_tax_tour",
+						"std" 		=> "",
+						"type" 		=> "text"
 				);
 				
 //Social Networking

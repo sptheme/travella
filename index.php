@@ -1,7 +1,14 @@
 <?php get_header(); ?>
-	
-	<!-- <strogn>Destination</strong> -->
-	<?php //echo sp_get_all_terms_destination(); ?>
+
+	<section id="destinations">
+		<div class="container clearfix">
+		<header class="section-title">
+		<h2><?php _e('TOP Destination', SP_TEXT_DOMAIN); ?></h2>
+		<p><?php _e('Your can be there with Eurasie Travel to visit <br>Asia’s popular destinations cover...', SP_TEXT_DOMAIN); ?></p>
+		</header>
+		<?php echo sp_render_main_destinations(); ?>
+		</div>
+	</section> <!-- .main-destination -->
         
 <?php get_footer(); ?>
     
