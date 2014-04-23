@@ -15,6 +15,19 @@ require_once( SP_BASE_DIR . 'library/custom-posts/custom-posts.php');
 require_once( SP_BASE_DIR . 'library/widgets/widgets.php');
 
 /* ---------------------------------------------------------------------- */
+/*	Enqueue Custom Admin Styles and Scripts
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_admin_scripts_styles' ) ) {
+
+	function sp_admin_scripts_styles() {
+		wp_enqueue_script('custom-admin', SP_ASSETS_THEME . 'js/custom.admin.js', array('jquery') );
+		wp_enqueue_media();
+	}
+
+}	
+add_action('admin_enqueue_scripts', 'sp_admin_scripts_styles');
+
+/* ---------------------------------------------------------------------- */
 /*	Add SMOF Framework links to WordPress admin bar
 /* ---------------------------------------------------------------------- */
 require_once( SP_BASE_DIR . 'library/admin/index.php' );

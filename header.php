@@ -88,44 +88,6 @@
 		<h2><?php _e('TOP Destination', SP_TEXT_DOMAIN); ?></h2>
 		<p><?php _e('Your can be there with Eurasie Travel to visit <br>Asia’s popular destinations cover...', SP_TEXT_DOMAIN); ?></p>
 		</header>
-		<div class="country clearfix">
-			<img src="<?php echo SP_ASSETS_THEME; ?>images/demo/landscape.jpg" width="300" height="172">
-			<ul class="country-info">
-				<li class="left">
-					<h3>Cambodia</h3>
-					<a href="#" class="learn-more">Learn more</a>
-				</li>
-				<li class="meta-highlight right">
-					<a href="#" class="tour-amount"><b>24</b> Tours</a>
-					<a href="#"><b>7</b> Destination</a>
-				</li>
-			</ul>
-		</div> <!-- .country -->
-		<div class="country clearfix">
-			<img src="<?php echo SP_ASSETS_THEME; ?>images/demo/landscape.jpg" width="300" height="172">
-			<ul class="country-info">
-				<li class="left">
-					<h3>Vietnam</h3>
-					<a href="#" class="learn-more">Learn more</a>
-				</li>
-				<li class="meta-highlight right">
-					<a href="#" class="tour-amount"><b>12</b> Tours</a>
-					<a href="#"><b>9</b> Destination</a>
-				</li>
-			</ul>
-		</div> <!-- .country -->
-		<div class="country clearfix">
-			<img src="<?php echo SP_ASSETS_THEME; ?>images/demo/landscape.jpg" width="300" height="172">
-			<ul class="country-info">
-				<li class="left">
-					<h3>Laos</h3>
-					<a href="#" class="learn-more">Learn more</a>
-				</li>
-				<li class="meta-highlight right">
-					<a href="#" class="tour-amount"><b>8</b> Tours</a>
-					<a href="#"><b>12</b> Destination</a>
-				</li>
-			</ul>
-		</div> <!-- .country -->
+		<?php echo sp_render_main_destinations(); ?>
 		</div>
 	</section> <!-- .main-destination -->

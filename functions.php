@@ -68,6 +68,7 @@ if ( !isset( $type_tour_rate )){
 /* ---------------------------------------------------------------------- */
 /* theme setup */
 require_once( SP_BASE_DIR . 'library/functions/theme-setup.php');
+require_once( SP_BASE_DIR . 'library/functions/aq_resizer.php');
 require_once( SP_BASE_DIR . 'library/functions/theme-functions.php');
 
 //Theme Admin

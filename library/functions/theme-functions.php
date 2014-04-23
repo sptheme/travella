@@ -536,6 +536,42 @@ if ( !function_exists('sp_get_faqs_terms') ) {
 /* ---------------------------------------------------------------------- */               							
 /*  Retrieve term destination
 /* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_render_main_destinations') ) {
+
+	function sp_render_main_destinations(){
+		$args = array(
+				'parent'	=> 0,
+				'hide_empty' => 0
+			);
+		$main_destinations = get_terms('destination', $args);
+		$out = '';
+		if ( count($main_destinations) ) {
+			foreach ( $main_destinations as $term ) {
+				$tax_image_url = get_option( 'destination_'.$term->term_id.'_thumb', '' );
+				$image = aq_resize( $tax_image_url, 300, 172, true );
+				$out .= '<div class="country clearfix">';
+				$out .= '<img src="' . $image . '">';
+				$out .= '<ul class="country-info">';
+				$out .= '<li class="left">';
+				$out .= '<h3>' . $term->name .'</h3>';
+				$out .= '<a href="#" class="learn-more">' . __('Learn more', SP_TEXT_DOMAIN) . '</a>';
+				$out .= '</li>';
+				$out .= '<li class="meta-highlight right">';
+				$out .= '<a href="' . get_term_link( $term ) . '" class="tour-amount"><b>' . $term->count .'</b> ' . __('Tours', SP_TEXT_DOMAIN) . '</a>';
+				$out .= '<a href="' . get_term_link( $term ) . '"><b>' . wp_count_terms('destination', array('parent' => $term->term_id)) . '</b> ' . __('Destinations', SP_TEXT_DOMAIN) . '</a>';
+				$out .= '</li>';
+				$out .= '</ul>';
+				$out .= '</div>';
+			}
+		}
+		return $out;	
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Retrieve term destination
+/* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_all_terms_destination') ) {
 
 	function sp_get_all_terms_destination(){
