@@ -1,29 +1,32 @@
 /* only in content editor page */
 html .mceContentBody {
-	max-width: 650px;
+	max-width: 620px;
 }
 /* end only in content editor page */
 
 body {
-	font-family: 'Open Sans', arial, sans-serif;
-	font-size: 13px;
-	line-height: 1.4em;
+	font: 13px/1.5em "Droid Sans", Arial, sans-serif;
+	color: #6B6B6B;
 }
 
 ::-moz-selection { background: #0D9DDC; color: #fff; text-shadow: none; }
 ::selection { background: #0D9DDC; color: #fff; text-shadow: none; }
 
 h1, h2, h3, h4, h5, h6 {
-	color:#747474;	
-	font-weight: 400;
+	color:#3B3B3B;	
+	font-weight: 600;
+	line-height: 1.1em;
+	font-family: Arial, sans-serif;
+	margin-top: 0;
+	margin-bottom: 0.3em;
 }
 
-h1 { font-size: 24px; line-height: 1.1em; margin-bottom: 14px;}
-h2 { font-size: 18px; line-height: 1.1em; margin-bottom: 10px; }
-h3 { font-size: 16px; line-height: 1.1em; margin-bottom: 5px; margin-top: 20px;} /*28*/
-h4 { font-size: 14px; line-height: 1.1em; margin-bottom: 5px; margin-top: 10px;} /*21*/
-h5 { font-size: 13px; line-height: 1.1em; margin-bottom: 5px; margin-top: 10px;}
-h6 { font-size: 12px; line-height: 1.1em; margin-bottom: 0; }
+h1 { font-size: 32px; margin-top: 0;}
+h2 { font-size: 26px;}
+h3 { font-size: 24px;} /*28*/
+h4 { font-size: 20px;} /*21*/
+h5 { font-size: 18px;}
+h6 { font-size: 16px;}
 
 /* Link */
 a, a > * {
@@ -167,13 +170,16 @@ h5 + blockquote, h6 + blockquote{
 }
 
 blockquote {
-	display: block;
-	font-family: Georgia, serif;
-	font-weight: normal;
-	padding: 0 0 0 1em;
-	margin: 0 0 1.5em;
-	color: #777;
-	border-left: 1px solid #747474;
+  font-family:'Droid Serif', sans-serif;
+  font-size:15px;
+  font-style:italic;
+  border-left:3px solid #E9E9E9;
+  padding:8px 20px;
+  line-height:22px;
+  margin: 0 0 1.5em;
+}
+blockquote > p {
+  margin:0;
 }
 
 blockquote em,
@@ -195,7 +201,7 @@ table {
 td,
 th {
 	text-align: left;
-	padding: 0.6666em 1em;
+	padding: 0.2em 0.5em;
 	border: 1px solid #e5e5e5;
 }
 
@@ -205,7 +211,7 @@ th {
 }
 
 th {
-	background-color: #f9f9f9;
+	background-color: #f2f2f2;
 	font-weight :bold;
 	color: #333;
 }
