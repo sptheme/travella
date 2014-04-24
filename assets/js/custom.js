@@ -180,17 +180,6 @@
             return false;
         }
     });
-    /*$('.send-tour-booking').submit(function(e){
-        var data = {
-                action:"sp_send_booking_tour",
-                tours : $(this).serialize()
-            };
-        $.post( custom_obj.ajaxURL, data, function(data) {
-                $('.send-tour-booking').hide();
-                $('#result').html(data);
-            });
-        e.preventDefault();
-    });*/
 
 
 }(jQuery));

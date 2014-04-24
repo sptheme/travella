@@ -261,7 +261,7 @@ if ( !function_exists('sp_render_thumbnail_tour') ) {
 		if ( $tour_price ){
 		$out .= '<small>' . __('Price per person from', SP_TEXT_DOMAIN) . '</small>';
 		$out .= '<span class="tour-price">' . $tour_price . '</span>';
-		$out .= '<a class="button light-gray" href="' . get_permalink() .'">' . __('Booking', SP_TEXT_DOMAIN) . '</a></h4>';
+		$out .= '<a class="button yellow" href="' . get_permalink() .'">' . __('Booking', SP_TEXT_DOMAIN) . '</a></h4>';
 		}
 		$out .= '</div>';
 		return $out;
@@ -583,6 +583,49 @@ if ( !function_exists('sp_render_main_destinations') ) {
 				$out .= '</div>';
 			}
 		}
+		return $out;	
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */               							
+/*  Retrieve tour offer order by date
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_latest_tour_offer') ) {
+
+	function sp_latest_tour_offer(){
+		global $smof_data;
+
+		$exclude_location = explode(',', $smof_data['exclude_tax_tour']);
+		$args = array(
+				'post_type' => 'tour',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'tour-type',
+						'terms' => array(66)
+					)),
+				'posts_per_page' => 12,
+			);
+		$custom_query = new WP_Query($args);
+		$out ='<script type="text/javascript">
+				jQuery(document).ready(function($){
+					$("#latest-tours").flexslider({
+						animation: "slide",
+					    itemWidth: 200,
+					    itemMargin: 5,
+					    controlNav: false
+					});
+				});		
+				</script>';
+		$out .= '<div id="latest-tours" class="tour-results-list flexslider clearfix">';
+		$out .= '<ul class="slides">';
+		while ( $custom_query->have_posts() ): $custom_query->the_post();
+			$out .= '<li>' . sp_render_thumbnail_tour() .'</li>';
+		endwhile;
+		wp_reset_postdata(); // Restore global post data
+		$out .= '</ul>';
+		$out .= '</div>';
+
 		return $out;	
 	}
 
