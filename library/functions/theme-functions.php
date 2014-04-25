@@ -86,16 +86,15 @@ if ( !function_exists('sp_tour_meta') ) {
 	function sp_tour_meta(){
 
 		$out = '';
-		$tours_day = get_post_meta( get_the_ID(), 'sp_day', true ); 
-		$duration = get_post_meta( get_the_ID(), 'sp_duration', true ); 
+		$duration = get_post_meta( get_the_ID(), 'sp_day', true ); 
 		$departure = get_post_meta( get_the_ID(), 'sp_departure', true );
 		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
 
 		$out .= '<ul>';
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s night', SP_TEXT_DOMAIN ),
-			 $tours_day + 1,
-			 $tours_day) . '</span></li>';
+			 $duration + 1,
+			 $duration) . '</span></li>';
 		
 		$out .= '<li><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .=	sp_get_tour_destination();
@@ -364,15 +363,15 @@ if ( !function_exists('sp_send_booking_tour') ) {
 		global $smof_data;
 		
 		parse_str ($_POST['tours'], $tour_info);
-		$agency_email = 'sopheak@supersoftgroup.com'; //'sales@eurasietravel.com.kh';
+		/*$agency_email = 'sopheak@supersoftgroup.com'; //'sales@eurasietravel.com.kh';
 		($tour_info['title'] == 1 ) ? $title = 'Mr.' : $title = 'Ms.';
 
 		$emailTo = $tour_info['email'];
 		$subject = 'Hello ' . $title . ' ' . $tour_info['full_name'];
 		$body = sp_email_template( $tour_info );
-		$headers = 'From: '.$tour_info['full_name'].' <'.$emailTo.'>' . "\r\n BCC:" . $agency_email . '\r\n Reply-To: ' . $tour_info['email'];
+		$headers = 'Eurasie Travel'.' <'.$tour_info['tour_name'].'>' . "\r\n BCC:" . $agency_email . '\r\n Reply-To: ' . $tour_info['email'];
 		
-		mail($emailTo, $subject, $body, $headers);
+		mail($emailTo, $subject, $body, $headers);*/
 
 		$out = '<h3>Thank you for booking with us!</h3>';
 		$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
@@ -435,7 +434,7 @@ if ( !function_exists('sp_email_template') ){
 		$out .= '</tr>';
 		$out .= '<tr>';
 		$out .= '<td style="padding-left:30px;width:30%"><strong>Adults:</strong></td>';
-		$out .= '<td width="70%">' . $tour_info['guests'] . '</td>';
+		$out .= '<td width="70%">' . $tour_info['adults'] . '</td>';
 		$out .= '</tr>';
 		$out .= '<tr>';
 		$out .= '<td style="padding-left:30px;width:30%"><strong>Children:</strong></td>';
