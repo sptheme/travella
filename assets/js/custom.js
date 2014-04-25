@@ -171,7 +171,7 @@
         submitHandler: function (form) {
             var data = {
                 action:"sp_send_booking_tour",
-                tours : $(this).serialize()
+                tours : $('.send-tour-booking').serialize()
             };
             $.post( custom_obj.ajaxURL, data, function(data) {
                 $('.send-tour-booking').hide();

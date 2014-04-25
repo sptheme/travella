@@ -363,21 +363,23 @@ if ( !function_exists('sp_send_booking_tour') ) {
 		global $smof_data;
 		
 		parse_str ($_POST['tours'], $tour_info);
-		/*$agency_email = 'sopheak@supersoftgroup.com'; //'sales@eurasietravel.com.kh';
+		$agency_email = 'sopheak@supersoftgroup.com'; //'sales@eurasietravel.com.kh';
 		($tour_info['title'] == 1 ) ? $title = 'Mr.' : $title = 'Ms.';
 
 		$emailTo = $tour_info['email'];
 		$subject = 'Hello ' . $title . ' ' . $tour_info['full_name'];
 		$body = sp_email_template( $tour_info );
-		$headers = 'Eurasie Travel'.' <'.$tour_info['tour_name'].'>' . "\r\n BCC:" . $agency_email . '\r\n Reply-To: ' . $tour_info['email'];
+		$headers = 'Eurasie Travel'.' <Autoreply: '.$tour_info['tour_name'].'>' . "\r\n BCC:" . $agency_email . '\r\n Reply-To: ' . $tour_info['email'];
 		
-		mail($emailTo, $subject, $body, $headers);*/
-
-		$out = '<h3>Thank you for booking with us!</h3>';
-		$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
-		$out .= '<p>If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.</p>';
-		$out .= '<p>If you have any questions, please kindly contact us at: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
-		echo $out;
+		if (mail($emailTo, $subject, $body, $headers)){
+			$out = '<h3>Thank you for booking with us!</h3>';
+			$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
+			$out .= '<p>If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.</p>';
+			$out .= '<p>If you have any questions, please kindly contact us at: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
+			echo $out;
+		} else {
+			echo '<h5Sorry, your booking cannot be send right now.</h5><p>' . error_message . '</p>';
+		};
 
 		die();
 	}
