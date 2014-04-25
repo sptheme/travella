@@ -372,13 +372,13 @@ if ( !function_exists('sp_send_booking_tour') ) {
 		$headers = 'Eurasie Travel'.' <Autoreply: '.$tour_info['tour_name'].'>' . "\r\n BCC:" . $agency_email . '\r\n Reply-To: ' . $tour_info['email'];
 		
 		if (mail($emailTo, $subject, $body, $headers)){
-			$out = '<h3>' . __( 'Thank you for booking with us!', SP_TEXT_DOMAIN ) . '</h3>';
-			$out .= '<h5>' . __( 'We\'ll contact you within 01 working day.', SP_TEXT_DOMAIN ) . '</h5>'; 
-			$out .= '<p>' . __( 'If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.', SP_TEXT_DOMAIN ) . '</p>';
-			$out .= '<p>' . __( 'If you have any questions, please kindly contact us at: ', SP_TEXT_DOMAIN ) . '<a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
+			$out = '<h3>Thank you for booking with us!</h3>';
+			$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
+			$out .= '<p>If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.</p>';
+			$out .= '<p>If you have any questions, please kindly contact us at: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
 			echo $out;
 		} else {
-			echo '<h5>' . __( 'Sorry, your booking cannot be send right now.', SP_TEXT_DOMAIN ) . '</h5><p>' . error_message . '</p>';
+			echo '<h5>Sorry, your booking cannot be send right now.</h5><p>' . error_message . '</p>';
 		};
 
 		die();
