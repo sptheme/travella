@@ -10,7 +10,7 @@
 				<?php echo $term->name; ?>
 			</h1>
 		</header><!-- .page-header -->
-
+		<div class="tour-results-list clearfix">
 		<?php
 				// Start the Loop.
 				echo '<ul>';
@@ -30,6 +30,7 @@
 
 			endif;
 		?>
+	</div><!-- .tour-results-list clearfix -->
 	</div><!-- #content -->
 
 <?php get_sidebar(); ?>

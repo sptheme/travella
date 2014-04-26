@@ -61,6 +61,19 @@ function sp_register_meta_boxes( $meta_boxes )
 				'rows' 		=> 3,
 			),
 			array(
+				'name' 		=> __('Highlight infomation', 'sptheme_admin'),
+				'id'   		=> $prefix . 'highlight',
+				'std'  		=> '',
+				'desc' 		=> '',
+				'type' 		=> 'wysiwyg',
+				'options' 	=> array(
+					'textarea_rows' => 5,
+					'teeny'         => true,
+					'media_buttons' => false,
+				),
+				
+			),
+			array(
 				'name' 		=> __('Number of day', 'sptheme_admin'),
 				'id'   		=> $prefix . 'day',
 				'std'  		=> '1',

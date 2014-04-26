@@ -144,7 +144,7 @@
     });
 
     /* Booking form */
-    $('.open-booking-form').magnificPopup({
+    $('.open-booking-form, .open-included-box').magnificPopup({
         type:'inline',
         midClick: true
     });

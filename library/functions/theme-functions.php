@@ -86,30 +86,28 @@ if ( !function_exists('sp_tour_meta') ) {
 	function sp_tour_meta(){
 
 		$out = '';
-		$duration = get_post_meta( get_the_ID(), 'sp_day', true ); 
+		$tours_day = get_post_meta( get_the_ID(), 'sp_day', true ); 
+		$duration = get_post_meta( get_the_ID(), 'sp_duration', true ); 
 		$departure = get_post_meta( get_the_ID(), 'sp_departure', true );
-		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
 
 		$out .= '<ul>';
-		$out .= '<li><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
-		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s night', SP_TEXT_DOMAIN ),
-			 $duration + 1,
-			 $duration) . '</span></li>';
-		
-		$out .= '<li><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .= '<li class="icon-marker"><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .=	sp_get_tour_destination();
 		$out .= '</li>';
+
+		$out .= '<li class="icon-camera"><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s night', SP_TEXT_DOMAIN ),
+			 $tours_day + 1,
+			 $tours_day) . '</span></li>';
 		
-		$out .= '<li><span class="meta-label">' . esc_attr__( 'Departure: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .= '<li class="icon-bus"><span class="meta-label">' . esc_attr__( 'Departure: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .= '<span class="meta-value">' . esc_attr__( $departure ) . '</span></li>';
 
-		$out .= '<li><span class="meta-label">' . esc_attr__( 'Type: ', SP_TEXT_DOMAIN ) . '</span>';
+		$out .= '<li class="icon-tag"><span class="meta-label">' . esc_attr__( 'Type: ', SP_TEXT_DOMAIN ) . '</span>';
 		$out .=	sp_get_tour_type();
 		$out .= '</li>';
 
 		//$out .= '<li class="overview">' . $overview . '</li>';
-		$out .= '<li>prices: ' . sp_get_tour_rate($price_id, 'min') . '</li>';
-		$out .= '<li><a class="open-booking-form" href="#booking-form">' . esc_attr__( 'Booking', SP_TEXT_DOMAIN ) . '</a></li>';
 
 		$out .= '</ul>';
 
@@ -321,16 +319,70 @@ if ( !function_exists('sp_get_related_tours') ) {
 	}
 }
 
+/* ---------------------------------------------------------------------- */
+/*  Get accommodation options
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_hotel_optoins') ) {
+
+	function sp_get_accommodation_optoins($price_id){
+		
+		$accommodations = maybe_unserialize(get_post_meta( $price_id, 'sp_accommodation', true ));
+		if ( $accommodations ) {
+		$out = '<table class="hotel-options">';
+		$out .= '<tr>';
+		$out .= '<th>' . esc_attr__('Option', SP_TEXT_DOMAIN) . '</th>';
+		$out .= '<th>' . esc_attr__('City', SP_TEXT_DOMAIN) . '</th>';
+		$out .= '<th>' . esc_attr__('Hotel and Room type', SP_TEXT_DOMAIN) . '</th>';
+		$out .= '<th>' . esc_attr__('# Night', SP_TEXT_DOMAIN) . '</th>';
+		$out .= '</tr>';
+		foreach ( $accommodations as $hotels => $hotel ) {
+			foreach( $hotel as $k => $v ){
+		$hotel_id = $v[0];		
+		$hotel_level = get_post_meta($hotel_id, 'sp_hotel_level', true);
+		$hotel_location = get_term_by('id', get_post_meta($hotel_id, 'sp_hotel_location', true), 'destination');
+		$hotel_website = get_post_meta($hotel_id, 'sp_hotel_website', true);
+		$out .= '<tr>';
+		if ($k < 1)
+			$out .= '<td rowspan="4">' . sprintf( esc_attr__('Opt %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</td>';
+		$out .= '<td>' . $hotel_location->name . '</td>';		
+		$out .= '<td>';
+		$out .= '<strong>' . get_the_title($hotel_id) . '</strong>(' . $hotel_level . '*) – ' . $v[1];
+		$out .= '<br><a href="' . $hotel_website . '" target="_blank">' . $hotel_website . '</a>';
+		$out .= '</td>';
+		$out .= '<td>' . ($v[2]+1) . '</td>';		
+		$out .= '</tr>';	
+			}
+		}
+		$out .= '</table>';
+		return $out;
+		} else {
+			return __('Accommodation of this tour is available yet!', SP_TEXT_DOMAIN);
+		}
+	}
+
+}	
+
+/* ---------------------------------------------------------------------- */
+/*  Get hotel info
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_hotel_infos') ) {
+
+	function sp_get_hotel_infos($hotel_id){
+		$out = get_the_title($hotel_id);
+		return $out;
+	}
+
+}	
 
 /* ---------------------------------------------------------------------- */
 /*  Get tour rate
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_tour_rate') ) {
 
-	function sp_get_tour_rate($post_id, $rate_level){
+	function sp_get_tour_rate($price_id, $rate_level){
 		global $type_tour_rate, $currency;
 
-		$tour_rates = maybe_unserialize(get_post_meta( $post_id, 'sp_tour_rate', true ));
+		$tour_rates = maybe_unserialize(get_post_meta( $price_id, 'sp_tour_rate', true ));
 		if ($tour_rates){
 			$opt_rates = array();
 			foreach ( $tour_rates as $options => $option ) {
@@ -468,13 +520,15 @@ if ( !function_exists('sp_get_hotel_posts') ) {
 		$args = array(
 				'post_type' => 'hotel',
 				'posts_per_page' => -1,
+				'order' => 'ASC',
+				'orderby' => 'name'
 			);
 		$custom_query = new WP_Query($args);
 		if ( $custom_query->have_posts() ) {
 			while( $custom_query->have_posts() )
 			{
 				$post = $custom_query->next_post();
-				$options[$post->post_title] = $post->post_title;
+				$options[$post->ID] = $post->post_title;
 			}
 		}
 		return $options;
