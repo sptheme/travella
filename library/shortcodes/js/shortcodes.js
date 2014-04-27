@@ -28,8 +28,7 @@
 		header:'.accordion > .accordion-title',
 		autoHeight:false,
 		heightStyle: "content",
-		collapsible:true,
-		active:false
+		collapsible:true
 	});
 
 	/*--------------------------------------------------------------------------------------*/

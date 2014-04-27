@@ -10,8 +10,7 @@ function register_buttons( $buttons ) {
 	array_push( $buttons, 'horz_rule' );
 	array_push( $buttons, 'email_encoder' );
 	array_push( $buttons, 'slider' );
-	array_push( $buttons, 'portfolio' );
-	array_push( $buttons, 'biography' );
+	array_push( $buttons, 'accordion' );
 
     return $buttons;
 }
@@ -23,6 +22,7 @@ function add_plugins($plugin_array) {
 	$plugin_array['horz_rule']		= $js_path . 'sc-hr.js';
 	$plugin_array['email_encoder']	= $js_path . 'sc-email-encoder.js';
 	$plugin_array['slider']			= $js_path . 'sc-slider.js';
+	$plugin_array['accordion']		= $js_path . 'sc-accordion.js';
 	
     return $plugin_array;
  }

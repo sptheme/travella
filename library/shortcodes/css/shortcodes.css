@@ -112,20 +112,24 @@ ul.ss-tabs li.ui-tabs-active a {
 .gap { width:100%; display:block; margin:0; }
 
 /*  Accordion / Toggle ----------------------------------------*/
-.accordion, .toggle { background-color:#f8f8f8; margin:0 0 1px 23px; }
+.accordion, .toggle { background-color:#f8f8f8; margin-bottom:1px; }
 
 .accordion-title, .toggle-title { 
     position:relative; /* Absolute positioning of the plus and minus icon */ 
     outline: none;
 }
-
+.accordion .ui-icon{
+    float: left;
+    margin-top: 8px;
+    margin-right: 5px;
+}
 .accordion-title h5,
 .toggle-title h5 {
-    font-size: 14px;
+    font-size: 13px;
     margin:0 !important;
-    padding:6px 16px;
+    padding:10px 16px;
     outline: none;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .accordion-title .plus,
@@ -155,6 +159,8 @@ ul.ss-tabs li.ui-tabs-active a {
 .inner-content-sc { 
     padding:7px 15px 15px 15px; 
     font-size: 13px;
+    border-top:0;
+    color:#6B6B6B;
 }
 
 /* ---------------------------------------------------------------

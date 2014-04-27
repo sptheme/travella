@@ -8,7 +8,7 @@ add_action( 'wp_enqueue_scripts', 'add_script_style_sc' );
 
 function add_script_style_sc() {
 	if(!is_admin()){
-		wp_enqueue_script( 'shortcode-js',    SP_BASE_URL . 'library/shortcodes/js/shortcodes.js', array( 'jquery-ui-core', 'jquery-ui-tabs', 'jquery-ui-accordion', 'custom-scripts' ), null, true );
+		wp_enqueue_script( 'shortcode-js',    SP_BASE_URL . 'library/shortcodes/js/shortcodes.js', array( 'jquery-ui-core', 'jquery-ui-tabs', 'jquery-ui-accordion', 'custom' ), null, true );
 		wp_enqueue_style( 'shortcode', SP_BASE_URL . 'library/shortcodes/css/shortcodes.css', false, '1.0' );
 	}
 	
@@ -20,6 +20,8 @@ function sp_add_shortcodes() {
 	add_shortcode( 'hr', 'sp_hr_shortcode_sc' );
 	add_shortcode( 'email_encoder', 'sp_email_encoder_sc' );
 	add_shortcode( 'slider', 'sp_slider_sc' );
+	add_shortcode( 'accordion', 'sp_accordion_shortcode' );
+	add_shortcode( 'accordion_section', 'sp_accordion_section_shortcode' );	
 	
 }
 add_action( 'init', 'sp_add_shortcodes' );
@@ -49,6 +51,26 @@ function col( $atts, $content = null ) {
 	if ( strpos( $type, 'last' ) )
 		$out .= '<div class="clear"></div>';
 	return $out;
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* 	Accordion																			*/
+/*--------------------------------------------------------------------------------------*/
+
+// Main accordion container
+function sp_accordion_shortcode($atts, $content = null) {
+	return '<div class="accordion-container clearfix">' . return_clean($content) . '</div>';
+}
+
+// Accordion section
+function sp_accordion_section_shortcode($atts, $content = null) {
+
+	extract(shortcode_atts(array(
+		'title' => 'Title Goes Here',		
+	), $atts));
+
+	return '<div class="accordion"><div class="accordion-title"><h5>' . $title . '</h5></div><div class="inner-content-sc">' . return_clean($content) . '</div></div>';
+	
 }
 
 /*--------------------------------------------------------------------------------------*/
