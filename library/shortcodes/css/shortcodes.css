@@ -186,6 +186,8 @@
     color: inherit;
 }
 
+.ui-widget-content a{ color: #0066CC; }
+
 .ui-tabs .ui-tabs-hide { display:none !important; }
 
 /* ---------------------------------------------------------------

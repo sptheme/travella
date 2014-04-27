@@ -346,7 +346,10 @@ if ( !function_exists('sp_get_hotel_optoins') ) {
 			$out .= '<td rowspan="4">' . sprintf( esc_attr__('Opt %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</td>';
 		$out .= '<td>' . $hotel_location->name . '</td>';		
 		$out .= '<td>';
-		$out .= '<strong>' . get_the_title($hotel_id) . '</strong>(' . $hotel_level . '*) – ' . $v[1];
+		if ($hotel_level > 2)
+			$out .= '<strong>' . get_the_title($hotel_id) . '</strong> (' . $hotel_level . '*) – ' . $v[1];
+		else
+			$out .= '<strong>' . get_the_title($hotel_id) . '</strong> – ' . $v[1];
 		$out .= '<br><a href="' . $hotel_website . '" target="_blank">' . $hotel_website . '</a>';
 		$out .= '</td>';
 		$out .= '<td>' . ($v[2]+1) . '</td>';		
