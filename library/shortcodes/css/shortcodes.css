@@ -58,54 +58,6 @@
     color: #a9a9a9;
  }
 
- /* ---------------------------------------------------------------
-  * Tabs
-  * ------------------------------------------------------------ */
-ul.ss-tabs {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-left: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-ul.ss-tabs li {
-    float: left;
-    background: #fff;
-    margin-bottom: -1px;
-}
-
-ul.ss-tabs li a {
-    display: inline-block;
-    font-size: 1.1666em;
-    font-weight: bold;
-    padding: 0.5em 0.75em;
-    color: #666;
-    background: #f9f9f9;
-    border: 1px solid #e5e5e5;
-    border-left-color: #fff;
-}
-
-ul.ss-tabs li a:hover {
-    color: #333;
-    text-decoration: none;
-}
-
-ul.ss-tabs li.ui-tabs-active a {
-    background: #fff;
-    color: #333;
-    border-bottom-color: #fff;
-}
-
-.tabbed {
-    clear: both;
-    position: relative;
-    overflow: hidden;
-    padding: 1.5em 0 0;
-}
-
 /* ---------------------------------------------------------------
  * Accordion and Toggle
  * ------------------------------------------------------------ */
@@ -159,6 +111,7 @@ ul.ss-tabs li.ui-tabs-active a {
 .inner-content-sc { 
     padding:7px 15px 15px 15px; 
     font-size: 13px;
+    border:1px solid #DDDDDD!important;
     border-top:0;
     color:#6B6B6B;
 }
@@ -169,13 +122,14 @@ ul.ss-tabs li.ui-tabs-active a {
 
 .ui-tabs {
     position:relative; /* Prevents IE scroll bug */
-    padding:0 .2em;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .ui-tabs .ui-tabs-nav {
     margin:0;
     padding:0;
-    border-bottom:1px solid #e7e7e7;
+    border-bottom:1px solid #e7e7e7!important;
 }
 
 .ui-tabs .ui-tabs-nav li {
@@ -190,22 +144,21 @@ ul.ss-tabs li.ui-tabs-active a {
 
 .ui-tabs .ui-tabs-nav li a {
     background:#f4f4f4;
-    color:#999;
+    color:#555555;
     float:left;
     padding:10px 19px 8px 20px;
     border-top:1px solid #e7e7e7;
     border-right:1px solid #e7e7e7;
-    border-bottom:1px solid #e7e7e7;
 }
 
-.ui-tabs .ui-tabs-nav li:first-child a { border-left:1px solid #e7e7e7; }
+/*.ui-tabs .ui-tabs-nav li:first-child a { border-left:1px solid #0066A0; }*/
 
 .ui-tabs .ui-tabs-nav li.ui-state-active a {
     background:#fff;
-    color:#3b3c41;
-    padding:8px 19px 9px 20px;
+    color:#0066A0;
+    padding:8px 19px 8px 20px;
     border-bottom:none;
-    border-top:3px solid #DFA756;
+    border-top:3px solid #FFC700;
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a,
@@ -218,13 +171,19 @@ ul.ss-tabs li.ui-tabs-active a {
 .ui-tabs .ui-tabs-nav li a:hover,
 .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a:hover{text-decoration: none;}
 
+.ui-tabs .ui-widget-header{
+    background: none;
+    border:none;
+}
 .ui-tabs .ui-tabs-panel {
     display:block;
-    padding:7px 15px 15px 15px; 
     font-size: 13px;
-    border-right:1px solid #e7e7e7;
-    border-bottom:1px solid #e7e7e7;
-    border-left:1px solid #e7e7e7;
+}
+
+.ui-widget-content{
+    border:none;
+    padding-top:20px;
+    color: inherit;
 }
 
 .ui-tabs .ui-tabs-hide { display:none !important; }

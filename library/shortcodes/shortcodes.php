@@ -8,7 +8,7 @@ add_action( 'wp_enqueue_scripts', 'add_script_style_sc' );
 
 function add_script_style_sc() {
 	if(!is_admin()){
-		wp_enqueue_script( 'shortcode-js',    SP_BASE_URL . 'library/shortcodes/js/shortcodes.js', array( 'jquery-ui-core', 'jquery-ui-tabs', 'jquery-ui-accordion', 'custom' ), null, true );
+		wp_enqueue_script( 'shortcode-js',    SP_BASE_URL . 'library/shortcodes/js/shortcodes.js', array( 'jquery-ui-core', 'jquery-ui-tabs', 'jquery-ui-accordion' ), null, true );
 		wp_enqueue_style( 'shortcode', SP_BASE_URL . 'library/shortcodes/css/shortcodes.css', false, '1.0' );
 	}
 	
