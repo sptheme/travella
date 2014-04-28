@@ -343,7 +343,7 @@ if ( !function_exists('sp_get_hotel_optoins') ) {
 		$hotel_website = get_post_meta($hotel_id, 'sp_hotel_website', true);
 		$out .= '<tr>';
 		if ($k < 1)
-			$out .= '<td rowspan="4">' . sprintf( esc_attr__('Opt %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</td>';
+			$out .= '<td rowspan="'.count($hotel).'">' . sprintf( esc_attr__('Opt %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</td>';
 		$out .= '<td>' . $hotel_location->name . '</td>';		
 		$out .= '<td>';
 		if ($hotel_level > 2)
