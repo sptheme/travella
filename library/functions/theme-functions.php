@@ -424,9 +424,14 @@ if ( !function_exists('sp_send_booking_tour') ) {
 		$emailTo = $tour_info['email'];
 		$subject = 'Hello ' . $title . ' ' . $tour_info['full_name'];
 		$body = sp_email_template( $tour_info );
-		$headers = 'Eurasie Travel'.' <Autoreply: '.$tour_info['tour_name'].'>' . "\r\n BCC:" . $agency_email . '\r\n Reply-To: ' . $tour_info['email'];
+		//$headers = "Eurasie Travel <Autoreply: ".$tour_info["tour_name"].">" . "\r\n BCC:" . $agency_email . "\r\n Reply-To: " . $tour_info["email"];
+		$headers = "From: " . strip_tags($agency_email) . "\r\n";
+		$headers .= "Reply-To: ". strip_tags($emailTo) . "\r\n";
+		$headers .= "CC: sopheak.peas@gmail.com\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 		
-		if (mail($emailTo, $subject, $body, $headers)){
+		if (mail($agency_email, $subject, $body, $headers)){
 			$out = '<h3>Thank you for booking with us!</h3>';
 			$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
 			$out .= '<p>If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.</p>';
@@ -449,7 +454,8 @@ if ( !function_exists('sp_email_template') ){
 	function sp_email_template( $tour_info ){
 	
 		($tour_info['title'] == 1 ) ? $title = 'Mr.' : $title = 'Ms.';
-		$out = 'Dear ' . $title . ' ' . $tour_info['full_name'];
+		$out = '<html><body>';
+		$out .= 'Dear ' . $title . ' ' . $tour_info['full_name'];
 		$out .= '<p>Your request has been submitted to ' . get_bloginfo('wpurl', 'display') . ' One of our travel consultants will respond to you within 1 working day.</p>';
 		$out .= '<p><strong>Please note:</strong> If you submit incorrect information, please contact our travel consultants to change your request at <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
 		$out .= '<p style="font-weight:bold; font-size:14px;">Please review the details below of what you selected:</p>';
@@ -499,7 +505,7 @@ if ( !function_exists('sp_email_template') ){
 		$out .= '</tr>';
 		$out .= '</tbody></table>';
 		$out .= '<p><strong>Special requirements: </strong>' . $tour_info['requirements'] . '</p>';
-		$out .= '<p><strong>Reservation - Eurasie Travel</strong></p>';
+		$out .= '<br><p style="font-size:12px;"><strong>Reservation - Eurasie Travel</strong></p>';
 		$out .= '<p style="font-size:12px;"><strong>Eurasie Travel</strong>';
 		$out .= '<br>Head office: No. AC04, St. 55, Borey Sopheak Mongkul,';
 		$out .= '<br>Sangkat Chroy Changvar, Khan Russey Keo,';
@@ -508,6 +514,7 @@ if ( !function_exists('sp_email_template') ){
 		$out .= '<br>Tel: +855 23 426-456, 012 608-108';
 		$out .= '<br>Fax: +855 23 432-242';
 		$out .= '<br>Website: ' . get_bloginfo('wpurl', 'display') . '</p>';
+		$out .= '</body></html>';
 		return $out;
 	}
 
