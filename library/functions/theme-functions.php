@@ -674,7 +674,7 @@ if ( !function_exists('sp_latest_tour_offer') ) {
 				'tax_query' => array(
 					array(
 						'taxonomy' => 'tour-type',
-						'terms' => array(66)
+						'terms' => array($smof_data['tour_offer'])
 					)),
 				'posts_per_page' => 12,
 			);

@@ -142,18 +142,19 @@ $of_options[] = array( 	"name" 		=> "Search tour page",
 						"type" 		=> "select",
 						"options"	=> $of_pages
 				);
-$of_options[] = array( 	"name" 		=> "Exclude Tour Category",
-						"desc" 		=> "Enter id of tour category will exclude from search. Can use comma to separate term/category",
-						"id" 		=> "exclude_tax_tour",
-						"std" 		=> "",
-						"type" 		=> "text"
-				);
 
 //Tours
 $of_options[] = array(         "name"	=> "Tours settings",
                                "type"	=> "heading",
                                "icon" => SP_ASSETS_ADMIN . "images/icon-bus.png"
                       );
+
+$of_options[] = array( 	"name" 		=> "Exclude Destination",
+						"desc" 		=> "Enter id of location category to make it excluded from home page",
+						"id" 		=> "exclude_tax_tour",
+						"std" 		=> "",
+						"type" 		=> "text"
+				);
 
 $of_options[] = array( 	"name" 		=> "Tour offer",
 						"desc" 		=> "Enter Tour offer category",
