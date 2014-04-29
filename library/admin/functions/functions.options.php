@@ -149,7 +149,20 @@ $of_options[] = array( 	"name" 		=> "Exclude Tour Category",
 						"type" 		=> "text"
 				);
 
-//Search
+//Tours
+$of_options[] = array(         "name"	=> "Tours settings",
+                               "type"	=> "heading",
+                               "icon" => SP_ASSETS_ADMIN . "images/icon-bus.png"
+                      );
+
+$of_options[] = array( 	"name" 		=> "Tour offer",
+						"desc" 		=> "Enter Tour offer category",
+						"id" 		=> "tour_offer",
+						"std" 		=> "",
+						"type" 		=> "text"
+				);
+
+//Booking
 $of_options[] = array(         "name"	=> "Booking settings",
                                "type"	=> "heading",
                                "icon" => SP_ASSETS_ADMIN . "images/icon-email.png"
