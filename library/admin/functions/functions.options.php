@@ -148,6 +148,19 @@ $of_options[] = array( 	"name" 		=> "Exclude Tour Category",
 						"std" 		=> "",
 						"type" 		=> "text"
 				);
+
+//Search
+$of_options[] = array(         "name"	=> "Booking settings",
+                               "type"	=> "heading",
+                               "icon" => SP_ASSETS_ADMIN . "images/icon-email.png"
+                      );
+
+$of_options[] = array( 	"name" 		=> "BCC - mail",
+						"desc" 		=> "Enter email address to get email notification when clients submit tour booking",
+						"id" 		=> "bcc_notify",
+						"std" 		=> "",
+						"type" 		=> "text"
+				);
 				
 //Social Networking
 $of_options[] = array(         "name"	=> "Social Networking",

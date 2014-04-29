@@ -418,7 +418,7 @@ if ( !function_exists('sp_send_booking_tour') ) {
 		global $smof_data;
 		
 		parse_str ($_POST['tours'], $tour_info);
-		$agency_email = 'sopheak@supersoftgroup.com'; //'sales@eurasietravel.com.kh';
+		$agency_email = $smof_data['bcc_notify']; //'sales@eurasietravel.com.kh';
 		($tour_info['title'] == 1 ) ? $title = 'Mr.' : $title = 'Ms.';
 
 		$emailTo = $tour_info['email'];
@@ -427,11 +427,11 @@ if ( !function_exists('sp_send_booking_tour') ) {
 		//$headers = "Eurasie Travel <Autoreply: ".$tour_info["tour_name"].">" . "\r\n BCC:" . $agency_email . "\r\n Reply-To: " . $tour_info["email"];
 		$headers = "From: " . strip_tags($agency_email) . "\r\n";
 		$headers .= "Reply-To: ". strip_tags($emailTo) . "\r\n";
-		$headers .= "CC: sopheak.peas@gmail.com\r\n";
+		$headers .= "BCC: ". $agency_email ."\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 		
-		if (mail($agency_email, $subject, $body, $headers)){
+		if (mail($emailTo, $subject, $body, $headers)){
 			$out = '<h3>Thank you for booking with us!</h3>';
 			$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
 			$out .= '<p>If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.</p>';
@@ -477,8 +477,16 @@ if ( !function_exists('sp_email_template') ){
 		$out .= '<td width="70%">' . $tour_info['phone_number'] . '</td>';
 		$out .= '</tr>';
 		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Address:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['address'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
 		$out .= '<td style="padding-left:30px;width:30%"><strong>Country:</strong></td>';
 		$out .= '<td width="70%">' . $tour_info['country'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Twon/City:</strong></td>';
+		$out .= '<td width="70%">' . $tour_info['town'] . '</td>';
 		$out .= '</tr>';
 		$out .= '<tr>';
 		$out .= '<td style="padding-left:30px;width:30%"><strong>Arrive date:</strong></td>';
