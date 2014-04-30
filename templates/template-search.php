@@ -33,8 +33,7 @@ get_header(); ?>
 	$args = array( 
 	    'post_type' => 'tour', 
 	    's' => $_GET['term'], 
-	    'paged' => $paged, 
-	    'posts_per_page' => 3
+	    'paged' => $paged
 	    );
 	$queryposts = new WP_Query($args); // Display all search results on one page
 

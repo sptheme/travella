@@ -72,11 +72,19 @@
 		});
 	});		
 	</script>
+	<?php $home_slide_setting = get_page_by_title($smof_data['home_slider'], 'post');
+	$args = array( 'post_type' =>	'slider', 'p' => $home_slide_setting->ID, 'posts_per_page' => 1 );
+	$custom_query = new WP_Query($args); ?>
 	<section id="home-slider" class="flexslider">
 		<ul class="slides">
-			<li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/slider_1.jpg"></li>
-			<li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/slider_2.jpg"></li>
-			<li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/slider_3.jpg"></li>
+	<?php while ($custom_query->have_posts()) :
+		$custom_query->the_post();
+		$home_sliders = rwmb_meta( 'sp_sliders', $args = array('type' => 'plupload_image') );
+		foreach ( $home_sliders as $slide ){
+			echo '<li><img src="' . $slide["full_url"] . '"></li>';
+		}
+	endwhile;
+	wp_reset_postdata(); // Restore global post data ?>
 		</ul>
 	</section> <!-- #home-slider -->
 	<?php endif; ?>

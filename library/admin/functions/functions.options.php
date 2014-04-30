@@ -20,6 +20,13 @@ if (!function_exists('of_options'))
 		    $of_pages[$of_page->ID] = $of_page->post_title; }
 		$of_pages_tmp 		= array_unshift($of_pages, "Select a page:");       
 
+		//Access the WordPress Post type slide via an Array
+		$of_slides 			= array();
+		$of_slides_obj 		= get_posts('post_type=slider');    
+		foreach ($of_slides_obj as $of_slide) {
+		    $of_slides[$of_slide->ID] = $of_slide->post_title; }
+		$of_slides_tmp 		= array_unshift($of_slides, "Select a slide:");       
+
 		//Testing 
 		$of_options_select 	= array("one","two","three","four","five"); 
 		$of_options_radio 	= array("one" => "One","two" => "Two","three" => "Three","four" => "Four","five" => "Five");
@@ -120,7 +127,15 @@ $of_options[] = array( 	"name" 		=> "Custom Favicon",
 						"id" 		=> "theme_favicon",
 						"std" 		=> SP_BASE_URL . "favicon.ico",
 						"type" 		=> "upload"
-				);				
+				);
+
+$of_options[] = array( 	"name" 		=> "Home page slideshow",
+						"desc" 		=> "Select slider post for homepage",
+						"id" 		=> "home_slider",
+						"std" 		=> "",
+						"type" 		=> "select",
+						"options"	=> $of_slides
+				);								
 
 $of_options[] = array( 	"name" 		=> "Footer Text",
 						"desc" 		=> "Copyright text",

@@ -209,7 +209,7 @@ if ( !function_exists( 'sp_price_included_exlcuded' ) ){
 /* ---------------------------------------------------------------------- */
 if ( ! function_exists( 'sp_slideshow' ) ) {
 	function sp_slideshow(){
-		$sliders = rwmb_meta( 'sp_sliders', $args = array('type' => 'plupload_image', 'size' => 'work-large') ); 
+		$sliders = rwmb_meta( 'sp_sliders', $args = array('type' => 'plupload_image', 'size' => 'tour-large') ); 
 		$out = '';
 		$out .='<script type="text/javascript">
 				jQuery(document).ready(function($){
