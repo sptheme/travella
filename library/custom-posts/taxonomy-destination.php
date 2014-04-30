@@ -22,7 +22,7 @@ function sp_tax_destination_init() {
 			),
 			'sort' => true,
 			'rewrite' => array( 'slug' => 'destination' ),
-			'show_in_nav_menus' => false
+			'show_in_nav_menus' => true
 		)
 	);
 }
