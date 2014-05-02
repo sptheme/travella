@@ -322,7 +322,7 @@ if ( !function_exists('sp_get_related_tours') ) {
 /* ---------------------------------------------------------------------- */
 /*  Get accommodation options
 /* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_get_hotel_optoins') ) {
+if ( !function_exists('sp_get_accommodation_optoins') ) {
 
 	function sp_get_accommodation_optoins($price_id){
 		
