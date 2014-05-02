@@ -54,11 +54,13 @@ function sp_widgets_init() {
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-assistant.php' );
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-faqs.php' );
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-related-tours.php' );
+	require_once ( SP_BASE_DIR . 'library/widgets/widget-tours-destination.php' );
 		
 	// Register widgets
 	register_widget( 'sp_widget_assistant' );
 	register_widget( 'sp_widget_faqs' );
 	register_widget( 'sp_widget_related_tours' );
+	register_widget( 'sp_widget_tours_destination' );
 
 }
 add_action('widgets_init', 'sp_widgets_init');

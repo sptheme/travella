@@ -308,7 +308,7 @@ if ( !function_exists('sp_get_related_tours') ) {
 			$out .= '<li>';
 			$out .= '<img src="' . $thumb . '">';
 			$out .= '<a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>';
-			$out .= sp_get_tour_type();
+			$out .= '<span>' . sp_get_tour_type() . '</span>';
 			$out .= '</li>';
 		endwhile;
 		wp_reset_postdata(); // Restore global post data
@@ -708,16 +708,17 @@ if ( !function_exists('sp_latest_tour_offer') ) {
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_all_terms_destination') ) {
 
-	function sp_get_all_terms_destination(){
+	function sp_get_all_terms_destination( $terms_exclude ){
 		$args = array(
-				'parent'	=> 0,
-				'hide_empty' => 0
+				'parent'		=> 0,
+				'exclude'		=> $terms_exclude,
+				'hide_empty' 	=> 0
 			);
 		$destinations = get_terms('destination', $args);
 		if ( count($destinations) ) {
-			$out = '<dl>';
+			$out = '<dl class="tours-destination">';
 			foreach ( $destinations as $term ) {
-				$out .= '<dt><a href="' . get_term_link( $term ) . '" title="' . sprintf(__('View all post filed under %s', 'sptheme_widget'), $term->name) . '">' . $term->name . '</a><span class="post-count>">(' . $term->count . ')</span></dt>';
+				$out .= '<dt><a href="' . get_term_link( $term ) . '" title="' . sprintf(__('View all post filed under %s', SP_TEXT_DOMAIN), $term->name) . '">' . sprintf(__('%s Tours', SP_TEXT_DOMAIN), $term->name) . '</a></dt>';
 	
 				$child_args = array(
 						'child_of' => $term->term_id,
@@ -726,7 +727,7 @@ if ( !function_exists('sp_get_all_terms_destination') ) {
 				$des_child = get_terms('destination', $child_args);
 
 				foreach ($des_child as $term_child) {
-					$out .= '<dd><a href="' . get_term_link( $term_child ) . '" title="' . sprintf(__('View all post filed under %s', 'sptheme_widget'), $term_child->name) . '">' . $term_child->name . '</a><span class="post-count>">(' . $term_child->count . ')</span></dd>';	
+					$out .= '<dd><a href="' . get_term_link( $term_child ) . '" title="' . sprintf(__('View all post filed under %s', SP_TEXT_DOMAIN), $term_child->name) . '">' . $term_child->name . '</a><span class="tour-count>">' . sprintf(__('<strong>%s</strong> Tours', SP_TEXT_DOMAIN), $term_child->count) . '</span></dd>';	
 				}
 
 			}
