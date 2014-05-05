@@ -12,24 +12,6 @@ get_header(); ?>
 	</header><!-- .page-header -->
 	<?php 
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-	/*$args = array( 
-	    'post_type' => 'tour', 
-	    's' => $_GET['term'], 
-	    'tax_query' => array(
-	            'relation' => 'OR',
-	            array(
-	                'taxonomy' => 'destination',
-	                'field' => 'id',
-	                'terms' => $_GET['destination']
-	            ),
-	            array(
-	                'taxonomy' => 'tour-type',
-	                'field' => 'id',
-	                'terms' => $_GET['tour_type']
-	            )),
-	    'paged' => $paged, 
-	    'posts_per_page' => 2
-	    );*/
 	$args = array( 
 	    'post_type' => 'tour', 
 	    's' => $_GET['term'], 
