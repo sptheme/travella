@@ -67,7 +67,7 @@
 	        </div><!-- end .brand -->
 		</div><!-- end .container .clearfix -->
 	</header> <!-- #header -->
-	<?php //if ( is_home() ) : ?>
+	<?php if ( is_home() ) : ?>
 	<script type="text/javascript">
 	jQuery(document).ready(function($){
 		$("#home-slider").flexslider({
@@ -94,7 +94,7 @@
 	wp_reset_postdata(); // Restore global post data ?>
 		</ul>
 	</section> <!-- #home-slider -->
-	<?php //endif; ?>
+	<?php endif; ?>
 
 	<?php get_template_part('library/content/searchform-tour'); ?>
 	

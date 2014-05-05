@@ -81,7 +81,7 @@
 
     /* Sidebar Functionality */
     $('#menu-trigger').bind('click', function(event) {
-        $('#content, #header, #home-slider, #search-wrap').toggleClass('active');
+        $('#content, #header, #home-slider, #search-wrap, #destinations, #latest-offer, #tour-photos, #footer').toggleClass('active');
         $('#sidemenu').toggleClass('active');
         if(opened){
             opened = false;
