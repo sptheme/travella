@@ -1,0 +1,1334 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Travella\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-05 10:52+0700\n"
+"PO-Revision-Date: 2014-05-05 11:16+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;esc_attr__;esc_attr_e;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.6.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:12
+msgid "Uh oh 404 Error, we’ve lost that page!"
+msgstr "Uh oh Errore 404, abbiamo perso quella pagina!"
+
+#: ../archive.php:11
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: ../archive.php:14
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: ../archive.php:17
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: ../archive.php:20
+msgid "Archives"
+msgstr ""
+
+#: ../index.php:6
+msgid "TOP Destination"
+msgstr "TOP Destinazione"
+
+#: ../index.php:7
+msgid ""
+"Your can be there with Eurasie Travel to visit <br>Asia’s popular "
+"destinations cover..."
+msgstr ""
+"Il tuo può essere lì con Eurasie viaggio <br>per visitare le destinazioni "
+"popolari in Asia coprono ..."
+
+#: ../index.php:15
+msgid "Explore our latest offers"
+msgstr "Scopri le nostre ultime offerte"
+
+#: ../library/admin/classes/class.options_machine.php:556
+msgid "Last Backup : "
+msgstr ""
+
+#: ../library/admin/front-end/options.php:43
+#: ../library/admin/front-end/options.php:67
+msgid "Save All Changes"
+msgstr ""
+
+#: ../library/admin/front-end/options.php:68
+msgid "Options Reset"
+msgstr ""
+
+#: ../library/content/booking-form.php:1
+msgid "Submit tour booking"
+msgstr "Invia prenotazione tour"
+
+#: ../library/content/booking-form.php:1
+msgid "Personal information"
+msgstr "informazioni personali"
+
+#: ../library/content/booking-form.php:1
+msgid "Title"
+msgstr ""
+
+#: ../library/content/booking-form.php:1
+#: ../library/metaboxes/demo/all-custom-post-types.php:25
+msgid "Full name"
+msgstr "Nome e cognome"
+
+#: ../library/content/booking-form.php:1
+msgid "Email address"
+msgstr "Indirizzo e-mail"
+
+#: ../library/content/booking-form.php:1
+msgid "Confirm email address"
+msgstr "Conferma indirizzo email"
+
+#: ../library/content/booking-form.php:1
+msgid "Phone number"
+msgstr "Numero di telefono"
+
+#: ../library/content/booking-form.php:1
+msgid "Country"
+msgstr "Campestre"
+
+#: ../library/content/booking-form.php:1 ../library/metaboxes/demo/map.php:13
+msgid "Address"
+msgstr "Indirizzo"
+
+#: ../library/content/booking-form.php:1
+msgid "Town / City"
+msgstr "Città / Città"
+
+#: ../library/content/booking-form.php:1
+msgid "Tour information"
+msgstr "Informazioni sul tour"
+
+#: ../library/content/booking-form.php:1
+#, php-format
+msgid "Destination:  %1$s"
+msgstr "Destinazione: %1$s"
+
+#: ../library/content/booking-form.php:1
+#, php-format
+msgid "Duration:  %1$s days / %2$s night"
+msgstr "Durata:  %1$s Giorno / %2$s Notte"
+
+#: ../library/content/booking-form.php:1
+#: ../library/content/searchform-tour.php:1
+msgid "Arrive date"
+msgstr "Data di arrivo"
+
+#: ../library/content/booking-form.php:1
+msgid "Adults"
+msgstr "Adulto"
+
+#: ../library/content/booking-form.php:1
+msgid "Children"
+msgstr "figlio"
+
+#: ../library/content/booking-form.php:1
+msgid "Special requirements: (Not Guaranteed)"
+msgstr "Requisiti speciali: (non garantita)"
+
+#: ../library/content/booking-form.php:1
+msgid "Submit Booking"
+msgstr "Invia Booking"
+
+#: ../library/content/content-tour.php:1
+#: ../library/functions/theme-functions.php:261
+msgid "Booking"
+msgstr ""
+
+#: ../library/content/content-tour.php:1
+msgid "What’s included"
+msgstr "Che cosa è incluso"
+
+#: ../library/content/content-tour.php:1
+msgid "Highlights"
+msgstr ""
+
+#: ../library/content/content-tour.php:1
+#: ../library/custom-posts/cp-accommodation.php:50
+msgid "Accommodations"
+msgstr "Sistemazione"
+
+#: ../library/content/content-tour.php:1
+msgid "Itinerary"
+msgstr "Itinerario"
+
+#: ../library/content/error404.php:1
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "Sembra che non riusciamo a trovare quello che stai cercando."
+
+#: ../library/content/searchform-tour.php:1
+msgid "Where?"
+msgstr "Dove?"
+
+#: ../library/content/searchform-tour.php:1
+msgid "Tour location"
+msgstr "Ubicazione Tour"
+
+#: ../library/content/searchform-tour.php:1
+msgid "When?"
+msgstr "Quando?"
+
+#: ../library/content/searchform-tour.php:1
+msgid "Who?"
+msgstr "Chi?"
+
+#: ../library/content/searchform-tour.php:1
+msgid "Guests"
+msgstr "Ospite"
+
+#: ../library/custom-posts/cp-accommodation.php:51
+msgid "Accommodation"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:52
+#: ../library/custom-posts/cp-accommodation.php:54
+#: ../library/custom-posts/cp-accommodation.php:55
+msgid "Add New Accommodation"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:53
+msgid "All Accommodations"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:56
+msgid "Edit Accommodation"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:57
+msgid "View Accommodation"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:58
+msgid "Search Accommodation"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:59
+msgid "No Accommodation found"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:60
+msgid "No Accommodation found in trash"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:61
+msgid "Parent Accommodation"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:105
+msgid "Accommodation Packgage"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:106
+msgid "Min Price"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:107
+msgid "Max Price"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:108
+#: ../library/metaboxes/meta-options.php:189
+msgid "Validity"
+msgstr ""
+
+#: ../library/custom-posts/cp-accommodation.php:109
+msgid "Created date"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:50 ../library/widgets/widget-faqs.php:19
+msgid "FAQs"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:51
+msgid "FAQ"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:52
+#: ../library/custom-posts/cp-hotel.php:52
+#: ../library/custom-posts/cp-slider.php:52
+#: ../library/custom-posts/cp-tour.php:52
+msgid "Add New"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:53
+msgid "All FAQs"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:54 ../library/custom-posts/cp-faq.php:55
+msgid "Add New FAQ"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:56
+msgid "Edit FAQ"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:57
+msgid "View FAQ"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:58
+msgid "Search FAQ"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:59
+msgid "No FAQ found"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:60
+msgid "No FAQ found in trash"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:61
+msgid "Parent FAQ"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:105
+msgid "Question"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:106
+msgid "Category"
+msgstr ""
+
+#: ../library/custom-posts/cp-faq.php:107
+#: ../library/custom-posts/cp-hotel.php:108
+#: ../library/custom-posts/cp-slider.php:107
+#: ../library/custom-posts/cp-tour.php:110
+#: ../library/metaboxes/demo/date-time-js-options.php:15
+msgid "Date"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:50
+msgid "Hotels"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:51
+msgid "Hotel"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:53
+msgid "Manage Hotels"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:54
+#: ../library/custom-posts/cp-hotel.php:55
+msgid "Add New Hotel"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:56
+msgid "Edit Hotel"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:57
+msgid "View Hotel"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:58
+msgid "Search Hotel"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:59
+msgid "No Hotel found"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:60
+msgid "No Hotel found in trash"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:61
+msgid "Parent Hotel"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:104
+msgid "Hotel Name"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:105
+msgid "Hotel level"
+msgstr ""
+
+#: ../library/custom-posts/cp-hotel.php:106
+#: ../library/custom-posts/taxonomy-destination.php:12
+#: ../library/custom-posts/taxonomy-destination.php:13
+#: ../library/custom-posts/taxonomy-destination.php:21
+#: ../library/metaboxes/demo/map.php:19
+#: ../library/metaboxes/meta-options.php:254
+msgid "Location"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:50
+msgid "Sliders"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:51
+#: ../library/metaboxes/demo/demo.php:156
+#: ../library/metaboxes/demo/slider.php:9
+msgid "Slider"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:53
+msgid "All Slides"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:54
+#: ../library/custom-posts/cp-slider.php:55
+msgid "Add New Slide"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:56
+msgid "Edit Slide"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:57
+msgid "View Slide"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:58
+msgid "Search Slide"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:59
+msgid "No Slide found"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:60
+msgid "No Slide found in trash"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:61
+msgid "Parent Slide"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:105
+#: ../library/custom-posts/cp-tour.php:105
+#: ../library/custom-posts/taxonomy-destination.php:104
+msgid "Thumbnail"
+msgstr ""
+
+#: ../library/custom-posts/cp-slider.php:106
+msgid "Slide Name"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:50
+#: ../library/functions/theme-functions.php:650
+msgid "Tours"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:51
+msgid "tour"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:53
+msgid "All tours"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:54
+#: ../library/custom-posts/cp-tour.php:55
+msgid "Add New tour"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:56
+msgid "Edit tour"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:57
+msgid "View tour"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:58
+msgid "Search tour"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:59
+msgid "No tour found"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:60
+msgid "No tour found in trash"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:61
+msgid "Parent tour"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:106
+msgid "Tour Name"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:107
+#: ../library/metaboxes/meta-options.php:94
+msgid "Departure"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:108
+#: ../library/custom-posts/taxonomy-tour.php:11
+msgid "Tour type"
+msgstr ""
+
+#: ../library/custom-posts/cp-tour.php:109
+msgid "Destination"
+msgstr ""
+
+#: ../library/custom-posts/custom-posts.php:29
+msgid "Tour title"
+msgstr ""
+
+#: ../library/custom-posts/custom-posts.php:32
+msgid "Question title"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:14
+msgid "Search Location"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:15
+msgid "All Locations"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:16
+msgid "Parent Location"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:17
+msgid "Parent Location:"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:18
+msgid "Edit Location"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:19
+msgid "Update Location"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:20
+msgid "Add New Location"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:102
+msgid "Name"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:103
+msgid "Description"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:105
+msgid "Slug"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-destination.php:106
+msgid "Items"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-faq.php:12
+msgid "FAQ Category"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:12
+#: ../library/custom-posts/taxonomy-tour.php:20
+msgid "tour type"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:13
+msgid "Search tour type"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:14
+msgid "All tour types"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:15
+msgid "Parent tour type"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:16
+msgid "Parent tour type:"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:17
+msgid "Edit tour type"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:18
+msgid "Update tour type"
+msgstr ""
+
+#: ../library/custom-posts/taxonomy-tour.php:19
+msgid "Add New tour type"
+msgstr ""
+
+#: ../library/functions/admin-functions.php:44
+msgid "Theme Options"
+msgstr ""
+
+#: ../library/functions/theme-functions.php:94
+msgid "Destination: "
+msgstr "Destinazione:"
+
+#: ../library/functions/theme-functions.php:98
+msgid "Duration: "
+msgstr "Durata:"
+
+#: ../library/functions/theme-functions.php:99
+#, php-format
+msgid "%1$s days / %2$s night"
+msgstr "%1$s giorni / %2$s notte"
+
+#: ../library/functions/theme-functions.php:103
+msgid "Departure: "
+msgstr "Partenza:"
+
+#: ../library/functions/theme-functions.php:106
+msgid "Type: "
+msgstr "Tipo:"
+
+#: ../library/functions/theme-functions.php:180
+msgid "Highlight photos of this tour will coming soon."
+msgstr ""
+
+#: ../library/functions/theme-functions.php:195
+#: ../library/metaboxes/meta-options.php:128
+msgid "Price included"
+msgstr "Prezzo incluso"
+
+#: ../library/functions/theme-functions.php:199
+#: ../library/metaboxes/meta-options.php:141
+msgid "Price excluded"
+msgstr "Prezzo esclusa"
+
+#: ../library/functions/theme-functions.php:253
+#: ../library/functions/theme-functions.php:257
+#: ../library/functions/theme-functions.php:310
+#: ../library/functions/theme-functions.php:591 ../single-faq.php:21
+#: ../taxonomy-faq-category.php:18
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: ../library/functions/theme-functions.php:259
+msgid "Price per person from"
+msgstr "Prezzo per persona"
+
+#: ../library/functions/theme-functions.php:333
+msgid "Option"
+msgstr "Opzione"
+
+#: ../library/functions/theme-functions.php:334
+msgid "City"
+msgstr "Città"
+
+#: ../library/functions/theme-functions.php:335
+msgid "Hotel and Room type"
+msgstr "Hotel and Tipo di camera"
+
+#: ../library/functions/theme-functions.php:336
+msgid "# Night"
+msgstr "# Notte"
+
+#: ../library/functions/theme-functions.php:346
+#, php-format
+msgid "Opt %1$s"
+msgstr ""
+
+#: ../library/functions/theme-functions.php:362
+msgid "Accommodation of this tour is available yet!"
+msgstr "Sistemazione di questo tour è ancora disponibile!"
+
+#: ../library/functions/theme-functions.php:611
+#: ../library/functions/theme-functions.php:721
+#: ../library/functions/theme-functions.php:730
+#, php-format
+msgid "View all post filed under %s"
+msgstr ""
+
+#: ../library/functions/theme-functions.php:647
+msgid "Learn more"
+msgstr "Per saperne di più"
+
+#: ../library/functions/theme-functions.php:652
+msgid "Destinations"
+msgstr "Destinazione"
+
+#: ../library/functions/theme-functions.php:721
+#, php-format
+msgid "%s Tours"
+msgstr "%s viaggio"
+
+#: ../library/functions/theme-functions.php:730
+#, php-format
+msgid "<strong>%s</strong> Tours"
+msgstr "<strong>%s</strong> Tiaggio"
+
+#: ../library/functions/theme-functions.php:890
+msgid "Previous"
+msgstr ""
+
+#: ../library/functions/theme-functions.php:900
+msgid "Next"
+msgstr ""
+
+#: ../library/functions/theme-setup.php:29
+msgid "Main Navigation"
+msgstr ""
+
+#: ../library/functions/theme-setup.php:30
+msgid "Footer Navigation"
+msgstr ""
+
+#: ../library/functions/theme-setup.php:143
+msgid "Add Main menu"
+msgstr ""
+
+#: ../library/functions/theme-setup.php:173
+msgid "Add footer menu"
+msgstr ""
+
+#: ../library/functions/theme-setup.php:196
+#, php-format
+msgid "Search results for %s"
+msgstr ""
+
+#: ../library/functions/theme-setup.php:199
+#: ../library/functions/theme-setup.php:213
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../library/metaboxes/demo/all-custom-post-types.php:20
+msgid "Personal Information"
+msgstr ""
+
+#: ../library/metaboxes/demo/better-include.php:16
+#: ../library/metaboxes/demo/include-by-ID-or-page-template.php:8
+msgid "Meta Box Title"
+msgstr ""
+
+#: ../library/metaboxes/demo/better-include.php:19
+#: ../library/metaboxes/demo/include-by-ID-or-page-template.php:14
+msgid "Your images"
+msgstr ""
+
+#: ../library/metaboxes/demo/date-time-js-options.php:11
+msgid "Date Time Picker With JS Options"
+msgstr ""
+
+#: ../library/metaboxes/demo/date-time-js-options.php:21
+#: ../library/metaboxes/demo/demo.php:188
+#: ../library/metaboxes/meta-options.php:199
+#: ../library/metaboxes/meta-options.php:212
+msgid "(yyyy-mm-dd)"
+msgstr ""
+
+#: ../library/metaboxes/demo/date-time-js-options.php:23
+#: ../library/metaboxes/meta-options.php:201
+#: ../library/metaboxes/meta-options.php:214
+msgid "Select Date"
+msgstr ""
+
+#: ../library/metaboxes/demo/date-time-js-options.php:24
+#: ../library/metaboxes/demo/demo.php:189
+#: ../library/metaboxes/meta-options.php:202
+#: ../library/metaboxes/meta-options.php:215
+msgid "yy-mm-dd"
+msgstr ""
+
+#: ../library/metaboxes/demo/date-time-js-options.php:30
+msgid "Datetime"
+msgstr ""
+
+#: ../library/metaboxes/demo/date-time-js-options.php:41
+msgid "Time"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:38
+msgid "Standard Fields"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:57
+msgid "Text"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:61
+msgid "Text description"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:64
+msgid "Default text value"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:70
+msgid "Checkbox"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:78
+msgid "Radio"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:84 ../library/metaboxes/demo/demo.php:95
+#: ../library/metaboxes/demo/demo.php:237
+#: ../library/metaboxes/demo/demo.php:282
+msgid "Label1"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:85 ../library/metaboxes/demo/demo.php:96
+#: ../library/metaboxes/demo/demo.php:238
+#: ../library/metaboxes/demo/demo.php:283
+msgid "Label2"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:90
+#: ../library/metaboxes/demo/demo.php:277
+#: ../library/metaboxes/inc/fields/file-input.php:40
+msgid "Select"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:101
+#: ../library/metaboxes/demo/demo.php:288
+msgid "Select an Item"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:108
+msgid "Hidden value"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:112
+msgid "Password"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:118
+msgid "Textarea"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:119
+msgid "Textarea description"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:136
+msgid "Password is required"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:137
+msgid "Password must be at least 7 characters"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:145
+msgid "Advanced Fields"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:151
+msgid "Heading"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:161
+#: ../library/metaboxes/demo/slider.php:14
+msgid "$"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:162
+#: ../library/metaboxes/demo/slider.php:15
+msgid " USD"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:173
+msgid "Number"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:182
+msgid "Date picker"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:197
+msgid "Datetime picker"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:211
+msgid "Time picker"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:226
+msgid "Color picker"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:232
+msgid "Checkbox list"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:243
+msgid "Email"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:245
+msgid "Email description"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:251
+msgid "Range"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:253
+msgid "Range description"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:262
+msgid "URL"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:264
+msgid "URL description"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:270
+msgid "oEmbed"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:272
+msgid "oEmbed description"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:292
+msgid "Taxonomy"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:306
+msgid "Posts (Pages)"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:322
+msgid "WYSIWYG / Rich Text Editor"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:327
+msgid "WYSIWYG default value"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:343
+#: ../library/metaboxes/demo/force-delete.php:15
+msgid "File Upload"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:349
+msgid "File Advanced Upload"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:357
+#: ../library/metaboxes/demo/force-delete.php:22
+msgid "Image Upload"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:363
+#: ../library/metaboxes/demo/force-delete.php:28
+msgid "Thickbox Image Upload"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:369
+#: ../library/metaboxes/demo/force-delete.php:35
+msgid "Plupload Image Upload"
+msgstr ""
+
+#: ../library/metaboxes/demo/demo.php:376
+msgid "Image Advanced Upload"
+msgstr ""
+
+#: ../library/metaboxes/demo/force-delete.php:11
+msgid "Test Meta Box"
+msgstr ""
+
+#: ../library/metaboxes/demo/image-select.php:6
+msgid "Image Select Demo"
+msgstr ""
+
+#: ../library/metaboxes/demo/image-select.php:10
+msgid "Layout"
+msgstr ""
+
+#: ../library/metaboxes/demo/map.php:9
+msgid "Google Map"
+msgstr ""
+
+#: ../library/metaboxes/demo/map.php:15
+msgid "Hanoi, Vietnam"
+msgstr ""
+
+#: ../library/metaboxes/demo/oembed.php:6
+msgid "oEmbed Demo"
+msgstr ""
+
+#: ../library/metaboxes/demo/oembed.php:10
+msgid "oEmbed(s)"
+msgstr ""
+
+#: ../library/metaboxes/demo/slider.php:6
+msgid "Slider Demo"
+msgstr ""
+
+#: ../library/metaboxes/demo/url.php:6
+msgid "URL Demo"
+msgstr ""
+
+#: ../library/metaboxes/demo/url.php:10
+msgid "URL(s)"
+msgstr ""
+
+#: ../library/metaboxes/inc/field.php:185
+msgid "+"
+msgstr ""
+
+#: ../library/metaboxes/inc/field.php:202
+msgid "&#8211;"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/accommodation.php:68
+#: ../library/metaboxes/inc/fields/accommodation.php:105
+msgid "Remove hotel"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/accommodation.php:74
+#: ../library/metaboxes/inc/fields/accommodation.php:108
+msgid "+ Add Hotel"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/accommodation.php:116
+msgid "+ Add New Options"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/accommodation.php:117
+msgid "- Remove Options"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/button.php:35
+msgid "Click me"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/file-advanced.php:23
+msgid "Select Files"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/file-input.php:17
+msgid "Select File"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/file-input.php:42
+msgid "Remove"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/file.php:19
+#, php-format
+msgid "You may only upload maximum %d file"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/file.php:20
+#, php-format
+msgid "You may only upload maximum %d files"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/file.php:70
+msgid "Error: Cannot delete file"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/image-advanced.php:22
+msgid "Select Images"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/map.php:48
+msgid "Find Address"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/oembed.php:54
+msgid "Embed HTML not available."
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/oembed.php:76
+msgid "Preview"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/post.php:52
+msgid "Post"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/post.php:66
+#: ../library/metaboxes/inc/fields/taxonomy.php:40
+#: ../library/metaboxes/inc/fields/user.php:62
+#, php-format
+msgid "Select a %s"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/tour-rate.php:75
+msgid "+ Add New Rate"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/tour-rate.php:76
+msgid "- Remove Rate"
+msgstr ""
+
+#: ../library/metaboxes/inc/fields/user.php:54
+msgid "User"
+msgstr ""
+
+#: ../library/metaboxes/inc/meta-box.php:241
+msgid "Please correct the errors highlighted below and try again."
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:49
+msgid "Tour attribute"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:55
+msgid "Oveview"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:64
+msgid "Highlight infomation"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:77
+msgid "Number of day"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:103
+msgid "Tour photos"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:112
+msgid "Price"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:161
+msgid "Photo slideshow"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:167
+msgid "Upload photos"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:182
+msgid "Package infomation"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:193
+msgid "From"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:206
+msgid "To"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:220
+msgid "Accommodation options"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:231
+msgid "Price/Rate options"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:248
+msgid "Hotel infomation"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:260
+msgid "Select location"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:263
+msgid "Level"
+msgstr ""
+
+#: ../library/metaboxes/meta-options.php:270
+msgid "Website"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-portfolio-shortcode.php:16
+msgid "Portfolio category"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-portfolio-shortcode.php:19
+msgid "Select category"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-portfolio-shortcode.php:36
+#: ../library/shortcodes/popup/ajax-slider-shortcode.php:42
+#, php-format
+msgid "Insert %s"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-portfolio-shortcode.php:36
+msgid "Insert Portfolio"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-slider-shortcode.php:16
+msgid "Select slide"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-slider-shortcode.php:19
+msgid "Select slider"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-slider-shortcode.php:35
+msgid "Number of slide"
+msgstr ""
+
+#: ../library/shortcodes/popup/ajax-slider-shortcode.php:42
+msgid "Add Slideshow"
+msgstr ""
+
+#: ../library/widgets/sidebar-generator.php:22
+msgid "Add new sidebar"
+msgstr ""
+
+#: ../library/widgets/sidebar-generator.php:52
+msgid "Enter Name of the new Sidebar here"
+msgstr ""
+
+#: ../library/widgets/sidebar-generator.php:53
+msgid "Add Sidebar"
+msgstr ""
+
+#: ../library/widgets/widget-assistant.php:19
+msgid "Assistant"
+msgstr ""
+
+#: ../library/widgets/widget-assistant.php:22
+msgid "A widget that allows to view assistant information"
+msgstr ""
+
+#: ../library/widgets/widget-assistant.php:81
+#: ../library/widgets/widget-faqs.php:82
+#: ../library/widgets/widget-related-tours.php:80
+#: ../library/widgets/widget-tours-destination.php:78
+msgid "Title:"
+msgstr ""
+
+#: ../library/widgets/widget-assistant.php:86
+msgid "Descriptoin:"
+msgstr ""
+
+#: ../library/widgets/widget-assistant.php:91
+msgid "Phone number:"
+msgstr ""
+
+#: ../library/widgets/widget-faqs.php:22
+msgid "A widget that present categories of FAQs"
+msgstr ""
+
+#: ../library/widgets/widget-faqs.php:87
+msgid "Display as:"
+msgstr ""
+
+#: ../library/widgets/widget-related-tours.php:19
+msgid "Related Tours"
+msgstr ""
+
+#: ../library/widgets/widget-related-tours.php:22
+msgid "A widget that present related tours"
+msgstr ""
+
+#: ../library/widgets/widget-related-tours.php:85
+msgid "Number of posts:"
+msgstr ""
+
+#: ../library/widgets/widget-tours-destination.php:19
+msgid "Tour by Destination"
+msgstr ""
+
+#: ../library/widgets/widget-tours-destination.php:22
+msgid "A widget that allows to view tours by each destination"
+msgstr ""
+
+#: ../library/widgets/widget-tours-destination.php:83
+msgid "Destination to be excluded:"
+msgstr ""
+
+#: ../library/widgets/widget-tours-destination.php:85
+msgid "Place terms id and separate by <strong>,</strong>"
+msgstr ""
+
+#: ../library/widgets/widgets.php:10
+msgid "Default Sidebar"
+msgstr ""
+
+#: ../library/widgets/widgets.php:12
+msgid "Drag widgets into this sidebar"
+msgstr ""
+
+#: ../library/widgets/widgets.php:21
+msgid "Tour Sidebar"
+msgstr ""
+
+#: ../library/widgets/widgets.php:23
+msgid "Drag widgets to present in tour detail page"
+msgstr ""
+
+#: ../library/widgets/widgets.php:32
+msgid "FAQs Sidebar"
+msgstr ""
+
+#: ../library/widgets/widgets.php:34
+msgid "Drag widgets to present on FAQs page"
+msgstr ""
+
+#: ../library/widgets/widgets.php:43
+msgid "Footer Sidebar"
+msgstr ""
+
+#: ../library/widgets/widgets.php:45
+msgid "Drag widgets to present on footer page"
+msgstr ""
+
+#: ../search.php:11
+msgid "Search results for: "
+msgstr "Cerca risultati per:"
+
+#: ../search.php:36 ../templates/template-search.php:44
+msgid "Sorry, we cannot find what you are searching for!"
+msgstr "Spiacenti, non possiamo trovare quello che stai cercando!"
+
+#: ../search.php:37 ../templates/template-search.php:45
+msgid "Please try new search again!"
+msgstr "Riprova nuova ricerca!"
+
+#: ../sidebar-faq.php:13 ../sidebar-tour.php:15 ../sidebar.php:15
+msgid "Sidebar "
+msgstr ""
+
+#: ../sidebar-faq.php:14
+msgid ""
+"To edit this sidebar, go to admin backend's <strong><em>Appearance -&gt; "
+"Widgets</em></strong> and place widgets into the <strong><em>FAQs Sidebar</"
+"em></strong> Area"
+msgstr ""
+
+#: ../sidebar-tour.php:16
+msgid ""
+"To edit this sidebar, go to admin backend's <strong><em>Appearance -&gt; "
+"Widgets</em></strong> and place widgets into the <strong><em>Tour Sidebar</"
+"em></strong> Area"
+msgstr ""
+
+#: ../sidebar.php:16
+msgid ""
+"To edit this sidebar, go to admin backend's <strong><em>Appearance -&gt; "
+"Widgets</em></strong> and place widgets into the <strong><em>"
+msgstr ""
+
+#: ../single-faq.php:16
+msgid "Related FAQs:"
+msgstr "Domande correlate:"
+
+#: ../templates/template-search.php:10
+msgid "Search results for:"
+msgstr "Cerca risultati per:"

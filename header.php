@@ -38,6 +38,12 @@
                 <?php endif; ?>
             </a>
 		</div>
+		<?php
+             //WPML Language Switcher
+			if (function_exists('icl_get_languages')) {
+				languages_list_header();
+			}
+		?>
 	    <nav id="sidemenu">
 	    	<?php echo sp_main_navigation(); ?>
 	    </nav><!-- .primary-nav .wrap -->
@@ -61,7 +67,7 @@
 	        </div><!-- end .brand -->
 		</div><!-- end .container .clearfix -->
 	</header> <!-- #header -->
-	<?php if ( is_home() ) : ?>
+	<?php //if ( is_home() ) : ?>
 	<script type="text/javascript">
 	jQuery(document).ready(function($){
 		$("#home-slider").flexslider({
@@ -88,7 +94,7 @@
 	wp_reset_postdata(); // Restore global post data ?>
 		</ul>
 	</section> <!-- #home-slider -->
-	<?php endif; ?>
+	<?php //endif; ?>
 
 	<?php get_template_part('library/content/searchform-tour'); ?>
 	
