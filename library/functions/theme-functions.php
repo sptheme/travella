@@ -515,6 +515,10 @@ if ( !function_exists('sp_email_template') ){
 		$out .= '<td width="70%">' . $tour_info['town'] . '</td>';
 		$out .= '</tr>';
 		$out .= '<tr>';
+		$out .= '<td style="padding-left:30px;width:30%"><strong>Accommodation:</strong></td>';
+		$out .= '<td width="70%">Opt ' . $tour_info['accommodation'] . '</td>';
+		$out .= '</tr>';
+		$out .= '<tr>';
 		$out .= '<td style="padding-left:30px;width:30%"><strong>Arrive date:</strong></td>';
 		$out .= '<td width="70%">' . $tour_info['arrive_date'] . '</td>';
 		$out .= '</tr>';
