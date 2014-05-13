@@ -70,7 +70,8 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_script('jquery-form', SP_ASSETS_THEME . 'js/jquery.form.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('jquery-validate', SP_ASSETS_THEME . 'js/jquery.validate.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		wp_enqueue_script('flexslider', SP_ASSETS_THEME . 'js/jquery.flexslider.js', array('jquery'), SP_SCRIPTS_VERSION, true);
-		wp_enqueue_script('magnific-popup', SP_ASSETS_THEME . 'js/jquery.magnific-popup.min.js', array('jquery'), SP_SCRIPTS_VERSION, true);
+		if ( is_singular( 'tour' ) )
+			wp_enqueue_script('magnific-popup', SP_ASSETS_THEME . 'js/jquery.magnific-popup.min.js', array('jquery'), SP_SCRIPTS_VERSION, false);
 		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery', 'jquery-ui-datepicker'), SP_SCRIPTS_VERSION, true);
 
 		if ( is_singular() && comments_open() ) {
@@ -87,11 +88,11 @@ if( !function_exists('sp_frontend_scripts_styles') )
 /* ---------------------------------------------------------------------- */
 /*	Print customs css
 /* ---------------------------------------------------------------------- */
-if ( !function_exists('sp_print_custom_css') ){
+if ( !function_exists('sp_print_custom_css_script') ){
 
-	add_action('wp_head', 'sp_print_custom_css');
+	add_action('wp_head', 'sp_print_custom_css_script');
 	
-	function sp_print_custom_css(){
+	function sp_print_custom_css_script(){
 		global $smof_data;
 ?>
 	<style type="text/css">
@@ -99,6 +100,28 @@ if ( !function_exists('sp_print_custom_css') ){
 		
 		}
 	</style>
+	<?php if ( is_singular( 'tour' ) ) : ?>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+	    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){
+	        if ($(this).parents('.gallery').length == 0) {
+	            $(this).magnificPopup({
+	                type:'image',
+	                closeOnContentClick: true,
+	                });
+	            }
+	        });
+	    $('.gallery').each(function() {
+	        $(this).magnificPopup({
+	            delegate: 'a',
+	            type: 'image',
+	            gallery: {enabled: true}
+	            });
+	        });
+	    });
+
+	</script>
+	<?php endif; ?>
 <?php		
 	}
 }
