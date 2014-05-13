@@ -369,16 +369,22 @@ if ( !function_exists('sp_get_accommodation_optoins') ) {
 		$hotel_website = get_post_meta($hotel_id, 'sp_hotel_website', true);
 		$out .= '<tr>';
 		if ($k < 1)
-			$out .= '<td rowspan="'.count($hotel).'">' . sprintf( esc_attr__('Opt %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</td>';
-		$out .= '<td>' . $hotel_location->name . '</td>';		
-		$out .= '<td>';
-		if ($hotel_level > 2)
-			$out .= '<strong>' . get_the_title($hotel_id) . '</strong> (' . $hotel_level . '*) – ' . $v[1];
-		else
-			$out .= '<strong>' . get_the_title($hotel_id) . '</strong> – ' . $v[1];
-		$out .= '<br><a href="' . $hotel_website . '" target="_blank">' . $hotel_website . '</a>';
+			$out .= '<td rowspan="'.count($hotel).'" class="hotel-selected">' . sprintf( esc_attr__('Opt %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</td>';
+		$out .= '<td class="hotel-city">' . $hotel_location->name . '</td>';		
+		$out .= '<td class="hotel-info">';
+		if ($hotel_level > 2) {
+			$out .= '<span class="hotel-name">' . get_the_title($hotel_id) . '</span>';
+			for ( $i=1; $i<=$hotel_level; $i++){
+				$out .= '<span class="genericon genericon-star hotel-level"></span>';
+			}
+			$out .= '<br>' . $v[1];
+		} else {
+			$out .= '<span class="hotel-name">' . get_the_title($hotel_id) . '</span>';
+			$out .= '<br>' . $v[1];
+		}	
+		$out .= '- <a href="' . $hotel_website . '" target="_blank">' . esc_attr__('Detail', SP_TEXT_DOMAIN) . '</a>';
 		$out .= '</td>';
-		$out .= '<td>' . ($v[2]+1) . '</td>';		
+		$out .= '<td class="night-amount">' . ($v[2]+1) . '</td>';		
 		$out .= '</tr>';	
 			}
 		}
