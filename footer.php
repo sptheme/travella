@@ -57,9 +57,7 @@
 				<h5>Phnom Penh <a href="#">View map</a></h5>
 				<p>#AC04, Street 55, Borei Sopheak Mongkul, Chroy Changva, Cambodia</p>
 				<p>Tel: +855 23 426-456</p>
-				<h5>Siem Reap <a href="#">View map</a></h5>
-				<p>No. 28, Road 06, Svay Dangkum, Siem Reap Province, Cambodia</p>
-				<p>Tel: +855 23 426-456</p>
+				<p>Email: et.tvl@online.com.kh</p>
 			</div> <!-- .widget sp-widget-address -->	
 		</div> <!-- .container .clearfix -->
 	</div> <!-- .footer-widgets -->
