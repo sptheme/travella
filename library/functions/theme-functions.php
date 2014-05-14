@@ -395,6 +395,53 @@ if ( !function_exists('sp_get_accommodation_optoins') ) {
 		}
 	}
 
+}
+
+if ( !function_exists('sp_get_accommodation_optoins_res') ) {
+
+	function sp_get_accommodation_optoins_res($price_id){
+		
+		$accommodations = maybe_unserialize(get_post_meta( $price_id, 'sp_accommodation', true ));
+		$out = '';
+		if ( $accommodations ) {
+		foreach ( $accommodations as $hotels => $hotel ) {
+		$out .= '<table class="hotel-options">';
+		$out .= '<tr>';
+		$out .= '<th>' . sprintf( esc_attr__('Option %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</th>';
+		$out .= '<th>' . esc_attr__('# Night', SP_TEXT_DOMAIN) . '</th>';
+		$out .= '</tr>';
+			foreach( $hotel as $k => $v ){
+		$hotel_id = $v[0];		
+		$hotel_level = get_post_meta($hotel_id, 'sp_hotel_level', true);
+		$hotel_location = get_term_by('id', get_post_meta($hotel_id, 'sp_hotel_location', true), 'destination');
+		$hotel_website = get_post_meta($hotel_id, 'sp_hotel_website', true);
+		$out .= '<tr>';	
+		$out .= '<td class="hotel-info">';
+		if ($hotel_level > 2) {
+			$out .= '<span class="hotel-name">' . get_the_title($hotel_id) . '</span>';
+			for ( $i=1; $i<=$hotel_level; $i++){
+				$out .= '<span class="genericon genericon-star hotel-level"></span>';
+			}
+			$out .= '<br>' . $v[1];
+		} else {
+			$out .= '<span class="hotel-name">' . get_the_title($hotel_id) . '</span>';
+			$out .= '<br>' . $v[1];
+		}	
+		$out .= sprintf( esc_attr__(' - in %1$s', SP_TEXT_DOMAIN), $hotel_location->name);
+		$out .= ' - <a href="' . $hotel_website . '" target="_blank">' . esc_attr__('Detail', SP_TEXT_DOMAIN) . '</a>';
+		$out .= '</td>';
+		$out .= '<td class="night-amount">' . ($v[2]+1) . '</td>';		
+		$out .= '</tr>';	
+			}
+		$out .= '</table>';		
+		}
+		
+		return $out;
+		} else {
+			return __('Accommodation of this tour is available yet!', SP_TEXT_DOMAIN);
+		}
+	}
+
 }	
 
 /* ---------------------------------------------------------------------- */

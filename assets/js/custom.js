@@ -98,7 +98,7 @@
         event.preventDefault();
         
         var path = $(this).attr('href');
-        $('#content, #header').toggleClass('active');
+        $('#content, #header, #home-slider, #search-wrap, #destinations, #latest-offer, #tour-photos, #footer').toggleClass('active');
         $('#sidemenu').toggleClass('active');
         setTimeout(function() {
             window.location = path;
