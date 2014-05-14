@@ -21,12 +21,23 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 0.3em;
 }
 
-h1 { font-size: 32px; margin-top: 0;}
-h2 { font-size: 26px;}
-h3 { font-size: 24px;} /*28*/
-h4 { font-size: 20px;} /*21*/
-h5 { font-size: 18px;}
-h6 { font-size: 16px;}
+h1 { font-size: 32px;}
+
+h2 {
+  font-size:26px;
+}
+h3 {
+  font-size:22px;
+}
+h4 {
+  font-size:18px;
+}
+h5 {
+  font-size:16px;
+}
+h6 {
+  font-size:12px;
+}
 
 /* Link */
 a, a > * {

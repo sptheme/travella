@@ -698,6 +698,36 @@ if ( !function_exists('sp_render_main_destinations') ) {
 }
 
 /* ---------------------------------------------------------------------- */               							
+/*  Retrieve tour post by tour type
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_tour_type_detail') ) {
+	function sp_get_tour_type_detail(){
+		$taxonomies = sp_get_terms_list('tour-type');
+		$out = '';
+		if ( count($taxonomies) ) {
+			$out .= '<ul class="tour-type-info">';
+			foreach ( $taxonomies as $term ) {
+				$tax_image_url = get_option( 'tour_type_'.$term->term_id.'_thumb', '' );
+				$image = aq_resize( $tax_image_url, 200, 130, true );
+
+				$out .= '<li class="clearfix">';
+				$out .= '<div class="tour-type-name">';
+				$out .= '<h4>' . $term->name . '</h4>';
+				$out .= '<p>' . $term->description . '</p>';
+				$out .= '<a class="button yellow" href="' . get_term_link( $term ) . '">' . sprintf(esc_attr__('View all %s', 'sptheme_widget'), $term->name) . '</a>';
+				$out .= '</div>';
+				$out .= '<div class="tour-type-image">';
+				$out .= '<img class="wp-post-image" src="' . $image . '">';
+				$out .= '</div>';
+				$out .= '</li>';
+			}
+			$out .= '</ul>';	
+		}
+		return $out;	
+	}
+}	
+
+/* ---------------------------------------------------------------------- */               							
 /*  Retrieve tour offer order by date
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_latest_tour_offer') ) {

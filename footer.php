@@ -16,7 +16,7 @@
 					<li><a href="#">Travel tips</a></li>
 				</ul>
 				<form class="subscriber">
-					<label for="mail_subscriber">Sign up to receive Special Offers:</label>
+					<label for="mail_subscriber">Get our FREE eNewsletter:</label>
 					<input type="text" class="mail-subscriber" name="mail_subscriber" onfocus="if (this.value == 'Enter your email…') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter your email…';}" value="Enter your email…">
 					<input type="submit" value="Subscribe Now" class="btn-subscriber">
 				</form>
