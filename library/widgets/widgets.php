@@ -52,6 +52,7 @@ function sp_widgets_init() {
 	
 	// Addon widgets		
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-assistant.php' );
+	require_once ( SP_BASE_DIR . 'library/widgets/widget-enewsletter.php' );
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-faqs.php' );
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-related-tours.php' );
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-tours-destination.php' );
@@ -59,6 +60,7 @@ function sp_widgets_init() {
 		
 	// Register widgets
 	register_widget( 'sp_widget_assistant' );
+	register_widget( 'sp_widget_enewsletter' );
 	register_widget( 'sp_widget_faqs' );
 	register_widget( 'sp_widget_related_tours' );
 	register_widget( 'sp_widget_tours_destination' );

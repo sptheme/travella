@@ -1,6 +1,7 @@
 <?php global $smof_data; ?>	
 
 	<footer id="footer">
+	<?php get_sidebar('footer'); ?>	
 	<div class="footer-widgets">
 		<div class="container clearfix">
 			<div class="widget sp-widget-navigation">
