@@ -6,7 +6,7 @@
 global $post;
 ?>
 
-	<aside id="footer-sidebar" class="widget-area" role="complementary">
+	<aside id="footer-sidebar" class="footer-widgets" role="complementary">
 		<div class="container clearfix">
 	<?php if ( is_active_sidebar('footer-sidebar') ) :	
 			dynamic_sidebar('footer-sidebar');
