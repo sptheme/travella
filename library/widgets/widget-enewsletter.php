@@ -88,12 +88,12 @@ class sp_widget_enewsletter extends WP_Widget {
 		</p>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'feed_desc' ); ?>"><?php _e('feed_descriptoin:', 'sptheme_widget') ?></label>
+		<label for="<?php echo $this->get_field_id( 'feed_desc' ); ?>"><?php _e('Feed descriptoin:', 'sptheme_widget') ?></label>
 		<textarea id="<?php echo $this->get_field_id( 'feed_desc' ); ?>" name="<?php echo $this->get_field_name( 'feed_desc' ); ?>" class="widefat" rows="5"><?php echo $instance['feed_desc']; ?></textarea> 
 		</p>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'feed_address' ); ?>"><?php _e('Phone number:', 'sptheme_widget') ?></label>
+		<label for="<?php echo $this->get_field_id( 'feed_address' ); ?>"><?php _e('Feed address:', 'sptheme_widget') ?></label>
 		<input type="text" id="<?php echo $this->get_field_id( 'feed_address' ); ?>" name="<?php echo $this->get_field_name( 'feed_address' ); ?>" value="<?php echo $instance['feed_address']; ?>" class="widefat">
 		</p>
 

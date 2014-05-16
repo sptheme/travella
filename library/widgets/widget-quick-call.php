@@ -7,19 +7,19 @@
 *****************************************************
 */
 
-class sp_widget_enewsletter extends WP_Widget {
+class sp_widget_quick_call extends WP_Widget {
 	/*
 	*****************************************************
 	* widget constructor
 	*****************************************************
 	*/
 	function __construct() {
-		$id     = 'sp-widget-enewsletter';
+		$id     = 'sp-widget-quickcall';
 		$prefix = SP_THEME_NAME . ': ';
-		$name   = '<span>' . $prefix . __( 'eNewsletter', 'sptheme_widget' ) . '</span>';
+		$name   = '<span>' . $prefix . __( 'Quick call', 'sptheme_widget' ) . '</span>';
 		$widget_ops = array(
-			'classname'   => 'sp-widget-enewsletter',
-			'description' => __( 'A widget that allows to subscribe enewsletter','sptheme_widget' )
+			'classname'   => 'sp-widget-quickcall',
+			'description' => __( 'A widget present quick call ','sptheme_widget' )
 			);
 		$control_ops = array();
 
@@ -34,8 +34,9 @@ class sp_widget_enewsletter extends WP_Widget {
 		
 		/* Our variables from the widget settings. */
 		$title = apply_filters('widget_title', $instance['title']);
-		$feed_desc = $instance['feed_desc'];
-		$feed_address = $instance['feed_address'];
+		$desc = $instance['desc'];
+		$call_number = $instance['call_number'];
+		$skype_name = $instance['skype_name'];
 		
 		/* Before widget (defined by themes). */
 		$out = $before_widget;
@@ -44,13 +45,21 @@ class sp_widget_enewsletter extends WP_Widget {
 		if ( $title )
 			$out .= $before_title . $title . $after_title;
 
-		$out .= '<form class="subscriber" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(\'http://feedburner.google.com/fb/a/mailverify?uri=' . $feed_address . '\', \'popupwindow\', \'scrollbars=yes,width=550,height=520\');return true">';
-		$out .= '<label for="mail_subscriber">Get our FREE eNewsletter:</label>';
-		$out .= '<input type="text" class="mail-subscriber" name="mail" placeholder="Enter your email…">';
-		$out .= '<input type="hidden" value="' . $feed_address . '" name="uri"/>';
-        $out .= '<input type="hidden" name="loc" value="en_US"/>';
-		$out .= '<input type="submit" value="Subscribe Now" class="btn-subscriber">';
-		$out .= '</form>';
+		$out .= '<p class="call-number">' . $call_number . '</p>';
+		$out .= '<p>' . $desc . '</p>';
+
+		$out .= '<script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>';
+		$out .= '<div id="SkypeButton_Call_' . $skype_name . '_1">';
+		$out .= '<script type="text/javascript">';
+		$out .= 'Skype.ui({';
+		$out .= '"name": "call",';
+		$out .= '"element": "SkypeButton_Call_' . $skype_name . '_1",';
+		$out .= '"participants": ["' . $skype_name . '"],';
+		$out .= '"imageColor": "white",';
+		$out .= '"imageSize": 32';
+		$out .= '});';
+		$out .= '</script>';
+		$out .= '</div>';
 	
 		/* After widget (defined by themes). */		
 		$out .= $after_widget;
@@ -66,8 +75,9 @@ class sp_widget_enewsletter extends WP_Widget {
 		
 		/* Strip tags for title and name to remove HTML (important for text inputs). */
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['feed_desc'] = strip_tags( $new_instance['feed_desc'] );
-		$instance['feed_address'] = strip_tags( $new_instance['feed_address'] );
+		$instance['call_number'] = strip_tags( $new_instance['call_number'] );
+		$instance['desc'] = strip_tags( $new_instance['desc'] );
+		$instance['skype_name'] = strip_tags( $new_instance['skype_name'] );
 		
 		return $instance;
 	}
@@ -79,7 +89,7 @@ class sp_widget_enewsletter extends WP_Widget {
 	 */	
 	function form( $instance ) {
 		/* Set up some default widget settings. */
-		$defaults = array( 'title' => '', 'feed_desc' => 'Get our FREE eNewsletter:', 'feed_address' => 'EurasieTravel');
+		$defaults = array( 'title' => 'Quick Call', 'desc' => 'Call 24 hours a day, 7 days a week!', 'skype_name' => 'bonnyseng', 'call_number' => '(+855) 12 608 108');
 		$instance = wp_parse_args( (array) $instance, $defaults); ?>
 		
 		<p>
@@ -88,13 +98,18 @@ class sp_widget_enewsletter extends WP_Widget {
 		</p>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'feed_desc' ); ?>"><?php _e('feed_descriptoin:', 'sptheme_widget') ?></label>
-		<textarea id="<?php echo $this->get_field_id( 'feed_desc' ); ?>" name="<?php echo $this->get_field_name( 'feed_desc' ); ?>" class="widefat" rows="5"><?php echo $instance['feed_desc']; ?></textarea> 
+		<label for="<?php echo $this->get_field_id( 'call_number' ); ?>"><?php _e('Call number:', 'sptheme_widget') ?></label>
+		<input type="text" id="<?php echo $this->get_field_id( 'call_number' ); ?>" name="<?php echo $this->get_field_name( 'call_number' ); ?>" value="<?php echo $instance['call_number']; ?>"  class="widefat">
 		</p>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'feed_address' ); ?>"><?php _e('Phone number:', 'sptheme_widget') ?></label>
-		<input type="text" id="<?php echo $this->get_field_id( 'feed_address' ); ?>" name="<?php echo $this->get_field_name( 'feed_address' ); ?>" value="<?php echo $instance['feed_address']; ?>" class="widefat">
+		<label for="<?php echo $this->get_field_id( 'desc' ); ?>"><?php _e('Descriptoin:', 'sptheme_widget') ?></label>
+		<textarea id="<?php echo $this->get_field_id( 'desc' ); ?>" name="<?php echo $this->get_field_name( 'desc' ); ?>" class="widefat" rows="5"><?php echo $instance['desc']; ?></textarea> 
+		</p>
+
+		<p>
+		<label for="<?php echo $this->get_field_id( 'skype_name' ); ?>"><?php _e('Skype name:', 'sptheme_widget') ?></label>
+		<input type="text" id="<?php echo $this->get_field_id( 'skype_name' ); ?>" name="<?php echo $this->get_field_name( 'skype_name' ); ?>" value="<?php echo $instance['skype_name']; ?>" class="widefat">
 		</p>
 
         
