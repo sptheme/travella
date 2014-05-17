@@ -772,6 +772,29 @@ if ( !function_exists('sp_get_tour_type_detail') ) {
 		}
 		return $out;	
 	}
+}
+
+if ( !function_exists('sp_get_icons_tour_type') ) {
+	function sp_get_icons_tour_type(){
+		$taxonomies = sp_get_terms_list('tour-type');
+		$out = '';
+		if ( count($taxonomies) ) {
+			$out .= '<ul class="icons-tour-type">';
+			foreach ( $taxonomies as $term ) {
+				$tax_image_url = get_option( 'tour_type_'.$term->term_id.'_thumb', '' );
+				$image = aq_resize( $tax_image_url, 80, 80, true );
+
+				$out .= '<li class="clearfix">';
+				$out .= '<a href="' . get_term_link( $term ) . '">';
+				$out .= '<img src="' . $image . '">';
+				$out .= '<h5>' . $term->name . '</h5>';
+				$out .= '</a>';
+				$out .= '</li>';
+			}
+			$out .= '</ul>';	
+		}
+		return $out;	
+	}
 }	
 
 /* ---------------------------------------------------------------------- */               							

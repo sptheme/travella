@@ -10,6 +10,16 @@
 		</div>
 	</section> <!-- .main-destination -->
 
+	<section id="icons-tour-type">
+		<div class="container clearfix">
+		<header class="section-title">
+		<h2><?php _e('Our tour styles', SP_TEXT_DOMAIN); ?></h2>
+		<p><?php _e('get explore your dream to travel the world!', SP_TEXT_DOMAIN); ?></p>
+		</header>
+		<?php echo sp_get_icons_tour_type(); ?>
+		</div>
+	</section> <!-- .icons-tour-type -->
+
 	<section id="latest-offer">
 		<header class="section-title">
 		<h2><?php _e('Explore our latest offers', SP_TEXT_DOMAIN); ?></h2>
