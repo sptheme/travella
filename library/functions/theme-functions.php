@@ -118,7 +118,7 @@ if ( !function_exists('sp_tour_meta') ) {
 
 		$out .= '<ul>';
 		$out .= '<li class="icon-marker"><span class="meta-label">' . esc_attr__( 'Destination: ', SP_TEXT_DOMAIN ) . '</span>';
-		$out .=	sp_get_tour_destination();
+		$out .=	'<span class="destination-meta">' . sp_get_tour_destination() . '</span>';
 		$out .= '</li>';
 
 		$out .= '<li class="icon-camera"><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
