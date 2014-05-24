@@ -407,7 +407,7 @@ if ( !function_exists('sp_get_accommodation_optoins_res') ) {
 		foreach ( $accommodations as $hotels => $hotel ) {
 		$out .= '<table class="hotel-options">';
 		$out .= '<tr>';
-		$out .= '<th>' . sprintf( esc_attr__('Option %1$s', SP_TEXT_DOMAIN), ($hotels+1)) . '</th>';
+		$out .= '<th>' . sprintf( esc_attr__('Hotel %1$s Star', SP_TEXT_DOMAIN), ($hotels+3)) . '</th>';
 		$out .= '<th>' . esc_attr__('# Night', SP_TEXT_DOMAIN) . '</th>';
 		$out .= '</tr>';
 			foreach( $hotel as $k => $v ){
