@@ -6,6 +6,7 @@ require_once( SP_BASE_DIR . 'library/custom-posts/cp-tour.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-accommodation.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-hotel.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-faq.php' );
+require_once( SP_BASE_DIR . 'library/custom-posts/cp-testimonial.php' );
 
 //Taxonomies
 require_once( SP_BASE_DIR . 'library/custom-posts/taxonomy-tour.php' );

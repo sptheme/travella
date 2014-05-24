@@ -289,5 +289,32 @@ function sp_register_meta_boxes( $meta_boxes )
 		)
 	);
 
+	/* ---------------------------------------------------------------------- */
+	/*	TESTIMONIAL POST TYPE
+	/* ---------------------------------------------------------------------- */
+	$meta_boxes[] = array(
+		'id'       => 'testimonial-settings',
+		'title'    => __('Testimonial settings', 'sptheme_admin'),
+		'pages'    => array('testimonial'),
+		'context'  => 'normal',
+		'priority' => 'high',
+		'fields'   => array(
+			array(
+				'name' => __('Nationality', 'sptheme_admin'),
+				'id'   => $prefix . 'nationality',
+				'type' => 'text',
+				'std'  => '',
+				'desc' => 'e.g: France or Germany...'
+			),
+			array(
+				'name' => __('Tour link', 'sptheme_admin'),
+				'id'   => $prefix . 'tour_link',
+				'type' => 'text',
+				'std'  => '',
+				'desc' => 'Place link/url of tour that this person has commented.'
+			)
+		)
+	);
+
 	return $meta_boxes;
 }

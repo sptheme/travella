@@ -29,7 +29,8 @@ if ( !isset( $cp_menu_position ) )
 			'sp_slider'			=> 30,
 			'sp_tour'			=> 33,
 			'sp_accommodation'	=> 39,
-			'sp_faq'			=> 42
+			'sp_faq'			=> 42,
+			'sp_testimonial'	=> 45
 		);
 
 if ( !isset( $currency ) )
