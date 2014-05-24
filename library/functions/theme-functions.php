@@ -569,7 +569,7 @@ if ( !function_exists('sp_email_template') ){
 		$out .= '</tr>';
 		$out .= '<tr>';
 		$out .= '<td style="padding-left:30px;width:30%"><strong>Accommodation:</strong></td>';
-		$out .= '<td width="70%">Opt ' . $tour_info['accommodation'] . '</td>';
+		$out .= '<td width="70%">Opt ' . sprintf( esc_attr__('Hotel %1$s Star', SP_TEXT_DOMAIN), ($tour_info['accommodation']+2)) . '</td>';
 		$out .= '</tr>';
 		$out .= '<tr>';
 		$out .= '<td style="padding-left:30px;width:30%"><strong>Arrive date:</strong></td>';
