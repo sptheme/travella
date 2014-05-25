@@ -36,6 +36,10 @@ if( !function_exists('sp_theme_setup') )
 		add_image_size('tour-mini', 88, 60, true);
 		add_image_size('tour-thumb', 190, 129, true); 
 		add_image_size('tour-large', 940, 416, true ); 
+
+		update_option('medium_size_w', 200);
+		update_option('medium_size_h', 140);
+		update_option('medium_crop', 1);
 		
 	}
 
@@ -99,7 +103,7 @@ if ( !function_exists('sp_print_custom_css_script') ){
 		
 		}
 	</style>
-	<?php if ( is_singular( 'tour' ) ) : ?>
+	<?php if ( is_page() || is_singular( 'tour' ) ) : ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
 	    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){
