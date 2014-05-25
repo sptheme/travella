@@ -226,17 +226,24 @@ function sp_register_meta_boxes( $meta_boxes )
 				'type' => 'accommodation',
 				'std'  => ''
 			),
-			array(
+			/*array(
 				'type' => 'heading',
 				'name' => __( 'Price/Rate options', 'sptheme_admin' ),
 				'id'   => 'tour_price_fake_id', // Not used but needed for plugin
 			),
 			array(
-				//'name' => __('Accommodation', 'sptheme_admin'),
 				'id'   => $prefix . 'tour_rate',
 				'type' => 'tour_rate',
 				'std'  => ''
-			),
+			),*/
+			array(
+				'name' 		=> __('Tour price', 'sptheme_admin'),
+				'id'   		=> $prefix . 'min_price',
+				'std'  		=> '',
+				'desc' 		=> 'Enter tour min price, number only. e.g 300',
+				'type' 		=> 'text',
+				'size' 		=> 8
+			)
 		)
 	);		
 

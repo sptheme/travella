@@ -178,6 +178,13 @@ $of_options[] = array( 	"name" 		=> "Tour offer",
 						"type" 		=> "text"
 				);
 
+$of_options[] = array(         "name"	=> "Tour price",
+                               "desc"	=> "Show/Hide tour price",
+                               "id"		=> "is_tour_price",
+                               "std"	=> 1,
+                               "type"	=> "switch"
+                                ); 
+
 //Booking
 $of_options[] = array(         "name"	=> "Booking settings",
                                "type"	=> "heading",

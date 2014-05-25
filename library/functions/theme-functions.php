@@ -270,22 +270,30 @@ if ( ! function_exists( 'sp_slideshow' ) ) {
 if ( !function_exists('sp_render_thumbnail_tour') ) {
 
 	function sp_render_thumbnail_tour(){
+		global $smof_data;
 		$thumb = sp_post_thumbnail('tour-thumb');
 		$price_id = get_post_meta( get_the_ID(), 'sp_tour_price', true );
-		$tour_price = sp_get_tour_rate($price_id, 'min');
+		$disable_price = "";
+		if ( $smof_data['is_tour_price'] ) {
+			//$tour_price = sp_get_tour_rate($price_id, 'min');
+			$tour_price = sp_get_tour_min_price( $price_id );
+		} else {
+			$disable_price = " no-price";
+		}	
 		$out = '<div class="view view-style-1">';
 		$out .= '<img src="' . $thumb . '">';
 		$out .= '<div class="mask">';
 		$out .= '<a class="genericon genericon-search" href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '"></a>';
 		$out .= '</div>';
 		$out .= '</div>';
-		$out .= '<div class="tour-info">';
+		$out .= '<div class="tour-info' . $disable_price . '">';
 		$out .= '<h4><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a></h4>';
-		if ( $tour_price ){
+		if ( $smof_data['is_tour_price'] && $tour_price ){
 		$out .= '<small>' . __('Price per person from', SP_TEXT_DOMAIN) . '</small>';
 		$out .= '<span class="tour-price">' . $tour_price . '</span>';
 		$out .= '<a class="button yellow" href="' . get_permalink() .'">' . __('Booking', SP_TEXT_DOMAIN) . '</a></h4>';
 		}
+		$out .= '<a class="button yellow" href="' . get_permalink() .'">' . __('See Details', SP_TEXT_DOMAIN) . '</a></h4>';
 		$out .= '</div>';
 		return $out;
 	}
@@ -457,7 +465,7 @@ if ( !function_exists('sp_get_hotel_infos') ) {
 }	
 
 /* ---------------------------------------------------------------------- */
-/*  Get tour rate
+/*  Get tour rate array
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_tour_rate') ) {
 
@@ -485,6 +493,23 @@ if ( !function_exists('sp_get_tour_rate') ) {
 			return null;
 		}
 		
+	}
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Get tour min price
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_tour_min_price') ) {
+
+	function sp_get_tour_min_price($price_id){
+		global $currency;
+
+		$min_price = get_post_meta( $price_id, 'sp_min_price', true );
+		if ( $min_price ) {
+			return $min_price;
+		} else {
+			return 'Null';
+		}
 	}
 }
 
