@@ -203,7 +203,8 @@ if ( !function_exists( 'sp_tour_photos' )){
 
 			return $out;
 		} else {
-			return __('Highlight photos of this tour will coming soon.', SP_TEXT_DOMAIN);
+			//return __('Highlight photos of this tour will coming soon.', SP_TEXT_DOMAIN);
+			return false;
 		}
 	}
 }

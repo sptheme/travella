@@ -24,11 +24,12 @@ function sp_register_meta_boxes( $meta_boxes )
 	global $days_of_tour, $hotel_levels;
 	$prefix = 'sp_';
 	
-	$destination_arr = array();
-	$destinations = get_terms('destination', array('hide_empty' => 0));
-	foreach ($destinations as $term) {
-	    $destination_arr[$term->term_id] = $term->name;
+	$accommodations_arr = array();
+	$accommodations = get_terms('accommodation', array('post_status' => 'publish', 'posts_per_page' => '5',));
+	foreach ($accommodations as $term) {
+	    $accommodations_arr[$term->term_id] = $term->name;
 	}
+	$accommodation_tmp 	= array_unshift($accommodations_arr, "Select a accommodation");
 
 	$price_included = '<ul>
 					<li>Local English speaking guide as per program</li>
@@ -121,8 +122,9 @@ function sp_register_meta_boxes( $meta_boxes )
 				// Query arguments (optional). No settings means get all published posts
 				'query_args' => array(
 					'post_status' => 'publish',
-					'posts_per_page' => '-1',
-				)
+					'posts_per_page' => '5',
+				),
+				'placeholder' => __( 'Select an Item', 'sptheme_admin' ),
 			),
 			array(
 				'name' 		=> __('Price included', 'sptheme_admin'),
