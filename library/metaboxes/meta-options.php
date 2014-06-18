@@ -29,16 +29,29 @@ function sp_register_meta_boxes( $meta_boxes )
 	foreach ($accommodations as $term) {
 	    $accommodations_arr[$term->term_id] = $term->name;
 	}
-	$accommodation_tmp 	= array_unshift($accommodations_arr, "Select a accommodation");
+
+	$destinations_arr = array();
+	$destinations = get_terms('destination', array('post_status' => 'publish', 'posts_per_page' => '5',));
+	foreach ($destinations as $term) {
+	    $destinations_arr[$term->term_id] = $term->name;
+	}
 
 	$price_included = '<ul>
+					<li>05nights accommodation with daily breakfast</li>
+					<li>Meal: Half board at local restaurant as mention in program (B: Breakfast, L: Lunch and D: Dinner)
+					<li>Airport transfers & Transport by air con. vehicles as per program</li>
+					<li>Sightseeing and entrance fees as specified</li>
 					<li>Local English speaking guide as per program</li>
+					<li>Bike & 1 hour foot massage</li>
+					<li>Boat trip on Tonle Sap Lake</li>
+					<li>Cold water and towel during tours</li>
+</li>
 					</ul>';
 	$price_excluded = '<ul>
 					<li>Visa fee to Cambodia</li>
 					<li>International air ticket in-out Cambodia</li>
 					<li>Other meals, drink, personal expenses, tip</li>
-					<li>Other not mentioned in "INCLUDES"</li>
+					<li>Other not mentioned in "<strong>INCLUDES</strong>"</li>
 					</ul>';
  				 				
 
@@ -52,7 +65,7 @@ function sp_register_meta_boxes( $meta_boxes )
 		'context'  => 'normal',
 		'priority' => 'high',
 		'fields'   => array(
-			array(
+			/*array(
 				'name' 		=> __('Oveview', 'sptheme_admin'),
 				'id'   		=> $prefix . 'overview',
 				'std'  		=> '',
@@ -60,7 +73,7 @@ function sp_register_meta_boxes( $meta_boxes )
 				'type' 		=> 'textarea',
 				'cols' 		=> 20,
 				'rows' 		=> 3,
-			),
+			),*/
 			array(
 				'name' 		=> __('Highlight infomation', 'sptheme_admin'),
 				'id'   		=> $prefix . 'highlight',
@@ -109,23 +122,20 @@ function sp_register_meta_boxes( $meta_boxes )
 				'desc' => 'Max size 650px width and auto proportion of height. And allow only ' . sizeof($days_of_tour) . ' photos'
 				
 			),
-			array(
+			/*array(
 				'name'    => __( 'Price', 'sptheme_admin' ),
 				'id'      => $prefix . 'tour_price',
 				'type'    => 'post',
 				'desc'	  => 'Select price pacakge for this tour. <a href="edit.php?post_type=accommodation">Manage Price</a>',
 
-				// Post type
 				'post_type' => 'accommodation',
-				// Field type, either 'select' or 'select_advanced' (default)
 				'field_type' => 'select_advanced',
-				// Query arguments (optional). No settings means get all published posts
 				'query_args' => array(
 					'post_status' => 'publish',
 					'posts_per_page' => '5',
 				),
 				'placeholder' => __( 'Select an Item', 'sptheme_admin' ),
-			),
+			),*/
 			array(
 				'name' 		=> __('Price included', 'sptheme_admin'),
 				'id'   		=> $prefix . 'included',
@@ -264,7 +274,7 @@ function sp_register_meta_boxes( $meta_boxes )
 				'id'   => $prefix . 'hotel_location',
 				'type' => 'select_advanced',
 				'std'  => '',
-				'options' => $destination_arr,
+				'options' => $destinations_arr,
 				'multiple'    => false,
 				'placeholder' => __( 'Select location', 'sptheme_admin' ),
 			),
