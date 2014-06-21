@@ -24,12 +24,12 @@ function sp_register_meta_boxes( $meta_boxes )
 	global $days_of_tour, $hotel_levels;
 	$prefix = 'sp_';
 	
-	$accommodations_arr = array();
+	/*$accommodations_arr = array();
 	$accommodations = get_terms('accommodation', array('post_status' => 'publish', 'posts_per_page' => '5',));
 	foreach ($accommodations as $term) {
 	    $accommodations_arr[$term->term_id] = $term->name;
 	}
-	$accommodation_tmp 	= array_unshift($accommodations_arr, "Select a accommodation");
+	$accommodation_tmp 	= array_unshift($accommodations_arr, "Select a accommodation");*/
 
 	$price_included = '<ul>
 					<li>Local English speaking guide as per program</li>
@@ -252,7 +252,7 @@ function sp_register_meta_boxes( $meta_boxes )
 	/* ---------------------------------------------------------------------- */
 	/*	HOTEL POST TYPE
 	/* ---------------------------------------------------------------------- */
-	$meta_boxes[] = array(
+	/*$meta_boxes[] = array(
 		'id'       => 'hotel-settings',
 		'title'    => __('Hotel infomation', 'sptheme_admin'),
 		'pages'    => array('hotel'),
@@ -282,7 +282,7 @@ function sp_register_meta_boxes( $meta_boxes )
 				'std'  => '',
 				'desc' => 'Must be has <strong>http://</strong> e.g: http://www.sokhahotels.com'
 			),
-			/*array(
+			array(
 				'type' => 'heading',
 				'name' => __( 'Room Type', 'sptheme_admin' ),
 				'id'   => 'room_type_heading', // Not used but needed for plugin
@@ -294,9 +294,9 @@ function sp_register_meta_boxes( $meta_boxes )
 				'std'  => 'Standard',
 				'desc' => 'Type only name of room. e.g: Standard, Deluxe ...',
 				'clone' => true,
-			),*/
+			),
 		)
-	);
+	);*/
 
 	/* ---------------------------------------------------------------------- */
 	/*	TESTIMONIAL POST TYPE
