@@ -58,7 +58,7 @@ function sp_register_meta_boxes( $meta_boxes )
 		'context'  => 'normal',
 		'priority' => 'high',
 		'fields'   => array(
-			array(
+			/*array(
 				'name' 		=> __('Oveview', 'sptheme_admin'),
 				'id'   		=> $prefix . 'overview',
 				'std'  		=> '',
@@ -66,7 +66,7 @@ function sp_register_meta_boxes( $meta_boxes )
 				'type' 		=> 'textarea',
 				'cols' 		=> 20,
 				'rows' 		=> 3,
-			),
+			),*/
 			array(
 				'name' 		=> __('Highlight infomation', 'sptheme_admin'),
 				'id'   		=> $prefix . 'highlight',
@@ -115,23 +115,20 @@ function sp_register_meta_boxes( $meta_boxes )
 				'desc' => 'Max size 650px width and auto proportion of height. And allow only ' . sizeof($days_of_tour) . ' photos'
 				
 			),
-			array(
+			/*array(
 				'name'    => __( 'Price', 'sptheme_admin' ),
 				'id'      => $prefix . 'tour_price',
 				'type'    => 'post',
 				'desc'	  => 'Select price pacakge for this tour. <a href="edit.php?post_type=accommodation">Manage Price</a>',
 
-				// Post type
 				'post_type' => 'accommodation',
-				// Field type, either 'select' or 'select_advanced' (default)
 				'field_type' => 'select_advanced',
-				// Query arguments (optional). No settings means get all published posts
 				'query_args' => array(
 					'post_status' => 'publish',
 					'posts_per_page' => '5',
 				),
 				'placeholder' => __( 'Select an Item', 'sptheme_admin' ),
-			),
+			),*/
 			array(
 				'name' 		=> __('Price included', 'sptheme_admin'),
 				'id'   		=> $prefix . 'included',

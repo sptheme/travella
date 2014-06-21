@@ -889,7 +889,7 @@ if ( !function_exists('sp_get_all_terms_destination') ) {
 	
 				$child_args = array(
 						'child_of' => $term->term_id,
-						'hide_empty' => 0
+						'number' => 4
 					);
 				$des_child = get_terms('destination', $child_args);
 
