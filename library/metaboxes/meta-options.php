@@ -24,11 +24,11 @@ function sp_register_meta_boxes( $meta_boxes )
 	global $days_of_tour, $hotel_levels;
 	$prefix = 'sp_';
 	
-	$accommodations_arr = array();
+	/*$accommodations_arr = array();
 	$accommodations = get_terms('accommodation', array('post_status' => 'publish', 'posts_per_page' => '5',));
 	foreach ($accommodations as $term) {
 	    $accommodations_arr[$term->term_id] = $term->name;
-	}
+	}*/
 
 	$destinations_arr = array();
 	$destinations = get_terms('destination', array('post_status' => 'publish', 'posts_per_page' => '5',));
