@@ -802,11 +802,15 @@ if ( !function_exists('sp_get_tour_type_detail') ) {
 
 if ( !function_exists('sp_get_icons_tour_type') ) {
 	function sp_get_icons_tour_type(){
-		$taxonomies = sp_get_terms_list('tour-type');
+		global $smof_data;
+
+		$term_exclude = get_term_by('name', $smof_data['tour_offer'], 'tour-type');
+		$args = array('exclude' => $term_exclude->term_id, 'hide_empty' => 0 );
+		$tour_type = get_terms('tour-type', $args);
 		$out = '';
-		if ( count($taxonomies) ) {
+		if ( count($tour_type) ) {
 			$out .= '<ul class="icons-tour-type">';
-			foreach ( $taxonomies as $term ) {
+			foreach ( $tour_type as $term ) {
 				$tax_image_url = get_option( 'tour_type_'.$term->term_id.'_thumb', '' );
 				$image = aq_resize( $tax_image_url, 80, 80, true );
 
@@ -831,14 +835,15 @@ if ( !function_exists('sp_latest_tour_offer') ) {
 	function sp_latest_tour_offer(){
 		global $smof_data;
 
+		$term_offer = get_term_by('name', $smof_data['tour_offer'], 'tour-type');
 		$args = array(
 				'post_type' => 'tour',
-				/*'tax_query' => array(
+				'tax_query' => array(
 					array(
 						'taxonomy' => 'tour-type',
-						'terms' => array($smof_data['tour_offer'])
-					)),*/
-				'posts_per_page' => 12,
+						'terms' => array($term_offer->term_id)
+					)),
+				'posts_per_page' => $smof_data['tour_offer_num'],
 			);
 		$custom_query = new WP_Query($args);
 		$out ='<script type="text/javascript">

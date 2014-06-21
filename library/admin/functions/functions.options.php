@@ -11,7 +11,14 @@ if (!function_exists('of_options'))
 		$of_categories_obj 	= get_categories('hide_empty=0');
 		foreach ($of_categories_obj as $of_cat) {
 		    $of_categories[$of_cat->cat_ID] = $of_cat->cat_name;}
-		$categories_tmp 	= array_unshift($of_categories, "Select a category:");    
+		$categories_tmp 	= array_unshift($of_categories, "Select a category:");  
+
+		//Access the tour type via an Array
+		$of_tour_type 		= array();  
+		$of_tour_type_obj 	= get_terms('tour-type', array('hide_empty=0'));
+		foreach ($of_tour_type_obj as $term) {
+		    $of_tour_type[$term->term_id] = $term->name;}
+		$tour_type_tmp 	= array_unshift($of_tour_type, "Select a tour offer:");   
 	       
 		//Access the WordPress Pages via an Array
 		$of_pages 			= array();
@@ -174,6 +181,13 @@ $of_options[] = array( 	"name" 		=> "Exclude Destination",
 $of_options[] = array( 	"name" 		=> "Tour offer",
 						"desc" 		=> "Enter Tour offer category",
 						"id" 		=> "tour_offer",
+						"type" 		=> "select",
+						"options"	=> $of_tour_type
+				);
+
+$of_options[] = array( 	"name" 		=> "Offer tour amount",
+						"desc" 		=> "Enter number of tour offer to show on home page",
+						"id" 		=> "tour_offer_num",
 						"std" 		=> "",
 						"type" 		=> "text"
 				);
