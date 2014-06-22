@@ -163,9 +163,13 @@ if ( !function_exists( 'sp_get_tour_destination' ) ){
 if ( !function_exists( 'sp_get_tour_type' ) ){
 
 	function sp_get_tour_type(){
+		global $smof_data;
+		$term_offer = get_term_by('name', $smof_data['tour_offer'], 'tour-type');
 		$tour_type = wp_get_post_terms( get_the_ID(), 'tour-type' );
 		foreach ($tour_type as $type) {
-			$types[] = $type->name;
+			if ( $type->term_id != $term_offer->term_id ) {
+				$types[] = $type->name;
+			}
 		}
 		$out = implode(', ', $types);
 		return $out;
@@ -336,7 +340,44 @@ if ( !function_exists('sp_get_related_tours') ) {
 			'posts_per_page' => $post_num
 			);
 		$custom_query = new WP_Query($args);
-		$out = '<div id="related-tours">';
+		$out = '<div class="tour-thumb-widget">';
+		$out .= '<ul>';
+		while ( $custom_query->have_posts() ): $custom_query->the_post();
+			$thumb = sp_post_thumbnail('tour-mini');
+			$out .= '<li>';
+			$out .= '<img src="' . $thumb . '">';
+			$out .= '<a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', SP_TEXT_DOMAIN ), the_title_attribute( 'echo=0' ) ) . '">' . get_the_title() . '</a>';
+			$out .= '<span>' . sp_get_tour_type() . '</span>';
+			$out .= '</li>';
+		endwhile;
+		wp_reset_postdata(); // Restore global post data
+		$out .= '</ul>';
+		$out .= '</div>';
+
+		return $out;
+	}
+}
+
+/* ---------------------------------------------------------------------- */
+/*  Get latest tour offer
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_get_tours_offer_widget') ) {
+	function sp_get_tours_offer_widget(){
+		global $smof_data;
+
+		$term_offer = get_term_by('name', $smof_data['tour_offer'], 'tour-type');
+		$args = array(
+				'post_type' => 'tour',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'tour-type',
+						'terms' => array($term_offer->term_id)
+					)),
+				'orderby' => 'rand',
+				'posts_per_page' => 5,
+			);
+		$custom_query = new WP_Query($args);
+		$out = '<div class="tour-thumb-widget">';
 		$out .= '<ul>';
 		while ( $custom_query->have_posts() ): $custom_query->the_post();
 			$thumb = sp_post_thumbnail('tour-mini');

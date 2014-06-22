@@ -55,6 +55,13 @@
     autoPageContainerHeight();
     dropdownNav();
 
+    /* Set auto height for sidebar */ 
+    var sidebar_height = $('#sidebar').height();
+    var content_height = $('#main').height();
+    if ( sidebar_height < content_height ) {
+        $('#sidebar').css({"height" : content_height});
+    }
+
     /* Hover Effects */
     $('.nav-child-container').bind('mouseover', function(event) {
         $(this).toggleClass('hover');

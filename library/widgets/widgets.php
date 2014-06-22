@@ -48,6 +48,17 @@ function sp_widgets_init() {
 		'before_title' 	=> '<div class="widget-title"><h3>',
 		'after_title' 	=> '</h3></div>',
 	) );
+
+	// Page Sidebar
+	register_sidebar( array(
+		'name' 			=> __( 'Page Sidebar', 'sptheme_admin' ),
+		'id' 			=> 'page-sidebar',
+		'description' 	=> __( 'Drag widgets to present on page page', 'sptheme_admin' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' 	=> "</div>",
+		'before_title' 	=> '<div class="widget-title"><h3>',
+		'after_title' 	=> '</h3></div>',
+	) );
 	
 	
 	// Addon widgets		
@@ -59,6 +70,8 @@ function sp_widgets_init() {
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-related-tours.php' );
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-tours-destination.php' );
 	require_once ( SP_BASE_DIR . 'library/widgets/widget-tour-type.php' );
+	require_once ( SP_BASE_DIR . 'library/widgets/widget-subnav.php' );
+	require_once ( SP_BASE_DIR . 'library/widgets/widget-tours-offer.php' );
 		
 	// Register widgets
 	register_widget( 'sp_widget_assistant' );
@@ -69,6 +82,8 @@ function sp_widgets_init() {
 	register_widget( 'sp_widget_related_tours' );
 	register_widget( 'sp_widget_tours_destination' );
 	register_widget( 'sp_widget_tour_type' );
+	register_widget( 'sp_widget_subnav' );
+	register_widget( 'sp_widget_tours_offer' );
 
 }
 add_action('widgets_init', 'sp_widgets_init');
