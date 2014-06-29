@@ -11,6 +11,7 @@ function register_buttons( $buttons ) {
 	array_push( $buttons, 'email_encoder' );
 	array_push( $buttons, 'slider' );
 	array_push( $buttons, 'accordion' );
+	array_push( $buttons, 'gallery' );
 
     return $buttons;
 }
@@ -23,6 +24,7 @@ function add_plugins($plugin_array) {
 	$plugin_array['email_encoder']	= $js_path . 'sc-email-encoder.js';
 	$plugin_array['slider']			= $js_path . 'sc-slider.js';
 	$plugin_array['accordion']		= $js_path . 'sc-accordion.js';
+	$plugin_array['gallery']		= $js_path . 'sc-gallery.js';
 	
     return $plugin_array;
  }
@@ -38,6 +40,6 @@ function add_buttons() {
 add_action( 'init', 'add_buttons' );  
 
 require_once( SP_BASE_DIR . 'library/shortcodes/popup/ajax-slider-shortcode.php');
-//require_once( SP_BASE_DIR . 'library/shortcodes/popup/ajax-portfolio-shortcode.php');
+require_once( SP_BASE_DIR . 'library/shortcodes/popup/ajax-gallery-shortcode.php');
 
 ?>

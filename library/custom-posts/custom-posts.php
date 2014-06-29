@@ -7,7 +7,7 @@ require_once( SP_BASE_DIR . 'library/custom-posts/cp-tour.php' );
 //require_once( SP_BASE_DIR . 'library/custom-posts/cp-hotel.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-faq.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/cp-testimonial.php' );
-
+require_once( SP_BASE_DIR . 'library/custom-posts/cp-gallery.php' );
 //Taxonomies
 require_once( SP_BASE_DIR . 'library/custom-posts/taxonomy-tour.php' );
 require_once( SP_BASE_DIR . 'library/custom-posts/taxonomy-destination.php' );

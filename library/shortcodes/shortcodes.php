@@ -22,6 +22,7 @@ function sp_add_shortcodes() {
 	add_shortcode( 'slider', 'sp_slider_sc' );
 	add_shortcode( 'accordion', 'sp_accordion_shortcode' );
 	add_shortcode( 'accordion_section', 'sp_accordion_section_shortcode' );	
+	add_shortcode( 'sc_gallery', 'sp_gallery_sc' );
 	
 }
 add_action( 'init', 'sp_add_shortcodes' );
@@ -126,6 +127,41 @@ function sp_slider_sc( $atts, $content = null ){
 		$out .= sp_slideshow();
 	endwhile;
 	wp_reset_postdata(); // Restore global post data
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* Photogallery
+/*--------------------------------------------------------------------------------------*/
+function sp_gallery_sc( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'gallery_id' => null,
+		'gallery_num' => null,
+	), $atts ) );
+
+	$out = '';
+
+	$args = array(
+		'post_type' 		=>	'gallery',
+		'posts_per_page'	=>	$gallery_num,
+	);
+
+	$custom_query = new WP_Query( $args );
+
+	if( $custom_query->have_posts() ) :
+		while ( $custom_query->have_posts() ) : $custom_query->the_post();
+
+			if ( has_post_thumbnail() ):
+                $out .= '<a href="' . get_permalink() . '">' . get_the_post_thumbnail( $post->ID, 'thumbnail') . '</a>';
+            endif;
+
+		endwhile; wp_reset_postdata();
+	endif;
 
 	return $out;
 

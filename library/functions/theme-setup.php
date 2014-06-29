@@ -103,7 +103,7 @@ if ( !function_exists('sp_print_custom_css_script') ){
 		
 		}
 	</style>
-	<?php if ( is_page() || is_singular( 'tour' ) ) : ?>
+	<?php if ( is_page() || is_singular( 'tour' ) || is_singular( 'gallery' ) ) : ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
 	    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){

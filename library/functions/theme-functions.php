@@ -27,6 +27,30 @@ if( !function_exists('languages_list_header')) {
 }
 
 /* ---------------------------------------------------------------------- */
+/*	Get images attached to post
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_post_images' ) ) {
+
+	function sp_post_images( $args=array() ) {
+		global $post;
+
+		$defaults = array(
+			'numberposts'		=> -1,
+			'order'				=> 'ASC',
+			'orderby'			=> 'menu_order',
+			'post_mime_type'	=> 'image',
+			'post_parent'		=>  $post->ID,
+			'post_type'			=> 'attachment',
+		);
+
+		$args = wp_parse_args( $args, $defaults );
+
+		return get_posts( $args );
+	}
+	
+}
+
+/* ---------------------------------------------------------------------- */
 /*	Custom Excerpt Length
 /* ---------------------------------------------------------------------- */
 if (!function_exists('sp_excerpt_length')) {
@@ -210,6 +234,27 @@ if ( !function_exists( 'sp_tour_photos' )){
 			//return __('Highlight photos of this tour will coming soon.', SP_TEXT_DOMAIN);
 			return false;
 		}
+	}
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Get latest gallery/album
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_get_latest_photogallery' ) ) {
+	function sp_get_latest_photogallery( $album_id = '', $photo_num = 10 ) {
+		global $post;
+
+		$out = '<div class="gallery">';
+		
+		$gallery = rwmb_meta( 'sp_gallery', $args = array('type' => 'plupload_image', 'size' => 'tour-thumb') );
+			foreach ( $gallery as $image ) :
+			$out .= '<a href="' . $image['full_url'] . '">';
+			$out .= '<img class="wp-post-image" src="' . $image['url'] . '" alt="' . $image['title'] . '" />';
+			$out .= '</a>';
+			endforeach; 
+		$out .= '</div>';
+
+		return $out;
 	}
 }
 

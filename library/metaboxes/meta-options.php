@@ -180,6 +180,27 @@ function sp_register_meta_boxes( $meta_boxes )
 	);
 
 	/* ---------------------------------------------------------------------- */
+	/*	GALLERY POST TYPE
+	/* ---------------------------------------------------------------------- */
+	$meta_boxes[] = array(
+		'id'       => 'album-settings',
+		'title'    => __('Album setting', 'sptheme_admin'),
+		'pages'    => array('gallery'),
+		'context'  => 'normal',
+		'priority' => 'high',
+		'fields'   => array(
+			array(
+				'name' => __('Upload photos', 'sptheme_admin'),
+				'id'   => $prefix . 'gallery',
+				'type' => 'image_advanced',
+				'max_file_uploads' => 90,
+				'std'  => '',
+				'desc' => 'Max size 650px wide'
+			)
+		)
+	);
+
+	/* ---------------------------------------------------------------------- */
 	/*	ACCOMMODATION POST TYPE
 	/* ---------------------------------------------------------------------- */
 	$meta_boxes[] = array(
