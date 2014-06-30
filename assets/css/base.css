@@ -269,26 +269,27 @@ table tbody tr:hover td {
 
 /* =Images
 -------------------------------------------------------------- */
-
-img.size-full {
-	width: auto/9; /* Prevent stretching of full-size images in IE8 */
-}
-img[class*="wp-image-"] {
-	height: auto;
-	max-width: 100%;
-}
+/*Prevent stretching of full-size images in IE8 */
+/*img.size-full {
+	width: auto/9;  
+}*/
 
 img[class*="align"],
 img[class*="wp-image-"],
+img[class*="wp-post-"],
 img[class*="attachment-"] {
-	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+	max-width: 100%;
+	height: auto;
 }
 
-/*#content img {
-	height: auto;
-	max-width: 100%;
-	vertical-align: top;
-}*/
+img[class*="wp-image-"], 
+img.wp-post-image{
+	border: 1px solid #E5E5E5;
+	padding: 5px;
+	-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+				box-sizing: border-box;
+}
 
 .wp-caption {
 	border: none;

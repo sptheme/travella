@@ -248,9 +248,11 @@ if ( ! function_exists( 'sp_get_latest_photogallery' ) ) {
 		
 		$gallery = rwmb_meta( 'sp_gallery', $args = array('type' => 'plupload_image', 'size' => 'tour-thumb') );
 			foreach ( $gallery as $image ) :
+			$out .= '<div class="one-third">';	
 			$out .= '<a href="' . $image['full_url'] . '">';
 			$out .= '<img class="wp-post-image" src="' . $image['url'] . '" alt="' . $image['title'] . '" />';
 			$out .= '</a>';
+			$out .= '</div>';
 			endforeach; 
 		$out .= '</div>';
 

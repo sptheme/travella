@@ -154,13 +154,20 @@ function sp_gallery_sc( $atts, $content = null ){
 	$custom_query = new WP_Query( $args );
 
 	if( $custom_query->have_posts() ) :
+		$out .= '<div class="cover-album">';
 		while ( $custom_query->have_posts() ) : $custom_query->the_post();
 
 			if ( has_post_thumbnail() ):
-                $out .= '<a href="' . get_permalink() . '">' . get_the_post_thumbnail( $post->ID, 'thumbnail') . '</a>';
+				$out .= '<div class="one-third">';	
+                $out .= '<a href="' . get_permalink() . '">';
+                $out .= get_the_post_thumbnail( $post->ID, 'tour-thumb');
+                $out .= '<h5>' . get_the_title() . '</h5>';
+                $out .= '</a>';
+                $out .= '</div>';
             endif;
-
+            
 		endwhile; wp_reset_postdata();
+		$out .= '</div>';
 	endif;
 
 	return $out;
