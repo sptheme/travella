@@ -834,14 +834,15 @@ if ( !function_exists('sp_render_main_destinations') ) {
 		if ( count($main_destinations) ) {
 			foreach ( $main_destinations as $term ) {
 				$tax_image_url = get_option( 'destination_'.$term->term_id.'_thumb', '' );
+				$country_url = get_option( 'destination_'.$term->term_id.'_des_url', '' );
 				$tax_has_child = has_children($term->term_id, 'destination');
 				$image = aq_resize( $tax_image_url, 300, 172, true );
-				$out .= '<div class="country clearfix">';
+				$out .= '<div class="country">';
 				$out .= '<img src="' . $image . '">';
 				$out .= '<ul class="country-info">';
 				$out .= '<li class="left">';
-				$out .= '<h3>' . $term->name . '</h3>';
-				$out .= '<a href="#" class="learn-more">' . __('Learn more', SP_TEXT_DOMAIN) . '</a>';
+				$out .= '<h3><a href="' . $country_url . '">' . $term->name . '</a></h3>';
+				$out .= '<a href="' . $country_url . '" class="learn-more">' . __('Learn more', SP_TEXT_DOMAIN) . '</a>';
 				$out .= '</li>';
 				$out .= '<li class="meta-highlight right">';
 				$out .= '<a href="' . get_term_link( $term ) . '" class="tour-amount"><b>' . $term->count .'</b> ' . __('Tours', SP_TEXT_DOMAIN) . '</a>';

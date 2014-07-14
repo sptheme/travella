@@ -33,6 +33,7 @@ if ( ! function_exists( 'edit_destination' ) ) {
 	
 	function edit_destination($tag, $taxonomy) {
 		$thumb = get_option( 'destination_'.$tag->term_id.'_thumb', '' );
+		$des_url = get_option( 'destination_'.$tag->term_id.'_des_url', '' );
 		?>
 		<tr class="form-field">
 	        <th scope="row" valign="top"><label for="destination_thumb">Icon</label></th>
@@ -41,6 +42,14 @@ if ( ! function_exists( 'edit_destination' ) ) {
 	            <input type="button" value="Select Image" class="media-select" id="destination_thumb_selectMedia" name="destination_thumb_selectMedia" style="width: 15%;">
 	            <br />
 	            <p class="description">Thumbnail for category</p>
+	        </td>
+	    </tr>
+	    <tr class="form-field">
+	        <th scope="row" valign="top"><label for="destination_page_url">URL</label></th>
+	        <td>
+	            <input type="text" name="destination_page_url" id="destination_page_url" value="<?php echo $des_url; ?>" style="width: 80%;"/>
+	            <br />
+	            <p class="description">URL of information page for this destination</p>
 	        </td>
 	    </tr>
 	    <?php
@@ -60,6 +69,12 @@ if ( ! function_exists( 'add_destination' ) ) {
 	            <br />
 	            <p class="description">Thumbnail for category</p>
 		</div>
+		<div class="form-field">
+			<label for="destination_page_url">URL</label>
+			<input type="text" name="destination_page_url" id="destination_page_url" value="" style="width: 80%;"/>
+	        <br />
+	            <p class="description">URL of information page for this destination</p>
+		</div>
 		<?php
 	}
 
@@ -77,6 +92,10 @@ if ( ! function_exists( 'save_destination' ) ) {
 			$name = 'destination_' .$term_id. '_thumb';
 			update_option( $name, $_POST['destination_thumb'] );
 		}
+		if (isset($_POST['destination_thumb'])){
+			$des_url = 'destination_' .$term_id. '_des_url';
+			update_option( $des_url, $_POST['destination_page_url'] );
+		}
 	}
 
 }
@@ -88,6 +107,7 @@ if ( ! function_exists( 'delete_destination' ) ) {
 
 	function delete_destination($id) {
 		delete_option( 'destination_'.$id.'_thumb' );
+		delete_option( 'destination_'.$id.'_des_url' );
 	}
 	
 }
