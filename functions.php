@@ -15,7 +15,7 @@ $themeName = str_replace( ' ', '', $themeName );
 //Basic constants	
 define( 'SP_THEME_NAME', strtoupper($themeName) );
 define( 'SP_TEXT_DOMAIN', strtolower($themeName) );
-define( 'SP_SCRIPTS_VERSION', '20140312' ); // yyyymmdd
+define( 'SP_SCRIPTS_VERSION', '20141007' ); // yyyymmdd
 define( 'SP_ADMIN_LIST_THUMB', '64x64' ); //thumbnail size (width x height) on post/
 
 define( 'SP_BASE_DIR',   get_template_directory() . '/' );

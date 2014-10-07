@@ -61,11 +61,11 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_style('theme-info', SP_BASE_URL . 'style.css', false, '1');
 		wp_enqueue_style('genericons', SP_ASSETS_THEME . 'css/genericons.css', false, '1');
 		wp_enqueue_style('normalize', SP_ASSETS_THEME . 'css/normalize.css', false, '1');
-		wp_enqueue_style('base', SP_ASSETS_THEME . 'css/base.css', false, '1');
+		wp_enqueue_style('base', SP_ASSETS_THEME . 'css/base.css', false, SP_SCRIPTS_VERSION);
 		wp_enqueue_style('flexslider', SP_ASSETS_THEME . 'css/flexslider.css', false, '1');
 		wp_enqueue_style('jquery-ui-datepicker', SP_ASSETS_THEME . 'css/jquery-ui-1.10.4.datepicker.min.css', false, '1');
 		wp_enqueue_style('magnific-popup', SP_ASSETS_THEME . 'css/magnific-popup.css', false, '1');
-		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, '1');
+		wp_enqueue_style('layout', SP_ASSETS_THEME . 'css/layout.css', false, SP_SCRIPTS_VERSION);
 
 		//Register scripts
 		wp_enqueue_script('modernizr', SP_ASSETS_THEME . 'js/modernizr.js', array(), SP_SCRIPTS_VERSION, false);
@@ -319,9 +319,10 @@ if ( ! function_exists( 'sp_add_buttons_row2' ) ) {
 // Custom logo login
 add_action('login_head', 'sp_custom_login_logo');
 function sp_custom_login_logo() {
+	global $smof_data;
     echo '<style type="text/css">
 		body.login{ background-color:#ffffff; }
-        .login h1 a { background-image:url('.SP_ASSETS_THEME.'images/logo.png) !important; width:166px; height:45px; background-size: auto auto !important;}
+        .login h1 a { background-image:url('.$smof_data['theme_logo'].') !important; height: 100px!important; width: 100%!important; background-size: auto!important;}
     </style>';
 }
 

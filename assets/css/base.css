@@ -13,7 +13,7 @@ body {
 ::selection { background: #0D9DDC; color: #fff; text-shadow: none; }
 
 h1, h2, h3, h4, h5, h6 {
-	color:#0066A0;	
+	color:#00963f;	
 	font-weight: 600;
 	line-height: 1.1em;
 	font-family: Arial, sans-serif;
@@ -41,7 +41,7 @@ h6 {
 
 /* Link */
 a, a > * {
-	color: #747474; /* #4d90fe; */
+	color: #0066cc; /* #4d90fe; */
 	text-decoration: none;
 	-webkit-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
 	   -moz-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
@@ -50,7 +50,7 @@ a, a > * {
 	        transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
 }
 
-a:hover { text-decoration: none; color: #9E9D9D; }
+a:hover { text-decoration: none; color: #00963f; }
 
 /* Text elements */
 
