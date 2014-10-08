@@ -628,7 +628,7 @@ if ( !function_exists('sp_send_booking_tour') ) {
 			$out = '<h3>Thank you for booking with us!</h3>';
 			$out .= '<h5>We\'ll contact you within 01 working day.</h5>'; 
 			$out .= '<p>If you don\'t receive our answer after 1 working day, please check your spam email. It may go to your spam mailbox.</p>';
-			$out .= '<p>If you have any questions, please kindly contact us at: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
+			$out .= '<p>If you have any questions, please kindly contact us at: <a href="mailto:'. $agency_email .'">'. $agency_email .'</a></p>';
 			echo $out;
 		} else {
 			echo '<h5>Sorry, your booking cannot be send right now.</h5><p>' . error_message . '</p>';
@@ -645,12 +645,15 @@ if ( !function_exists('sp_send_booking_tour') ) {
 if ( !function_exists('sp_email_template') ){
 
 	function sp_email_template( $tour_info ){
+
+		global $smof_data;
+		$agency_email = $smof_data['bcc_notify'];
 	
 		($tour_info['title'] == 1 ) ? $title = 'Mr.' : $title = 'Ms.';
 		$out = '<html><body>';
 		$out .= 'Dear ' . $title . ' ' . $tour_info['full_name'];
 		$out .= '<p>Your request has been submitted to ' . get_bloginfo('wpurl', 'display') . ' One of our travel consultants will respond to you within 1 working day.</p>';
-		$out .= '<p><strong>Please note:</strong> If you submit incorrect information, please contact our travel consultants to change your request at <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a></p>';
+		$out .= '<p><strong>Please note:</strong> If you submit incorrect information, please contact our travel consultants to change your request at <a href="mailto:'. $agency_email .'">'. $agency_email .'</a></p>';
 		$out .= '<p style="font-weight:bold; font-size:14px;">Please review the details below of what you selected:</p>';
 		
 		$out .= '<table style="width:700px;border-spacing:3px;font-family:Arial;font-size:12px"><tbody>';
@@ -710,12 +713,12 @@ if ( !function_exists('sp_email_template') ){
 		$out .= '</tr>';
 		$out .= '</tbody></table>';
 		$out .= '<p><strong>Special requirements: </strong>' . $tour_info['requirements'] . '</p>';
-		$out .= '<br><p style="font-size:12px;"><strong>Reservation - Eurasie Travel</strong></p>';
-		$out .= '<p style="font-size:12px;"><strong>Eurasie Travel</strong>';
+		$out .= '<br><p style="font-size:12px;"><strong>Reservation - My Cambodia Travel</strong></p>';
+		$out .= '<p style="font-size:18px;"><strong>My Cambodia Travel</strong>';
 		$out .= '<br>Head office: No. AC04, St. 55, Borey Sopheak Mongkul,';
 		$out .= '<br>Sangkat Chroy Changvar, Khan Russey Keo,';
 		$out .= '<br>Phnom Penh, Cambodia.';
-		$out .= '<br>Email: <a href="mailto:sales@eurasietravel.com.kh">sales@eurasietravel.com.kh</a>';
+		$out .= '<br>Email: <a href="mailto:'. $agency_email .'">'. $agency_email .'</a>';
 		$out .= '<br>Tel: +855 23 426-456, 012 608-108';
 		$out .= '<br>Fax: +855 23 432-242';
 		$out .= '<br>Website: ' . get_bloginfo('wpurl', 'display') . '</p>';
