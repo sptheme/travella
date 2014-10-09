@@ -77,6 +77,11 @@ if( !function_exists('sp_frontend_scripts_styles') )
 		wp_enqueue_script('magnific-popup', SP_ASSETS_THEME . 'js/jquery.magnific-popup.min.js', array('jquery'), SP_SCRIPTS_VERSION, false);
 		wp_enqueue_script('custom', SP_ASSETS_THEME . 'js/custom.js', array('jquery', 'jquery-ui-datepicker'), SP_SCRIPTS_VERSION, true);
 
+		if ( is_archive() ) {
+			wp_enqueue_script('imageloaded', SP_ASSETS_THEME . 'js/imagesloaded.pkgd.min.js', array('jquery'), SP_SCRIPTS_VERSION, false);
+			wp_enqueue_script('isotope', SP_ASSETS_THEME . 'js/isotope.pkgd.min.js', array('jquery'), SP_SCRIPTS_VERSION, false);
+		}	
+
 		if ( is_singular() && comments_open() ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
@@ -96,13 +101,81 @@ if ( !function_exists('sp_print_custom_css_script') ){
 	add_action('wp_head', 'sp_print_custom_css_script');
 	
 	function sp_print_custom_css_script(){
-		global $smof_data;
 ?>
+	<?php if ( is_archive() ) : ?>
 	<style type="text/css">
-		body{
-		
+		ul.tour-filters { 
+			list-style: none; 
+			text-align: center;
+		}
+		ul.tour-filters li {
+			display: inline-block;
+			margin: 5px 10px;
+		}
+		ul.tour-filters li a {
+			font-size: 12px;
+			display: inline-block;
+			border:2px solid #3b5998;
+			padding: 2px 20px;
+			text-transform: uppercase;
+			-webkit-border-radius: 4px;
+			 -moz-border-radius: 4px;
+			      border-radius: 4px;
+		}
+		ul.tour-filters li.current a,
+		ul.tour-filters li a:hover{ 
+			color: #fff;
+			background: #00963f;
+			border:2px solid #00a847;
+		}
+		.isotope, .post-isotope {
+		  transition-duration: 0.6s;
+		  -o-transition-duration: 0.6s;
+		  -ms-transition-duration: 0.6s;
+		  -moz-transition-duration: 0.6s;
+		  -webkit-transition-duration: 0.6s;
+		}
+		.isotope, .post-isotope {
+		  transition-property: height, width;
+		  -o-transition-property: height, width;
+		  -ms-transition-property: height, width;
+		  -moz-transition-property: height, width;
+		  -webkit-transition-property: height, width;
 		}
 	</style>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			var $container = $('.post-isotope').imagesLoaded( function() {
+			  $container.isotope({
+			    itemSelector: '.isotope-item',
+			    layoutMode: 'fitRows'
+			  });
+			});
+
+			var filterFns = {
+				numberGreaterThan50: function() {
+				 var number = $(this).find('.number').text();
+				 return parseInt( number, 10 ) > 50;
+				},
+				ium: function() {
+				 var name = $(this).find('.name').text();
+				 return name.match( /ium$/ );
+				}
+			};
+
+			$('.tour-filters li a').on( 'click', function( event ) {
+				event.preventDefault();
+				var filterValue = $( this ).attr('data-filter');
+				filterValue = filterFns[ filterValue ] || filterValue;
+				$container.isotope({ filter: filterValue });
+
+				$('.tour-filters li').removeClass('current');
+				$( this ).parent().addClass('current');
+			});
+		});
+	</script>		
+	<?php endif; ?>
+
 	<?php if ( is_page() || is_singular( 'tour' ) || is_singular( 'gallery' ) ) : ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
