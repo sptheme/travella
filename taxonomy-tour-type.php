@@ -20,13 +20,14 @@
 		<?php endif; ?>
 
 		<?php 
-			$term_slug = $term->slug;
 			$args = array(
-						'post_type'			=> 'tour',
-						array(
-							'taxonomy' => 'tour-type',
-							'field' => 'slug',
-							'terms' => $term_slug
+						'post_type' => 'tour',
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'tour-type',
+								'field'    => 'slug',
+								'terms'    => $term->slug,
+							),
 						),
 						'posts_per_page'	=>	-1,
 
@@ -34,9 +35,10 @@
 
 			$tours = get_posts( $args );
 
-			foreach ($tours as $post ) :
+			foreach ($tours as $post ) : setup_postdata( $post );
 				$objects_ids[] = $post->ID;
 			endforeach;
+			wp_reset_postdata();
 
 			$destinations = wp_get_object_terms( $objects_ids, 'destination' );
 
@@ -57,24 +59,18 @@
 		<div class="tour-results-list clearfix">
 
 		<?php
+
 			$custom_query = new WP_Query($args);
 	 		
-	 		if ( $custom_query->have_posts() ) :
-
-				// Start the Loop.
-				echo '<ul class="post-isotope">';
-				while ( $custom_query->have_posts() ) : $custom_query->the_post();
+	 		// Start the Loop.
+			echo '<ul class="post-isotope">';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
 				$term_list = get_the_term_list($post->ID, 'destination', '', ' ', '');
-
 				echo '<li class="isotope-item all ' . strtolower(strip_tags($term_list)) . '">' . sp_render_thumbnail_tour() .'</li>';				
-				endwhile;
-				echo '</ul>';
-				wp_reset_postdata();
-			else :
-				// If no content, include the "No posts found" template.
-				get_template_part('library/content/error404');
-
-			endif;
+			endwhile;
+			echo '</ul>';
+			wp_reset_postdata();
+			
 		?>
 	</div><!-- .tour-results-list clearfix -->
 	</div><!-- #content -->
