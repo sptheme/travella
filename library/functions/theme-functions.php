@@ -146,7 +146,7 @@ if ( !function_exists('sp_tour_meta') ) {
 		$out .= '</li>';
 
 		$out .= '<li class="icon-camera"><span class="meta-label">' . esc_attr__( 'Duration: ', SP_TEXT_DOMAIN ) . '</span>';
-		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s night', SP_TEXT_DOMAIN ),
+		$out .= '<span class="meta-value">' . sprintf( esc_attr__( '%1$s days / %2$s nights', SP_TEXT_DOMAIN ),
 			 $tours_day + 1,
 			 $tours_day) . '</span></li>';
 		
@@ -223,7 +223,7 @@ if ( !function_exists( 'sp_tour_photos' )){
 			$out .= '<ul class="slides">';
 			foreach ( $tour_photos as $photo ){
 				$out .= '<li>';
-				$out .= '<img src="' . $photo['url'] . '" alt="' . $photo['title'] . '" />';
+				$out .= '<img src="' . $photo['url'] . '" alt="' . $photo['title'] . '" width="940" height="416" />';
 				$out .= '</li>';
 			}
 			$out .= '</ul>';
